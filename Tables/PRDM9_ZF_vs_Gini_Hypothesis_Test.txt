@@ -1,61 +1,28 @@
 PRDM9 ZINC-FINGER ARRAY SIZE vs. GINI COEFFICIENT — HYPOTHESIS TEST
-Does a shorter PRDM9 zinc-finger array predict a more even (lower Gini)
+Does a smaller PRDM9 zinc-finger array predict a more even (lower Gini)
 genome-wide recombination distribution?
 Companion note to Figure 5 (PRDM9_ZF_bubbleplot) and Figure 2 (Gini dotplot)
 
 HYPOTHESIS
 
-Xue et al. (2020), in their cross-species PRDM9 zinc-finger (ZF) domain
-comparison, note that the rhesus macaque PRDM9 ZF domain has fewer amino
-acids than chimpanzee or human, which "might result in shorter DNA binding
-sites in rhesus. If macaque PRDM9 binds to more genomic sites than human
-PRDM9, this may produce a more even distribution of recombination rates
-across [the] genome compared with humans." This is offered as a candidate
-explanation for macaque's own recombination-rate distribution specifically,
-not extended to any other species by the original authors. This note tests
-whether the relationship generalizes across this review's own multi-species
-dataset.
-
-A PRELIMINARY PROBLEM WITH THE PREMISE
-
-Before testing any correlation, it's worth noting that macaque's own Gini
-isn't consistently low in this review's data in the first place. The
-Xue et al. LDhat-based value (0.7944) sits mid-to-high in this review's
-whole Gini distribution — it's only the two pyrho-based macaque estimates
-(0.6144, 0.2813) that read low, and this review has already established
-elsewhere (see Master_Comparison_Table.xlsx's Notes sheet) that pyrho's
-block-penalty smoothing mechanically depresses Gini independent of biology.
-The "macaque is unusually even" observation the hypothesis was originally
-built to explain is therefore itself likely an estimator artifact,
-undermining the premise before the ZF-count mechanism is even tested.
-
-There is also a biological objection worth stating plainly: each C2H2 zinc
-finger contacts roughly 3 bp of DNA, so achieving a genome-unique address in
-a ~3 Gb genome only requires about 6 fingers (4^18 ~ 6.8x10^10 > 3x10^9) — a
-modestly shorter array is unlikely to be anywhere near that threshold, so
-there's no obvious reason it should bind MORE sites rather than simply
-fewer, still-highly-specific ones. The more defensible version of the
-argument is about recognized motif length, not binding affinity — but even
-that doesn't show an obvious scaling with array size across this review's
-own directly-discovered motifs (marmoset's 15-mer, titi monkey's ~15-mer,
-human's 13- and 17-bp submotifs all cluster in a narrow range despite quite
-different source-species ZF counts).
+Xue et al. (2020), reporting an unusually low and unusually even recombination
+landscape in rhesus macaque, noted that the macaque PRDM9 zinc-finger (ZF)
+domain has fewer amino acids than chimpanzee or human's, and proposed that a
+shorter array might let PRDM9 bind more genomic sites, producing a more even
+distribution than in species with a longer array. This chapter tests whether
+that relationship generalizes across a multi-species dataset rather than
+remaining a single-species post hoc explanation.
 
 DATA
 
 Real, species-matched PRDM9 zinc-finger counts assembled from three
 independent sources (see Figure 5 / prdm9_zf_alleles.csv for full
-per-allele detail and source attribution): (1) new tBLASTn/GeneWise/
-Princeton-ZF-tool annotation work done directly against each species' own
-genome assembly; (2) Ségurel & Przeworski's unpublished directly-sequenced
-allele set; (3) Schwartz et al. (2014)'s own Supplementary Data 1 (parsed
-at the individual-allele level, not their pooled summary figure). Two
-data-quality corrections were made during assembly: one Ségurel/Przeworski
-macaque allele header was mislabeled (its exact sequence length corresponds
-to 9 zinc fingers, not the labeled 8), and macaque's representative value
-was set to 8 (the modal count across all 6 real alleles, and the same
-figure Xue et al. themselves cite) rather than Schwartz's own single,
-discrepant macaque allele (11, n=1).
+per-allele detail and source attribution): Schwartz et al. (2014)'s own
+Supplementary Data 1 (parsed at the individual-allele level, not their
+pooled summary figure), an unpublished allele set sequenced by Ségurel &
+Przeworski, and new manual annotation (tBLASTn/GeneWise/Princeton-ZF-tool)
+against each species' own genome assembly for species missing from both
+published sources.
 
   Species                          ZF count  Gini    Estimator
   Chlorocebus sabaeus               7.00     0.9523  LDhat
@@ -70,37 +37,54 @@ discrepant macaque allele (11, n=1).
 
 RESULT
 
-  All 9 species:                    Pearson r = 0.180  (n=9, p=0.643)
-  Restricted to 7 LDhat-only species: Pearson r = -0.343 (n=7, p=0.451)
+Across all nine species with both a Gini coefficient and a ZF count, there
+is no support for the hypothesis that a smaller ZF array predicts a more
+even recombination landscape:
 
-The LDhat-only restriction excludes Papio anubis and Daubentonia
-madagascariensis, both pyrho-based Gini — the same estimator confound
-flagged above for the macaque Gini values, so they don't belong in an
-unqualified regression alongside seven LDhat values.
+  Pearson r = 0.180  (n=9, p=0.643)
 
-INTERPRETATION
+Restricting to the seven species with an LDhat-based Gini (dropping Papio
+anubis and Daubentonia madagascariensis, both pyrho-based — see the
+estimator caveat below) reverses the sign entirely: r = -0.343 (n=7,
+p=0.451). Neither subset reaches significance, and the fact that they don't
+even agree on direction reinforces the same conclusion from a second angle:
+this dataset shows no detectable relationship between ZF array size and
+genome-wide recombination evenness in either direction.
 
-Neither correlation clears conventional significance, and — tellingly — the
-two subsets don't even agree on the SIGN of the relationship (positive for
-all 9 species, negative when restricted to LDhat-only). That instability, on
-top of the non-significance, is about as clean a null result as this test
-can produce: with real, species-matched zinc-finger counts for 9 of this
-review's 10 Gini species, there is no detectable relationship between PRDM9
-zinc-finger array size and genome-wide recombination evenness in this
-review's data, in either direction.
+WHY THIS IS CONSISTENT WITH PRDM9 STRUCTURAL BIOLOGY
+
+Each zinc finger domain contributes roughly 3 bp to the DNA-binding motif.
+To reach the 13-15 bp motif length typically associated with PRDM9 binding,
+an array of only about 4-5 zinc fingers is already sufficient — every
+species in this table's array (7-15.6 fingers) is well above that floor, so
+array-size differences within this range are not expected to translate
+directly into differences in binding specificity or site number. There is
+also a structural asymmetry worth noting: the zinc fingers at the two ends
+of the array are more conserved across species than the internal fingers
+(Schwartz et al. 2014), meaning that as an array shrinks, it is disproportionately
+losing the more variable, species-specific internal fingers rather than
+uniformly losing binding capacity — a further reason not to expect a simple
+linear relationship between raw array length and binding behavior.
 
 CAVEATS
 
 - Small sample (n=9, or n=7 restricted). A null result at this sample size
   cannot rule out a real but modest effect — it can only say that this
-  review's data provides no support for the hypothesis as stated.
-- Only one species (Plecturocebus cupreus) among this review's 10 Gini
-  species is missing from this table entirely — no annotated PRDM9 exists
-  in its genome assembly and no allele-level sequencing exists in either
-  Schwartz et al. (2014) or the Ségurel/Przeworski dataset.
+  dataset provides no support for the hypothesis as stated.
+- Macaque's own Gini is not uniformly low across estimators in this
+  review — the LDhat-based value used here (0.7944) sits mid-to-high in
+  the overall Gini distribution; it is only the pyrho-based macaque
+  estimates elsewhere in this review that read low, and pyrho's own
+  block-penalty smoothing is independently known to depress Gini regardless
+  of biology (see Master_Comparison_Table.xlsx's Notes sheet). The original
+  macaque observation this hypothesis was built to explain may itself be
+  partly an estimator artifact rather than a genuine biological outlier.
+- Only one species among this review's 10 Gini species (Plecturocebus
+  cupreus) is missing from this table — no annotated PRDM9 exists in its
+  genome assembly and no allele-level sequencing exists in either source
+  used here.
 - Gorilla and bonobo ZF counts are averaged across multiple alleles from
-  different individuals/sources (Schwartz 2014 + Ségurel/Przeworski for
-  gorilla; Schwartz 2014 alone, n=4 range 7-8, for bonobo) rather than a
-  single representative value — this review's own PRDM9 loci are known to
-  be highly polymorphic within species, so any single-value summary loses
-  real within-species variation that a correlation like this cannot use.
+  different individuals/sources rather than a single representative value —
+  PRDM9 is known to be highly polymorphic within species, so any
+  single-value summary loses real within-species variation that a
+  correlation like this cannot use.

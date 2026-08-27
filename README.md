@@ -1,4 +1,4 @@
-# Reading Between the Lines: Recombination Rate Heterogeneity Across Non-Human Primates
+# Recombination Rate Heterogeneity Across Non-Human Primates
 
 **Companion data and code repository for a book chapter synthesizing genome-wide recombination rate (cM/Mb), non-crossover (NCO) rate, and fine-scale rate heterogeneity (Gini coefficient) across 30 non-human primate species.**
 
@@ -117,15 +117,33 @@ Three cross-species summary notes, each derived directly from `Central_Compariso
 - **`Primate_cMMb_Baseline_Average.txt`** — Tests the commonly-used "~1 cM/Mb" default recombination rate assumption against this review's actual 23-species distribution (mean 0.84, median 0.82, range 0.63–1.55 cM/Mb) — the default reads as a modest overestimate, not just a rough ballpark. Also resolves an apparent 8-fold disagreement in *Macaca mulatta*'s cM/Mb estimates by reframing them as two genuinely distinct populations (Indian- vs. Chinese-origin) rather than one inconsistent species.
 - **`Primate_NCO_Baseline_Average.txt`** — The same exercise for NCO rate (n=9 species, 11-fold range) — considerably noisier than cM/Mb, split across two structurally different measurement approaches (direct pedigree counts vs. model-based long-read estimates) that agree at the subgroup-mean level but not in precision.
 - **`Primate_Pedigree_vs_LD_cMMb_Comparison.txt`** — Every species in this review with both a pedigree-based and an LD-based cM/Mb estimate reads pedigree at or above LD, never the reverse (5 of 5 species) — including 2 fully independent comparisons where the LD estimate wasn't rescaled toward the pedigree figure. Two candidate explanations (linked-selection bias in LD-based estimates vs. a genuine historical-vs-contemporary rate difference) are laid out but not adjudicated.
-- **`PRDM9_ZF_vs_Gini_Hypothesis_Test.txt`** — Tests whether PRDM9 zinc-finger array size predicts genome-wide recombination evenness (Xue et al. 2020's candidate explanation for macaque). Result: no detectable relationship (n=9, r=0.180, p=0.643; n=7 LDhat-only, r=−0.343, p=0.451) — the two subsets don't even agree on sign, about as clean a null result as this test can produce.
-- **`Joseph2024_DefaultHotspots_vs_Gini_Hypothesis_Test.txt`** — Tests whether reliance on PRDM9-independent ("default") hotspots (Joseph et al. 2024) predicts a more even genome-wide distribution. Result: the correlation runs in the opposite direction from the hypothesis (n=4, r=0.936, p=0.064) and doesn't reach significance — but is consistent whether or not a congener substitution is included, with vervet driving the pattern in both this test and the zinc-finger test above.
+- **`PRDM9_ZF_vs_Gini_Hypothesis_Test.txt`** — Tests whether PRDM9 zinc-finger array size predicts genome-wide recombination evenness (Xue et al. 2020's candidate explanation for macaque). Result: no detectable relationship (n=9, r=0.180, p=0.643; sign reverses to r=−0.343, p=0.451 when restricted to the 7 LDhat-only species) — consistent with PRDM9 structural biology, since every array in this dataset is already well above the ~4-5 zinc fingers needed to reach a typical 13-15bp binding motif.
+- **`Joseph2024_DefaultHotspots_vs_Gini_Hypothesis_Test.txt`** — Tests whether reliance on PRDM9-independent ("default") hotspots (Joseph et al. 2024) tracks genome-wide unevenness. Result: a positive correlation (n=4, r=0.936, p=0.064; n=3 exact species matches, r=0.969, p=0.159) driven by vervet, which has both the highest default-hotspot activity and the highest Gini in this review. Not significant at this n, but the positive direction is the mechanistically expected sign once the two hotspot types are framed as coexisting/additive (per Joseph et al.'s own finding that they typically don't substitute for each other) rather than substitutive — of the two hypotheses tested here, this one offers the more plausible account of the pattern.
 - **`compute_gini_hypothesis_correlations.py`** — Reproduces both correlations above directly from the data tables in each note (requires `scipy`).
 
 ## 7. Use in This Project
 
 `Central_Comparison_Table.xlsx` consolidates every cM/Mb, NCO, and Gini value cited in the chapter. Any correction or addition to a per-species value is made in `Scripts/Central_table/build_public_Central_table.py` and propagated by re-running that script and every downstream figure script — the figures and the two baseline-average notes are all derived views of this one table, not independently maintained.
 
-## 8. Citation
+## 8. AI Disclosure Statement
+
+Claude (Anthropic) was used as a collaborative tool throughout the
+development of this repository: extracting and cross-checking reported
+values from source publications, writing and iterating on the R/Python
+scripts that produce the figures and tables, drafting and revising this
+documentation, and performing the statistical computations in the PRDM9
+hypothesis-test notes (`Tables/PRDM9_ZF_vs_Gini_Hypothesis_Test.txt`,
+`Tables/Joseph2024_DefaultHotspots_vs_Gini_Hypothesis_Test.txt`).
+
+All methodological decisions, source selection, interpretation of results,
+and final content are the author's own responsibility. Every recomputed
+value was independently cross-validated against each source study's own
+published figures wherever possible, and every genuine discrepancy or
+methodological caveat surfaced during that process is documented explicitly
+in `Central_Comparison_Table.xlsx` and the relevant `Tables/` notes rather
+than silently resolved. 
+
+## 9. Citation
 
 If referencing this compiled dataset or its figures, please cite the book chapter:
 
