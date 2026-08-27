@@ -1,0 +1,44 @@
+DATASET_PIECHART
+#Fine-scale Gini coefficient as a gauge-style pie per species: 2 fields, [Gini value,
+#1-Gini value], so the filled wedge directly reads as "how close to maximally uneven".
+#Gini is naturally bounded [0,1], which is what makes this work as a gauge (would not
+#make sense for cM/Mb, which is unbounded).
+#For Macaca_mulatta (the only species left with more than one estimate, after the
+#chimp-subspecies tip split -- see PIE_PICK comment above), ONE representative value
+#was picked (see PIE_PICK in the build script) -- both alternates are in the
+#supplemental table, not silently dropped.
+#No legend block -- deliberately dropped per feedback that the "Gini coefficient" /
+#"(1 - Gini)" swatch legend didn't add anything a caption wouldn't say better.
+#SIZE NOTE: these are EXTERNAL pie charts (position=-1 in the DATA rows
+#below) -- per iTOL's own DATASET_PIECHART template, MAXIMUM_SIZE only applies to
+#INTERNAL pie charts and is a no-op here; HEIGHT_FACTOR is the setting that actually
+#controls external pie chart size (a multiplier on the default leaf-space-based
+#radius), so HEIGHT_FACTOR is set to 3.6 to keep these visually matched to the binary
+#symbols; MAXIMUM_SIZE left in place but has no effect.
+#MARGIN,100 matches cMMb_boxplot.txt/NCO_rate_boxplot.txt's spacing;
+#this ring loads 4th (after Marker type, Method, cM/Mb), before NCO last.
+
+SEPARATOR COMMA
+
+DATASET_LABEL,Gini (gauge)
+COLOR,#332288
+
+FIELD_COLORS,#332288,#e6e6e6
+FIELD_LABELS,Gini,remainder
+
+MAXIMUM_SIZE,25
+HEIGHT_FACTOR,3.6
+MARGIN,100
+
+DATA
+Callithrix_jacchus,-1,10,0.81,0.19
+Chlorocebus_sabaeus,-1,10,0.95,0.05
+Daubentonia_madagascariensis,-1,10,0.45,0.55
+Gorilla_gorilla_gorilla,-1,10,0.81,0.19
+Macaca_mulatta,-1,10,0.61,0.39
+Nomascus_leucogenys,-1,10,0.84,0.16
+Pan_paniscus,-1,10,0.81,0.19
+Pan_troglodytes_ellioti,-1,10,0.82,0.18
+Pan_troglodytes_verus,-1,10,0.78,0.22
+Papio_anubis,-1,10,0.75,0.25
+Plecturocebus_cupreus,-1,10,0.9,0.1

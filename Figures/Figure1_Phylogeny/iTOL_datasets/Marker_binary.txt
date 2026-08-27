@@ -1,0 +1,67 @@
+DATASET_BINARY
+#Underlying MARKER TYPE per species (the master table's 'Marker Type' column, pulled
+#from "Rate Estimates Summary.xlsx" > Species Survey sheet's 'Markers' column, plus
+#the 9 species added via Dumont et al. 2017's cross-check) -- distinct from
+#Method_binary.txt. Method describes the analytical approach (LD-based/pedigree/
+#cytogenetic/testis); Marker Type describes the underlying raw data type it was built
+#from (chiasma counts, MLH1 immunofluorescent foci, microsatellite loci, short-read
+#WGS, or long-read haplotypes) -- e.g. both LD-based AND pedigree-based-WGS studies
+#share the same Short-read WGS marker, decoupled here from which analytical method
+#was applied to it. Ordered oldest-to-newest technology (see MARKERS comment above).
+#Pulled from EVERY row in the master table (cM/Mb, Gini, and raw NCO/CO count rows
+#alike), not just cM/Mb-relevant ones -- so this ring is deliberately NOT tied to
+#Method_binary.txt's cM/Mb-scoped species coverage. All 30 current tree tips have >=1
+#Marker Type value (confirmed by the build script) -- no species needs to be dropped.
+#All black -- shape alone distinguishes marker type.
+#1 = filled shape (present), -1 = omitted entirely (absent).
+#SHOW_LABELS,1 displays the field labels (Chiasma count/MLH1 foci/Microsatellite/
+#Short-read WGS/Long-read WGS) above the columns directly.
+
+SEPARATOR COMMA
+
+DATASET_LABEL,Marker type
+COLOR,#000000
+
+FIELD_SHAPES,1,2,3,4,5
+FIELD_LABELS,Chiasma count,MLH1 foci,Microsatellite,Short-read WGS,Long-read WGS
+FIELD_COLORS,#000000,#000000,#000000,#000000,#000000
+
+DASHED_LINES,1
+SHOW_LABELS,1
+
+LEGEND_TITLE,Marker type
+LEGEND_SHAPES,1,2,3,4,5
+LEGEND_COLORS,#000000,#000000,#000000,#000000,#000000
+LEGEND_LABELS,Chiasma count,MLH1 foci,Microsatellite,Short-read WGS,Long-read WGS
+
+DATA
+Alouatta_caraya,-1,1,-1,-1,-1
+Callithrix_jacchus,-1,-1,-1,1,-1
+Cebuella_pygmaea,1,1,-1,-1,-1
+Cebus_capucinus,1,-1,-1,-1,-1
+Chlorocebus_sabaeus,-1,-1,1,1,-1
+Daubentonia_madagascariensis,-1,-1,-1,1,-1
+Eulemur_fulvus,1,-1,-1,-1,-1
+Eulemur_fulvus_albocollaris,1,-1,-1,-1,-1
+Eulemur_fulvus_collaris,1,-1,-1,-1,-1
+Gorilla_gorilla_gorilla,-1,-1,-1,1,1
+Hylobates_lar,-1,-1,-1,-1,1
+Lemur_catta,-1,1,-1,-1,-1
+Macaca_fuscata,1,-1,-1,-1,-1
+Macaca_mulatta,1,1,1,1,-1
+Macaca_nemestrina,1,-1,-1,-1,1
+Macaca_nigra,1,-1,-1,-1,-1
+Mandrillus_sphinx,1,-1,-1,-1,-1
+Miopithecus_talapoin,-1,1,-1,-1,-1
+Nomascus_leucogenys,-1,-1,-1,1,-1
+Pan_paniscus,-1,-1,-1,1,-1
+Pan_troglodytes_ellioti,-1,-1,-1,1,-1
+Pan_troglodytes_verus,1,-1,-1,1,1
+Papio_anubis,-1,-1,-1,1,-1
+Papio_hamadryas,-1,-1,1,-1,-1
+Papio_papio,-1,-1,-1,-1,1
+Plecturocebus_cupreus,-1,-1,-1,1,-1
+Saguinus_oedipus,1,1,-1,-1,-1
+Sapajus_cay,-1,1,-1,-1,-1
+Sapajus_libidinosus,-1,1,-1,-1,-1
+Sapajus_nigritus,-1,1,-1,-1,-1

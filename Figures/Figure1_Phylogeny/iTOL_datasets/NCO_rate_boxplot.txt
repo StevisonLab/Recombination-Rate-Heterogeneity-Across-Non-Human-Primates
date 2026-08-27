@@ -1,0 +1,56 @@
+DATASET_BOXPLOT
+#Genome-wide non-crossover (NCO) rate, per site per generation, values in units of
+#x10^-6 for readable labels/scale (e.g. 7.52 = 7.52x10^-6). All 9 species in this
+#review with ANY NCO data now have a genuine, directly comparable rate, since
+#supplementary materials for each provided usable denominators.
+#Box spans min-max of individual measurements per species -- for the 5 Porsborg
+#long-read species this means individual SEQUENCED INDIVIDUALS (real biological
+#variation, e.g. chimp: 4 individuals, 1.26-2.36); for the 4 pedigree species this is a
+#single pooled/sex-averaged point (the paper -- or our computation from a paper-stated
+#denominator -- already pools across all meioses in that pedigree).
+#IMPORTANT CAVEAT: two different derivation logics contribute to this one ring, same
+#units but not the same kind of measurement --
+#  (a) Pedigree rate = raw event count / (phase-informative sites x meioses), a direct
+#      empirical count (Papio_anubis, Daubentonia_madagascariensis: published this way
+#      by the authors; Macaca_mulatta, Plecturocebus_cupreus: same arithmetic, computed
+#      here from a denominator stated in the paper's own text/supplement, not the
+#      paper's own headline figure -- flagged 'derived (computed here)' in
+#      supplemental_nco_table.csv).
+#  (b) Porsborg long-read rate = a MODEL-BASED estimate (detectability x mean GC-tract
+#      length x postmeiotic-cell-fraction correction, fit per sequenced individual from
+#      pooled germ cells in one animal's testis/sperm), published in the paper's own
+#      Supplementary Table 6 -- not something we derived, but also not a simple count
+#      ratio like (a). See supplemental_nco_table.csv for the exact derivation type per
+#      species.
+#Do not read this ring as "9 measurements of the same thing" -- read it as "9 best-
+#available estimates using 2 structurally different methods," cross-reference
+#Method_binary.txt (Pedigree-based vs Testis fields) to see which is which.
+#21 of 30 species have no NCO data at all (LD-based/cytogenetic methods cannot detect
+#NCO events) -- see supplemental_nco_table.csv.
+#MARGIN,100 and DATASET_SCALE width 2 / label size factor 1.6, matching
+#cMMb_boxplot.txt. BORDER_WIDTH is a best-effort try -- not a documented
+#DATASET_BOXPLOT option -- check after upload and drop the line if it has no
+#visible effect.
+
+SEPARATOR COMMA
+
+DATASET_LABEL,NCO rate (x1e-6 bp-1 gen-1)
+COLOR,#B2182B
+
+DATASET_SCALE,0-0-#888888-2-0-1.6,2-2-#888888-2-0-1.6,4-4-#888888-2-0-1.6,6-6-#888888-2-0-1.6,8-8-#888888-2-0-1.6
+
+DASHED_LINES,1
+WIDTH,300
+MARGIN,100
+BORDER_WIDTH,2
+
+DATA
+Papio_anubis,7.52,7.52,7.52,7.52,7.52
+Daubentonia_madagascariensis,0.68,0.68,0.68,0.68,0.68
+Macaca_mulatta,2.18,2.18,2.18,2.18,2.18
+Plecturocebus_cupreus,3.95,3.95,3.95,3.95,3.95
+Pan_troglodytes_verus,1.26,1.26,1.9,2.36,2.36,1.26,1.84,1.96,2.36
+Gorilla_gorilla_gorilla,1.95,1.95,2.6,3.08,3.08,1.95,2.6,3.08
+Hylobates_lar,3.48,3.48,3.48,3.48,3.48
+Papio_papio,5.0,5.0,5.0,5.0,5.0
+Macaca_nemestrina,2.65,2.65,2.65,2.65,2.65

@@ -1,0 +1,53 @@
+DATASET_BOXPLOT
+#Genome-wide cM/Mb, ALL methods pooled per species (box spans min-max of every
+#available estimate regardless of method -- NOT statistical quartiles, these are
+#distinct measurements from different studies/methods, not repeated samples of one
+#population). Method identity is intentionally NOT color-coded here (DATASET_BOXPLOT
+#has no per-row color field) -- see Method_binary.txt for a separate ring showing
+#which method(s) contributed to each species, and the supplemental table for the full
+#per-study breakdown (value, method, reference).
+#Light blue -- contrasts against NCO_rate_boxplot.txt's
+#red; Gini_piechart.txt stays its existing darker blue.
+#Line = median; each individual study value also plotted as an extreme point.
+#Single-estimate species show as a flat point.
+#MARGIN,100 and DATASET_SCALE width 2 / label size factor 1.6.
+#BORDER_WIDTH is included as a best-effort try -- it is a documented,
+#working option for DATASET_SIMPLEBAR/MULTIBAR/PIECHART/COLOR_STRIP, but is NOT listed
+#anywhere in iTOL's own DATASET_BOXPLOT template, so it may simply be ignored by iTOL's
+#boxplot renderer; check after upload and drop the line if it has no visible effect.
+
+SEPARATOR COMMA
+
+DATASET_LABEL,cM/Mb (all methods pooled)
+COLOR,#56B4E9
+
+DATASET_SCALE,0-0-#888888-2-0-1.6,0.5-0.5-#888888-2-0-1.6,1-1-#888888-2-0-1.6,1.5-1.5-#888888-2-0-1.6
+
+DASHED_LINES,1
+WIDTH,300
+MARGIN,100
+BORDER_WIDTH,2
+
+DATA
+Callithrix_jacchus,0.91,0.91,0.91,0.91,0.91
+Cebuella_pygmaea,0.667,0.667,0.7104,0.7538,0.7538,0.667,0.7538
+Chlorocebus_sabaeus,0.4522,0.4522,0.7263999999999999,1.0006,1.0006,0.4522,1.0006
+Daubentonia_madagascariensis,0.6692,0.6692,0.7596,0.85,0.85,0.6692,0.85
+Eulemur_fulvus,0.8508,0.8508,0.8508,0.8508,0.8508
+Eulemur_fulvus_albocollaris,0.825,0.825,0.825,0.825,0.825
+Eulemur_fulvus_collaris,0.8476,0.8476,0.8476,0.8476,0.8476
+Gorilla_gorilla_gorilla,0.7424,0.7424,0.7424,0.7424,0.7424
+Lemur_catta,0.8579,0.8579,0.8579,0.8579,0.8579
+Macaca_fuscata,0.6253,0.6253,0.6253,0.6253,0.6253
+Macaca_mulatta,0.448,0.448,0.69225,1.21,1.21,0.448,0.6474,0.6645,0.6909,0.6936,0.698,0.88,1.21
+Macaca_nemestrina,0.6938,0.6938,0.6938,0.6938,0.6938
+Macaca_nigra,0.6765,0.6765,0.6765,0.6765,0.6765
+Nomascus_leucogenys,1.5498,1.5498,1.5498,1.5498,1.5498
+Pan_paniscus,0.6893,0.6893,0.6893,0.6893,0.6893
+Pan_troglodytes_ellioti,0.7199,0.7199,0.7199,0.7199,0.7199
+Pan_troglodytes_verus,0.8787,0.8787,0.9359,0.9931,0.9931,0.8787,0.9931
+Papio_anubis,0.8851,0.8851,0.8851,0.8851,0.8851
+Papio_hamadryas,0.9085,0.9085,0.9125,0.9165,0.9165,0.9085,0.9165
+Papio_papio,0.7574,0.7574,0.7574,0.7574,0.7574
+Plecturocebus_cupreus,0.8239,0.8239,0.9366,1.02,1.02,0.8239,0.9366,1.02
+Saguinus_oedipus,0.6807,0.6807,0.68685,0.693,0.693,0.6807,0.693

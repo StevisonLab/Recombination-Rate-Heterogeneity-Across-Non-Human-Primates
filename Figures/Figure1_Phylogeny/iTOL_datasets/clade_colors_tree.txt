@@ -1,0 +1,45 @@
+TREE_COLORS
+#Colors both tree branches AND leaf labels by major clade (Apes/Old World Monkeys/New World Monkeys/
+#Lemurs), matching Master_Comparison_Table.xlsx 'Group' column and the project-wide
+#4-clade color scheme. TREE_COLORS is a first-class tree annotation (not a
+#DATASET_* ring), so branch color and label color live in one file -- supersedes the
+#earlier DATASET_STYLE branch-only file. No colored strip and no bracket (bracket
+#labels were tried and dropped as too visually distracting).
+
+SEPARATOR SPACE
+
+DATA
+Hylobates_lar|Pan_troglodytes_ellioti clade #d95f02 normal 1.3
+Chlorocebus_sabaeus|Macaca_nigra clade #7570b3 normal 1.3
+Plecturocebus_cupreus|Alouatta_caraya clade #1b9e77 normal 1.3
+Daubentonia_madagascariensis|Eulemur_fulvus_collaris clade #e6ab02 normal 1.3
+Alouatta_caraya label #1b9e77
+Callithrix_jacchus label #1b9e77
+Cebuella_pygmaea label #1b9e77
+Cebus_capucinus label #1b9e77
+Chlorocebus_sabaeus label #7570b3
+Daubentonia_madagascariensis label #e6ab02
+Eulemur_fulvus label #e6ab02
+Eulemur_fulvus_albocollaris label #e6ab02
+Eulemur_fulvus_collaris label #e6ab02
+Gorilla_gorilla_gorilla label #d95f02
+Hylobates_lar label #d95f02
+Lemur_catta label #e6ab02
+Macaca_fuscata label #7570b3
+Macaca_mulatta label #7570b3
+Macaca_nemestrina label #7570b3
+Macaca_nigra label #7570b3
+Mandrillus_sphinx label #7570b3
+Miopithecus_talapoin label #7570b3
+Nomascus_leucogenys label #d95f02
+Pan_paniscus label #d95f02
+Pan_troglodytes_ellioti label #d95f02
+Pan_troglodytes_verus label #d95f02
+Papio_anubis label #7570b3
+Papio_hamadryas label #7570b3
+Papio_papio label #7570b3
+Plecturocebus_cupreus label #1b9e77
+Saguinus_oedipus label #1b9e77
+Sapajus_cay label #1b9e77
+Sapajus_libidinosus label #1b9e77
+Sapajus_nigritus label #1b9e77

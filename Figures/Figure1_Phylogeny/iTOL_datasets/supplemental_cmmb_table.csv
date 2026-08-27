@@ -1,0 +1,46 @@
+Species,Metric,Method category,Method (full),Marker Type,Value,Reference
+Alouatta caraya,cM/Mb,Cytogenetic,Cytogenetic (MLH1 foci),MLH1 foci,0.7747,Garcia-Cruz et al. 2011 Chromosoma
+Callithrix jacchus,cM/Mb,LD-based,LD-based (LDhat),Short-read WGS,0.91,"Soni, Versoza et al. 2025/26 bioRxiv (PREPRINT, not peer-reviewed)"
+Cebuella pygmaea,cM/Mb,Cytogenetic,Cytogenetic (MLH1 foci),MLH1 foci,0.667,Segura et al. 2013 Proc R Soc B
+Cebuella pygmaea,cM/Mb,Cytogenetic,Cytogenetic (Chiasma count),Chiasma count,0.7538,Pardo-Manuel de Villena & Sapienza 2001 Mamm Genome
+Cebus capucinus,cM/Mb,Cytogenetic,Cytogenetic (Chiasma count),Chiasma count,0.7451,Pardo-Manuel de Villena & Sapienza 2001 Mamm Genome
+Chlorocebus sabaeus,cM/Mb,LD-based,LD-based (LDhat),Short-read WGS,0.4522,Pfeifer 2020 MBE
+Chlorocebus sabaeus,cM/Mb,Pedigree-based,Pedigree-based microsatellite,Microsatellite,1.0006,Jasinska et al. 2007 Mamm Genome
+Daubentonia madagascariensis,cM/Mb,LD-based,"LD-based (pyrho, rescaled)",Short-read WGS,0.6692,"Soni, Versoza et al. 2025 Ecology and Evolution"
+Daubentonia madagascariensis,cM/Mb,Pedigree-based,Pedigree-based WGS,Short-read WGS,0.85,Versoza et al. 2025 GBE
+Eulemur fulvus,cM/Mb,Cytogenetic,Cytogenetic (Chiasma count),Chiasma count,0.8508,Pardo-Manuel de Villena & Sapienza 2001 Mamm Genome
+Eulemur fulvus albocollaris,cM/Mb,Cytogenetic,Cytogenetic (Chiasma count),Chiasma count,0.825,Pardo-Manuel de Villena & Sapienza 2001 Mamm Genome
+Eulemur fulvus collaris,cM/Mb,Cytogenetic,Cytogenetic (Chiasma count),Chiasma count,0.8476,Pardo-Manuel de Villena & Sapienza 2001 Mamm Genome
+Gorilla gorilla gorilla,cM/Mb,LD-based,LD-based,Short-read WGS,0.7424,Stevison et al. 2016 MBE
+Lemur catta,cM/Mb,Cytogenetic,Cytogenetic (MLH1 foci),MLH1 foci,0.8579,Segura et al. 2013 Proc R Soc B
+Macaca fuscata,cM/Mb,Cytogenetic,Cytogenetic (Chiasma count),Chiasma count,0.6253,Pardo-Manuel de Villena & Sapienza 2001 Mamm Genome
+Macaca mulatta,cM/Mb,Pedigree-based,Pedigree-based WGS,Short-read WGS,0.88,Versoza et al. 2024 GBE
+Macaca mulatta,cM/Mb,LD-based,"LD-based, demography-aware (pyrho)",Short-read WGS,0.107,Versoza et al. 2024 GBE (companion map)
+Macaca mulatta,cM/Mb,LD-based,"LD-based, demography-aware (pyrho)",Short-read WGS,0.6936,"Terbot, Calahorra-Oliart, Versoza et al. 2025 Am J Primatol"
+Macaca mulatta,cM/Mb,LD-based,"LD-based, demography-aware (pyrho), bias-corrected",Short-read WGS,1.21,"Terbot, Calahorra-Oliart, Versoza et al. 2025 Am J Primatol (bias-corrected estimate)"
+Macaca mulatta,cM/Mb,LD-based,LD-based (LDhat),Short-read WGS,0.448,Xue et al. 2020 PLoS ONE
+Macaca mulatta,cM/Mb,Pedigree-based,Pedigree-based microsatellite,Microsatellite,0.698,Rogers et al. 2006 Genomics
+Macaca mulatta,cM/Mb,Cytogenetic,Cytogenetic (MLH1 foci),MLH1 foci,0.6645,Hassold et al. 2009 Cytogenet Genome Res
+Macaca mulatta,cM/Mb,Cytogenetic,Cytogenetic (Chiasma count),Chiasma count,0.6474,Pardo-Manuel de Villena & Sapienza 2001 Mamm Genome
+Macaca mulatta,cM/Mb,Cytogenetic,Cytogenetic (Chiasma count),Chiasma count,0.6909,"Burt, Bell & Harvey 1991 J Evol Biol (via Mank 2009)"
+Macaca nemestrina,cM/Mb,Cytogenetic,Cytogenetic (Chiasma count),Chiasma count,0.6938,Pardo-Manuel de Villena & Sapienza 2001 Mamm Genome
+Macaca nigra,cM/Mb,Cytogenetic,Cytogenetic (Chiasma count),Chiasma count,0.6765,Burt & Bell 1987 Nature
+Mandrillus sphinx,cM/Mb,Cytogenetic,Cytogenetic (Chiasma count),Chiasma count,0.7866,Pardo-Manuel de Villena & Sapienza 2001 Mamm Genome
+Miopithecus talapoin,cM/Mb,Cytogenetic,Cytogenetic (MLH1 foci),MLH1 foci,0.6685,Segura et al. 2013 Proc R Soc B
+Nomascus leucogenys,cM/Mb,LD-based,LD-based,Short-read WGS,1.5498,"Stevison, unpublished"
+Pan paniscus,cM/Mb,LD-based,LD-based,Short-read WGS,0.6893,Stevison et al. 2016 MBE
+Pan troglodytes ellioti,cM/Mb,LD-based,LD-based,Short-read WGS,0.7199,Stevison et al. 2016 MBE
+Pan troglodytes verus,cM/Mb,LD-based,LD-based,Short-read WGS,0.9931,Auton et al. 2012 Science
+Pan troglodytes verus,cM/Mb,Cytogenetic,Cytogenetic (Chiasma count),Chiasma count,0.8787,Pardo-Manuel de Villena & Sapienza 2001 Mamm Genome
+Papio anubis,cM/Mb,LD-based,Pedigree-based WGS + LD (hybrid),Short-read WGS,0.8851,"Wall, Robinson & Cox 2022 GBE"
+Papio hamadryas,cM/Mb,Pedigree-based,Pedigree-based microsatellite,Microsatellite,0.9165,Rogers et al. 2000 Genomics
+Papio hamadryas,cM/Mb,Pedigree-based,Pedigree-based microsatellite,Microsatellite,0.9085,Cox et al. 2006 Genomics
+Papio papio,cM/Mb,Cytogenetic,Cytogenetic (Chiasma count),Chiasma count,0.7574,"Burt, Bell & Harvey 1991 J Evol Biol (via Mank 2009)"
+Plecturocebus cupreus,cM/Mb,LD-based,LD-based (LDhelmet),Short-read WGS,0.9366,"Soni, Versoza et al. 2026 Heredity"
+Plecturocebus cupreus,cM/Mb,LD-based,LD-based (LDhat),Short-read WGS,0.8239,"Soni, Versoza et al. 2026 Heredity"
+Plecturocebus cupreus,cM/Mb,Pedigree-based,Pedigree-based WGS,Short-read WGS,1.02,Versoza et al. 2026 GBE
+Saguinus oedipus,cM/Mb,Cytogenetic,Cytogenetic (MLH1 foci),MLH1 foci,0.6807,Segura et al. 2013 Proc R Soc B
+Saguinus oedipus,cM/Mb,Cytogenetic,Cytogenetic (Chiasma count),Chiasma count,0.693,Pardo-Manuel de Villena & Sapienza 2001 Mamm Genome
+Sapajus cay,cM/Mb,Cytogenetic,Cytogenetic (MLH1 foci),MLH1 foci,0.7918,Garcia-Cruz et al. 2009 BMC Genetics
+Sapajus libidinosus,cM/Mb,Cytogenetic,Cytogenetic (MLH1 foci),MLH1 foci,0.7598,Garcia-Cruz et al. 2011 Chromosoma
+Sapajus nigritus,cM/Mb,Cytogenetic,Cytogenetic (MLH1 foci),MLH1 foci,0.7212,Garcia-Cruz et al. 2011 Chromosoma

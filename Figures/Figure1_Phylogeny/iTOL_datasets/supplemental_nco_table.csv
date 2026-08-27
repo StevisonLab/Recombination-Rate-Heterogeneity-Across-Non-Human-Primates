@@ -1,0 +1,15 @@
+Species,Individual/Sample,NCO rate (x1e-6 bp-1 gen-1),Method,Derivation,Reference
+Papio anubis,(pooled),7.52,Pedigree-based WGS,published (main text),"Wall, Robinson & Cox 2022 GBE"
+Daubentonia madagascariensis,(pooled),0.68,Pedigree-based WGS,published (main text),Versoza et al. 2025 GBE
+Macaca mulatta,(pooled),2.18,Pedigree-based WGS,derived (computed here),Versoza et al. 2024 GBE
+Plecturocebus cupreus,(pooled),3.95,Pedigree-based WGS,derived (computed here),Versoza et al. 2026 GBE
+Pan troglodytes verus,,1.26,Testis long-read,published (supplement),Porsborg et al. 2025 Nat Commun
+Pan troglodytes verus,,1.84,Testis long-read,published (supplement),Porsborg et al. 2025 Nat Commun
+Pan troglodytes verus,,2.36,Testis long-read,published (supplement),Porsborg et al. 2025 Nat Commun
+Pan troglodytes verus,,1.96,Testis long-read,published (supplement),Porsborg et al. 2025 Nat Commun
+Gorilla gorilla gorilla,,3.08,Testis long-read,published (supplement),Porsborg et al. 2025 Nat Commun
+Gorilla gorilla gorilla,,1.95,Testis long-read,published (supplement),Porsborg et al. 2025 Nat Commun
+Gorilla gorilla gorilla,,2.6,Testis long-read,published (supplement),Porsborg et al. 2025 Nat Commun
+Hylobates lar,(pooled),3.48,Testis long-read,published (supplement),Porsborg et al. 2025 Nat Commun
+Papio papio,(pooled),5.0,Testis long-read,published (supplement),Porsborg et al. 2025 Nat Commun
+Macaca nemestrina,(pooled),2.65,Testis long-read,published (supplement),Porsborg et al. 2025 Nat Commun

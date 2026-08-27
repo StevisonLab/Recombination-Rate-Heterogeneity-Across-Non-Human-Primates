@@ -1,0 +1,6 @@
+"species","clade","method","female_cmmb","male_cmmb","co_ratio_female_over_male","female_rate","male_rate","nco_ratio_female_over_male"
+"Papio anubis","Old World Monkeys","Pedigree (direct)",0.967082159533825,0.80268591054683,1.20480769230769,9.71,5.34,1.81835205992509
+"Papio papio","Old World Monkeys","Cytogenetic (Chiasma)",1.585,1.98,0.80050505050505,NA,NA,NA
+"Macaca mulatta","Old World Monkeys","Cytogenetic (Chiasma)",1.98,2.075,0.954216867469879,NA,NA,NA
+"Plecturocebus cupreus","New World Monkeys","Pedigree (direct)",1,1.04,0.961538461538461,4.2,3.69,1.13821138211382
+"Daubentonia madagascariensis","Lemurs","Pedigree (direct)",0.94,0.77,1.22077922077922,6.4,7.4,0.864864864864865

@@ -1,0 +1,66 @@
+DATASET_BINARY
+#Method presence/absence per species, pulled from EVERY row in the master table (not
+#just cM/Mb-bearing rows) -- decoupled from the pooled cM/Mb boxplot (cMMb_boxplot.txt)
+#so the boxplot doesn't need to color-code by method. 4 fields, ordered oldest-to-newest
+#technology: Cytogenetic, Pedigree-based, LD-based, Testis (long-read haplotype
+#switching, Porsborg et al. 2025 -- has no cM/Mb value of its own, raw counts only, so
+#it would never show up if this ring were scoped to cM/Mb data like the boxplot is).
+#All black -- shape alone distinguishes method. 1 = filled
+#shape (species has >=1 estimate from this method), -1 = omitted entirely (no data of
+#this type for this species). See the supplemental table for exact study/reference per
+#data point.
+#SHOW_LABELS,1 displays the field labels (Cytogenetic/Pedigree-based/LD-based/Testis)
+#above the columns directly.
+#MARGIN,150 -- this ring loads 2nd (after Marker_binary.txt), wider
+#margin than the 100px used for cM/Mb/Gini/NCO to give it more spacing from the
+#Marker Type ring immediately before it.
+
+SEPARATOR COMMA
+
+DATASET_LABEL,Method
+COLOR,#000000
+
+FIELD_SHAPES,3,2,1,4
+FIELD_LABELS,Cytogenetic,Pedigree-based,LD-based,Testis
+FIELD_COLORS,#000000,#000000,#000000,#000000
+
+DASHED_LINES,1
+SHOW_LABELS,1
+MARGIN,150
+
+LEGEND_TITLE,Method
+LEGEND_SHAPES,3,2,1,4
+LEGEND_COLORS,#000000,#000000,#000000,#000000
+LEGEND_LABELS,Cytogenetic,Pedigree-based,LD-based,Testis
+
+DATA
+Alouatta_caraya,1,-1,-1,-1
+Callithrix_jacchus,-1,-1,1,-1
+Cebuella_pygmaea,1,-1,-1,-1
+Cebus_capucinus,1,-1,-1,-1
+Chlorocebus_sabaeus,-1,1,1,-1
+Daubentonia_madagascariensis,-1,1,1,-1
+Eulemur_fulvus,1,-1,-1,-1
+Eulemur_fulvus_albocollaris,1,-1,-1,-1
+Eulemur_fulvus_collaris,1,-1,-1,-1
+Gorilla_gorilla_gorilla,-1,-1,1,1
+Hylobates_lar,-1,-1,-1,1
+Lemur_catta,1,-1,-1,-1
+Macaca_fuscata,1,-1,-1,-1
+Macaca_mulatta,1,1,1,-1
+Macaca_nemestrina,1,-1,-1,1
+Macaca_nigra,1,-1,-1,-1
+Mandrillus_sphinx,1,-1,-1,-1
+Miopithecus_talapoin,1,-1,-1,-1
+Nomascus_leucogenys,-1,-1,1,-1
+Pan_paniscus,-1,-1,1,-1
+Pan_troglodytes_ellioti,-1,-1,1,-1
+Pan_troglodytes_verus,1,-1,1,1
+Papio_anubis,-1,-1,1,-1
+Papio_hamadryas,-1,1,-1,-1
+Papio_papio,1,-1,-1,1
+Plecturocebus_cupreus,-1,1,1,-1
+Saguinus_oedipus,1,-1,-1,-1
+Sapajus_cay,1,-1,-1,-1
+Sapajus_libidinosus,1,-1,-1,-1
+Sapajus_nigritus,1,-1,-1,-1

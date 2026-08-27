@@ -1,0 +1,161 @@
+PRIMATE PEDIGREE-VS-LD cM/Mb COMPARISON
+Does pedigree-based cM/Mb read systematically higher than LD-based cM/Mb?
+Companion note to Primate_cMMb_Baseline_Average.txt and Primate_NCO_Baseline_Average.txt
+Computed from Master_Comparison_Table.xlsx
+
+PURPOSE
+
+Noticed while writing up Old World Monkeys' within-species disagreement
+(rhesus macaque, whose 7 cM/Mb estimates span 0.107-0.88): the single
+highest estimate is the pedigree-based one, and every LD-based estimate for
+the same species reads lower, regardless of population (Indian captive vs.
+wild Chinese-origin) or estimator (LDhat vs. pyrho). This raised an obvious
+follow-up question -- is "pedigree reads higher than LD" a genuine, general
+pattern across this review, or just something specific to one internally
+messy macaque dataset? This note checks every other species in the review
+with both a pedigree-based and an LD-based cM/Mb estimate to find out.
+
+METHOD
+
+Identified every species in this review with both a pedigree-based AND an
+LD-based cM/Mb estimate (5 species: rhesus macaque, vervet, titi monkey,
+aye-aye, olive baboon). For each, checked whether the LD-based estimate was
+calibrated independently (its own Ne, its own map-length target) or
+deliberately rescaled by the original study's authors to match their own
+companion pedigree study's total map length -- the same "circular vs.
+defensible calibration" distinction established in
+Primate_cMMb_Baseline_Average.txt's CIRCULARITY CHECK section (Wall et al.
+2022 baboon, Versoza et al. 2025 aye-aye, and Soni et al. 2026 titi monkey
+all explicitly rescale their own LD map to match their own pedigree map
+length; macaque and vervet's LD estimates do not).
+
+This distinction matters a great deal here specifically: a rescaled
+comparison is, by construction, biased toward agreement, so it can at most
+show whether a residual gap *survives* that bias -- it cannot on its own
+demonstrate a real difference the way an independent comparison can.
+
+RESULT -- ALL 5 SPECIES, RANKED BY INDEPENDENCE
+
+  Rhesus macaque (Macaca mulatta) -- INDEPENDENT
+    Pedigree (WGS, Indian captive, Versoza et al. 2024):            0.88
+    LD (pyrho, same population, Versoza et al. 2024 companion map): 0.107  (8.22x lower)
+    LD (LDhat, Indian-origin, Xue et al. 2020):                     0.448  (1.96x lower)
+    LD (pyrho, wild Chinese-origin, Terbot et al. 2025):            0.694  (1.27x lower)
+
+  Vervet (Chlorocebus sabaeus) -- INDEPENDENT
+    Pedigree (microsatellite, Jasinska et al. 2007):  1.141
+    LD (LDhat, Pfeifer 2020, independently-validated Ne): 0.452  (2.52x lower)
+
+  Titi monkey (Plecturocebus cupreus) -- RESCALED (LD forced toward pedigree total)
+    Pedigree (WGS, Versoza et al. 2026):                          1.02
+    LD (LDhelmet, rescaled to pedigree map length, Soni et al. 2026): 0.937  (1.09x lower)
+    LD (LDhat, rescaled to pedigree map length, Soni et al. 2026):     0.824  (1.24x lower)
+
+  Aye-aye (Daubentonia madagascariensis) -- RESCALED
+    Pedigree (WGS, Versoza et al. 2025):                        0.85
+    LD (pyrho, rescaled to pedigree map length, Soni et al. 2025): 0.669  (1.27x lower)
+
+  Olive baboon (Papio anubis) -- RESCALED
+    Pedigree (WGS, Wall et al. 2022):                                  0.8851
+    LD (pyrho, rescaled to match pedigree to within 0.02%, Wall et al. 2022): 0.8851  (1.00x, matches)
+
+FINDING 1 -- BOTH INDEPENDENT COMPARISONS AGREE: PEDIGREE READS HIGHER
+
+Macaque and vervet are the only two species in this review where an LD-based
+cM/Mb estimate was calibrated on its own terms rather than forced toward the
+pedigree figure -- and both show pedigree substantially above every LD-based
+estimate available (1.27-8.22x for macaque depending on which of 3 LD
+estimates is used; 2.52x for vervet). This is a small sample (n=2 independent
+species), but it is not a single-dataset artifact: two different species,
+two different pedigree method types (WGS vs. classical microsatellite), and
+four different LD-based estimates (2 estimators, 2 populations for macaque
+alone) all point the same direction.
+
+FINDING 2 -- THE DIRECTION NEVER REVERSES, EVEN UNDER DELIBERATE RESCALING
+
+The 3 rescaled comparisons (titi monkey, aye-aye, baboon) are compromised
+for testing this question on their own -- their LD maps were deliberately
+forced toward the pedigree total -- but they are still informative as a
+weaker check: if rescaling could easily flip pedigree below LD, or if the
+true relationship were noisy/directionless, some of these 3 would be
+expected to land on the other side by chance. None do. Titi monkey and
+aye-aye both retain a residual pedigree-higher gap (9-27%) even after their
+LD map was explicitly recalibrated toward the pedigree figure; only baboon's
+rescaling closed the gap essentially completely (0.02% difference, the
+single tightest cM/Mb agreement anywhere in this review). All 5 of 5 species
+point the same direction; 0 of 5 reverse it.
+
+FINDING 3 -- BABOON'S NEAR-PERFECT MATCH IS ITSELF INFORMATIVE
+
+Baboon's 0.02% agreement demonstrates that an LD-based map CAN be calibrated
+to land essentially exactly on a pedigree figure -- which argues against
+"LD-based methods are structurally incapable of reaching pedigree-level
+values" as a full explanation for the gap seen elsewhere. If that were the
+whole story, baboon's rescaling should have left some structural residual
+too. It didn't. This makes the persistent gap in titi monkey and aye-aye
+(despite the same rescaling strategy Wall et al. used successfully for
+baboon) a genuine puzzle rather than an expected consequence of the method
+-- worth flagging in the text as its own small mystery, not folded into the
+macaque/vervet finding as though it's the same phenomenon with the same
+explanation.
+
+TWO CANDIDATE EXPLANATIONS (NOT MUTUALLY EXCLUSIVE, NOT ADJUDICATED HERE)
+
+1. Methodological: LD-based (population-scaled, coalescent) estimates are
+   known in the broader recombination-genetics literature to be biased
+   downward in genomic regions affected by linked or background selection --
+   selection distorts haplotype/LD patterns in ways that mimic locally
+   reduced recombination, and that bias would be expected to apply generally
+   across species, not just to the ones flagged here.
+2. Genuinely historical vs. contemporary rates: pedigree studies measure the
+   most recent generation(s) directly; LD-based methods integrate
+   recombination signal over many thousands of generations of coalescent
+   history. If recombination rate has trended upward recently in these
+   lineages, pedigree-based figures would read higher than LD-based ones as
+   a real biological difference, not an artifact.
+
+This review's own standing methodological caveat -- that cM/Mb from
+LD-based, pedigree-based, and cytogenetic methods are not strictly the same
+quantity -- already anticipates that these numbers needn't agree; what this
+note adds is the first systematic empirical look, across every paired case
+this review has, at the direction and rough magnitude of that disagreement,
+rather than leaving it as a qualitative caveat alone.
+
+CAVEATS
+
+- Small sample: 5 species total, only 2 with a genuinely independent
+  comparison. A finding this consistent (5 of 5 same direction) is
+  suggestive, not proof, at n=2 independent cases -- treat as a hypothesis
+  worth stating plainly in the text, not a settled result.
+- "Pedigree" itself isn't one method here: WGS-based pedigree calling
+  (macaque, titi monkey, aye-aye, baboon) and classical microsatellite
+  pedigree mapping (vervet) are different technologies with different
+  resolution -- the pattern holds across both, which is reassuring, but it
+  means the comparison set isn't perfectly homogeneous on the pedigree side
+  either.
+- "LD-based" also spans 3 different estimators (LDhat, LDhelmet, pyrho) with
+  their own known behavioral differences (e.g. pyrho's block-penalty
+  smoothing, which also produces mechanically different Gini values -- see
+  Master_Comparison_Table.xlsx's Notes sheet) -- some of the within-species
+  LD spread (e.g. macaque's 0.107 vs. 0.694) is very likely
+  estimator/population choice, not just "LD vs. pedigree."
+- Directionality only, not effect size: the 3 rescaled comparisons cannot be
+  used to estimate *how much* pedigree exceeds LD in general, only whether
+  the sign survives deliberate pressure toward agreement -- their magnitudes
+  (9-27% gaps) should not be pooled with the independent comparisons' much
+  larger gaps (127-822%) into a single "typical size of the effect" figure.
+
+BOTTOM LINE
+
+Every species in this review with both a pedigree-based and an LD-based
+cM/Mb estimate reads pedigree at or above LD -- never the reverse -- across
+5 species, 2 of them fully independent comparisons (macaque, vervet) and 3
+deliberately biased toward agreement by the original authors' own rescaling
+(titi monkey, aye-aye, baboon). The pattern survives that bias in 2 of the 3
+rescaled cases. This is too small a sample to adjudicate between a
+methodological explanation (linked-selection bias in LD-based estimates)
+and a genuine historical-vs-contemporary rate difference, but the
+consistency of direction across every available case makes this worth
+reporting as a real, if preliminary, finding of this review -- not just
+restating the already-standard "these methods measure different things"
+caveat.

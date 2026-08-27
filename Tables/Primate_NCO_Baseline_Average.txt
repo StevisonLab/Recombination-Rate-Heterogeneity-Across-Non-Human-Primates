@@ -1,0 +1,165 @@
+PRIMATE NON-CROSSOVER (NCO) RATE BASELINE AVERAGE
+Companion note to Primate_cMMb_Baseline_Average.txt
+Computed from Master_Comparison_Table.xlsx
+
+PURPOSE
+
+Same exercise as the cM/Mb baseline note, applied to the non-crossover (NCO)
+rate: report the central tendency and spread across every primate species in
+this review with a genuine per-bp-per-generation NCO rate, so a reader has a
+sense of what "typical" looks like and how much to trust any single
+species' number in isolation. Unlike cM/Mb, there is no commonly-cited
+"default" NCO rate in general use to test against here -- this note is about
+characterizing the spread itself, not checking it against a folk assumption.
+Standalone text for the discussion, not a new figure -- Figure 1 (NCO rate
+ring), Figure 3 (tract length + CO:NCO fraction deep dive), and Figure 4
+(sex-specific NCO rate ratio) already cover this metric visually; this is
+the numeric summary to go with them.
+
+SPECIES AND UNITS
+
+All 9 species in this review with a genuine, directly comparable NCO rate (of
+18 species total with any recombination data), all already in the same unit
+(events per bp per generation, x10^-6) -- no unit-conversion or Ne-dependent
+calibration issue the way cM/Mb had, since these are direct per-generation
+event rates, not population-scaled historical estimates. No exclusions
+needed on unit grounds. One number per species (sex-averaged/pooled where a
+species has separate male/female rates -- see Finding 3 for where that
+hides real structure).
+
+RESULT -- THE AVERAGE
+
+  n = 9 species
+  mean   = 3.32 x10^-6 per bp per generation
+  median = 2.65 x10^-6
+  SD     = 2.01 x10^-6
+  range  = 0.68 - 7.52 x10^-6  (an 11-fold spread)
+
+Ranked highest to lowest, with method tagged:
+
+  7.52  Papio anubis (olive baboon)              [Pedigree -- Wall et al. 2022]
+  5.00  Papio papio (Guinea baboon)               [Long-read, n=1 individual]
+  3.95  Plecturocebus cupreus (titi monkey)        [Pedigree -- Versoza et al. 2026]
+  3.48  Hylobates lar (lar gibbon)                 [Long-read, n=1 individual]
+  2.65  Macaca nemestrina (pig-tailed macaque)     [Long-read, n=1 individual]
+  2.54  Gorilla gorilla gorilla (western gorilla)  [Long-read, n=3 individuals]
+  2.18  Macaca mulatta (rhesus, Indian-origin)     [Pedigree, paternal-only by design]
+  1.86  Pan troglodytes verus (western chimp)      [Long-read, n=4 individuals]
+  0.68  Daubentonia madagascariensis (aye-aye)     [Pedigree -- Versoza et al. 2025]
+
+An 11-fold range on a 9-species sample is a much wider relative spread than
+cM/Mb showed (2.6-fold across 14 species) -- expect NCO rate to be a
+substantially noisier metric to generalize from, both because the true
+biological variation may be larger and because (see Finding 1) two
+structurally different measurement approaches are pooled into this one
+ranked list.
+
+FINDING 1 -- TWO METHODS, NOT DIRECTLY COMPARABLE DESPITE MATCHING UNITS
+
+The single most important caveat: the 9 species split evenly into two
+structurally different kinds of measurement that happen to share units.
+
+  Pedigree-based (4 species: olive baboon, rhesus macaque, titi monkey,
+  aye-aye) -- direct event counts from parent-offspring trios, divided by a
+  stated phase-informative-site denominator and number of meioses. A raw,
+  empirical count over a known number of transmissions.
+
+  Porsborg et al. (2025) sperm/testis long-read (5 species: Guinea baboon,
+  lar gibbon, pig-tailed macaque, gorilla, chimp) -- a MODEL-BASED rate, fit
+  from gene-conversion events detected in pooled germ cells from testis
+  tissue, correcting for detectability, tract length, and postmeiotic-cell
+  fraction. Not a raw count divided by a denominator -- a statistical
+  model's output.
+
+Splitting the 9-species set by method:
+  Pedigree (n=4):  mean 3.58 x10^-6, median 3.07, SD 2.95, range 0.68-7.52
+  Porsborg (n=5):  mean 3.11 x10^-6, median 2.65, SD 1.21, range 1.86-5.00
+
+The two subgroup means are similar (3.6 vs 3.1), which is reassuring at the
+coarsest level, but the pedigree group's SD is more than double the Porsborg
+group's (2.95 vs 1.21) -- almost entirely because the pedigree group contains
+both the single highest value in the whole set (baboon, 7.52) and the single
+lowest (aye-aye, 0.68), while the Porsborg values cluster more tightly
+(1.86-5.00). Whether that's a real difference in measurement precision
+between the two methods, true biological variation concentrated in the 2
+outlier pedigree species, or both, isn't resolvable from this data alone --
+flag it as an open question rather than asserting either explanation.
+
+Do not read cross-method rank differences (e.g., "why is Papio anubis so
+much higher than Papio papio, a different species in the same genus,
+measured by the other method") as a clean biological signal without this
+caveat attached -- long-read haplotype-switch detection and pedigree
+transmission calling plausibly differ in NCO tract-length sensitivity
+independent of any true species difference.
+
+FINDING 2 -- SEVERAL VALUES ARE SINGLE-INDIVIDUAL POINT ESTIMATES
+
+3 of the 5 Porsborg species (Guinea baboon, lar gibbon, pig-tailed macaque)
+are each a single sequenced individual -- point estimates with no
+within-species replication and no error bar in this review's table. Gorilla
+(3 individuals) and chimp (4 individuals) are the only Porsborg species with
+any between-individual spread to gauge precision from (chimp ranges
+1.26-2.36 x10^-6 across its 4 individuals, gorilla 1.95-3.08 across its 3 --
+i.e., even the "well-replicated" Porsborg species show close to 2-fold
+individual-to-individual variation, which should temper confidence in the
+single-individual species' point estimates too). The pedigree species are
+better powered in this specific sense (built from multiple offspring/trios,
+not one individual) but still rest on modest absolute event counts (85 NCO
+events for macaque, 184 for titi monkey, 200 for aye-aye, 263 tracts for
+baboon) -- not large-sample estimates by absolute standards either, just
+less exposed to single-individual idiosyncrasy than 3 of the 5 Porsborg
+values are.
+
+FINDING 3 -- SEX-SPECIFIC STRUCTURE IS HIDDEN IN THE POOLED NUMBERS ABOVE
+
+3 of the 4 pedigree species have separate, and sometimes quite different,
+male/female rates that the sex-averaged figures above obscure:
+  Papio anubis:                  maternal 9.71, paternal 5.34   (x10^-6)
+  Plecturocebus cupreus:         maternal 4.20, paternal 3.69
+  Daubentonia madagascariensis:  maternal 6.4 (x10^-7), paternal 7.4 (x10^-7)
+                                  -- i.e. the ONE species in this set where
+                                  the male rate exceeds the female rate
+
+Macaca mulatta is paternal-only by the study's own design (7 paternal
+meioses, no maternal data at all) -- its 2.18 figure is not a sex-averaged
+value the way the other 3 pedigree species' are, and is not directly
+comparable to them on that basis alone. The 5 Porsborg species are
+inherently male-only (testis tissue), so "sex-averaged" doesn't apply to
+them either -- every Porsborg value in this note is implicitly a male rate.
+Combined with the note above, only 3 of the 9 species (baboon, titi monkey,
+aye-aye) have a genuine two-sex sex-averaged rate; the other 6 are
+single-sex (5 obligately male via tissue type, 1 male-only by pedigree
+design) presented on equal footing in the ranked list. See Figure 4
+(heterochiasmy) for the sex-ratio angle specifically -- Daubentonia's
+male-biased NCO rate is flagged there as notably running opposite its own
+female-biased crossover-rate heterochiasmy, a genuine finding worth carrying
+into the text.
+
+WHAT'S NOT IN THIS NOTE
+
+- The other two NCO-adjacent metrics this review already computed -- mean
+  NCO tract length and NCO fraction of all detected recombination events
+  (NCO / (NCO+CO)) -- are deliberately not repeated here; see Figure 3's
+  supplemental table for those, including the caveat (from the aye-aye
+  paper's own authors) that cross-species tract-length comparison is
+  "challenging" due to differing phase-informative marker density (a
+  primary-literature caveat, not just a review-added one).
+- 9 species with no NCO data at all (Papio hamadryas, Nomascus leucogenys,
+  Pan paniscus, Chlorocebus sabaeus, Callithrix jacchus, Alouatta caraya,
+  and the 3 Sapajus/Cebus species) are excluded because their only available
+  method(s) (LD-based, cytogenetic MLH1-foci) cannot structurally detect
+  NCO events at all -- a method limitation, not a data-access gap.
+
+BOTTOM LINE
+
+Primate NCO rate in this review centers around 2.7-3.3 x10^-6 per bp per
+generation (median/mean), but with far more relative spread (11-fold) than
+this review's cM/Mb comparison showed, split roughly evenly across two
+structurally different measurement approaches (direct pedigree counts vs.
+model-based long-read estimates) that agree at the level of subgroup means
+but not precision, and built substantially on single-individual or
+modest-sample-size point estimates. Treat any individual species' NCO rate
+in this review as a rough, method-dependent estimate rather than a precise,
+directly cross-species-comparable figure -- more so than this review's
+cM/Mb values, and much more so than a reader might assume from the fact that
+all 9 numbers share the same units.

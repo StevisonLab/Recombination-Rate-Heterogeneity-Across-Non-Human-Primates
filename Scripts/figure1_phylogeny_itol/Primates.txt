@@ -1,0 +1,30 @@
+Pan paniscus
+Pan troglodytes ellioti
+Gorilla gorilla gorilla
+Pan troglodytes verus
+Nomascus leucogenys
+Hylobates lar
+Papio anubis
+Papio hamadryas
+Papio papio
+Macaca mulatta
+Macaca nemestrina
+Chlorocebus aethiops sabaeus
+Sapajus cay
+Cebus libidinosus
+Cebus nigritus
+Alouatta caraya
+Callithrix jacchus
+Plecturocebus cupreus
+Daubentonia madagascariensis
+Cebuella pygmaea
+Cebus capucinus
+Macaca fuscata
+Macaca nigra
+Mandrillus sphinx
+Miopithecus talapoin
+Lemur catta
+Eulemur fulvus
+Eulemur fulvus albocollaris
+Eulemur fulvus collaris
+Saguinus oedipus

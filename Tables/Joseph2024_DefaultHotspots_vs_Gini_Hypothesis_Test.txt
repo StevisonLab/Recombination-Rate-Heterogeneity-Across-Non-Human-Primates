@@ -1,0 +1,120 @@
+PRDM9-INDEPENDENT ("DEFAULT") HOTSPOT ACTIVITY vs. GINI COEFFICIENT — HYPOTHESIS TEST
+Does heavier reliance on PRDM9-independent hotspots predict a more even
+(lower Gini) genome-wide recombination distribution?
+Companion note to Figure 2 (Gini dotplot)
+
+HYPOTHESIS
+
+Joseph, Prentout, Laverré, Tricou & Duret (2024, PNAS 121(23):e2401973121,
+"High prevalence of PRDM9-independent recombination hotspots in placental
+mammals") developed a GC-biased-gene-conversion (gBGC)-based estimator of
+historical recombination activity at loci orthologous to mouse Prdm9-/-
+knockout DSB hotspots (MDH loci — the promoter-/CpG-island-associated
+"default" hotspots a genome falls back on when PRDM9 isn't directing
+recombination) across 52 boreoeutherian mammals. Their central finding:
+PRDM9-directed and PRDM9-independent hotspots coexist in the large majority
+of mammals (63%, 33/52, show a clear recombination peak at default loci)
+rather than one excluding the other — only 25% (13/52, including humans and
+mice) show an actual deficit.
+
+This raises a candidate mechanism for cross-species Gini variation distinct
+from PRDM9 zinc-finger array size (see the companion note,
+PRDM9_ZF_vs_Gini_Hypothesis_Test.txt): if a species relies more heavily on
+the numerous, dispersed default pathway relative to the sparse, sharp
+PRDM9-directed pathway, its genome-wide recombination distribution might
+plausibly read as more even (lower Gini).
+
+DATA
+
+Joseph et al.'s per-species supplementary data (their Dataset S1/S2/S3)
+includes three species that exactly match this review's own Gini panel
+(Callithrix jacchus, Pan troglodytes, Chlorocebus sabaeus) plus one close
+congener (Macaca fascicularis standing in for this review's Macaca mulatta
+-- the same kind of congener substitution used elsewhere in this review).
+Their `relrechot_KO` metric (relative recombination rate at MDH loci,
+underlying their Figure 3) is correlated here against this review's own
+LDhat-based Gini values, chosen specifically to avoid the pyrho estimator
+confound described in the companion zinc-finger note.
+
+  Species                 relrechot_KO (Joseph et al. 2024)  Gini (this review, LDhat)
+  Callithrix jacchus       1.102                              0.8068
+  Macaca fascicularis*     1.193                              0.7944 (M. mulatta, Xue et al. 2020)
+  Pan troglodytes          1.210                              0.8210 (Stevison et al. 2016)
+  Chlorocebus sabaeus      1.422                              0.9523 (Pfeifer 2020)
+
+  * congener standing in for Macaca mulatta
+
+RESULT
+
+  All 4 species:                     Pearson r = 0.936  (n=4, p=0.064)
+  3 exact species matches only:      Pearson r = 0.969  (n=3, p=0.159)
+    (dropping the Macaca fascicularis congener)
+
+Both correlations are POSITIVE — more PRDM9-independent hotspot activity
+goes with a MORE concentrated, not more even, genome-wide distribution in
+this review's own data, the opposite sign from the naive version of the
+hypothesis.
+
+INTERPRETATION
+
+Neither correlation clears conventional significance at this n, so this
+cannot be read as a confirmed effect in either direction — but the direction
+is consistent whether or not the congener substitution is included, and
+Chlorocebus sabaeus (vervet) is the point driving the pattern: it has both
+the highest relrechot_KO and the highest Gini of the four species. This is
+notable because vervet is also the species that broke Hypothesis 1's
+premise (see the companion zinc-finger note) — two independent PRDM9-
+adjacent mechanisms, tested against two different subsets of this review's
+own species, both fail to explain vervet's position as this review's single
+most concentrated (highest-Gini) genome. Whatever is driving vervet's Gini,
+it does not appear to be either of the two PRDM9-linked mechanisms currently
+proposed in the literature, consistent with Pfeifer (2020)'s own statement
+that the cause is "a question in need of further investigation."
+
+A SUGGESTIVE BUT UNUSABLE DATA POINT — LEMUR CATTA vs. AYE-AYE
+
+Joseph et al.'s panel includes no species from this review's own Gini set
+for Lemuriformes, but it does include Lemur catta, and the result is
+striking on its own terms: Lemur catta has the single highest default-
+hotspot activity of any primate in their entire dataset (relrechot_KO =
+2.409 -- nearly double vervet's), despite carrying a fully intact,
+14-zinc-finger PRDM9 with no sign of pseudogenization. This review's own
+aye-aye Gini (0.4509) is separately the LOWEST -- most even -- value in the
+whole review, by a wide margin.
+
+Those two facts point in the same qualitative direction the hypothesis
+originally predicted (heavy default-hotspot reliance <-> more even
+distribution) even though Lemur catta and Daubentonia madagascariensis are
+different genera and this is NOT a valid same-species data point -- if
+anything, it's the opposite pattern from what the four haplorhine species
+above showed, meaning the sign of this relationship may not even be
+consistent across clades. A direct test would require either (a) applying
+Joseph et al.'s own gBGC-based estimator to Daubentonia madagascariensis
+directly (their method only needs whole-genome alignments and substitution
+data, not a fine-scale recombination map, so aye-aye's existing genome
+assembly should in principle be usable without new sequencing), or (b) the
+reverse -- computing a Gini coefficient for Lemur catta if a fine-scale map
+is ever generated for it (currently only cytogenetic MLH1-based data exists
+for that species in this review, which structurally cannot produce a Gini
+value at all). Either direction would resolve whether Lemuriformes
+genuinely reverses the sign seen in apes/Old World monkeys, or whether the
+Lemur catta vs. aye-aye comparison is simply two unrelated genera that
+happen to sit at opposite extremes for unrelated reasons -- flagged here as
+a concrete, well-motivated direction for future work rather than resolved
+with the data on hand.
+
+CAVEATS
+
+- Very small sample (n=4, or n=3 exact matches). Neither correlation is
+  statistically significant, and a 3-4 point correlation is a fragile basis
+  for any conclusion beyond "does not support the naive hypothesis as
+  stated in this direction, with this data."
+- The macaque data point relies on a congener substitution (Macaca
+  fascicularis standing in for Macaca mulatta) rather than a same-species
+  match, consistent with this review's general congener-substitution
+  convention but still a source of uncertainty specific to this
+  comparison.
+- Joseph et al.'s taxonomic sampling of primates is limited relative to
+  this review's own panel — only 3 exact species overlaps exist between
+  the two datasets, which is why this test cannot currently be extended to
+  more of this review's Gini species.

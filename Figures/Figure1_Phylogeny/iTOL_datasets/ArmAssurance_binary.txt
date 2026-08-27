@@ -1,0 +1,67 @@
+DATASET_BINARY
+#Arm-level obligate-crossover assurance (Dumont 2017, Genetics 205:155-168): does mean
+#crossover count (nXO) exceed the haploid autosomal arm count (aFN/2)? Directly
+#reproduces Dumont's own tree-coloring convention (her Figure 5). Distinct from the
+#chromosome-level check in Figure_2's Panel A (implied COs per bivalent >= 1, which
+#holds for every species in this review) -- this ring tests the stricter, per-ARM
+#version of the same obligate-crossover floor, which does NOT hold universally: see
+#the per-tip XO/aFN/source breakdown in this file's own build script
+#(build_itol_arm_assurance_binary.py) for exactly which value was used per species and
+#why, including the one genuine tie (Macaca_nemestrina) and the one species where
+#method choice flips the outcome (Cebuella_pygmaea).
+#1 = filled shape (nXO > aFN/2, passes arm-level assurance), 0 = empty/outline shape
+#(nXO <= aFN/2, fails arm-level assurance), -1 = omitted entirely (no aFN available in
+#Dumont's Table S1 for this species).
+#Black (matching Marker_binary.txt/Method_binary.txt) -- shape fill (not color)
+#distinguishes pass from fail. MARGIN,100 matches Gini_piechart.txt/cMMb_boxplot.txt/
+#NCO_rate_boxplot.txt's spacing.
+
+SEPARATOR COMMA
+
+DATASET_LABEL,Arm-level CO assurance (Dumont 2017)
+COLOR,#000000
+
+FIELD_SHAPES,2
+FIELD_LABELS,nXO > aFN/2
+FIELD_COLORS,#000000
+
+DASHED_LINES,1
+SHOW_LABELS,1
+MARGIN,100
+
+LEGEND_TITLE,Arm-level CO assurance
+LEGEND_SHAPES,2
+LEGEND_COLORS,#000000
+LEGEND_LABELS,nXO > aFN/2
+
+DATA
+Alouatta_caraya,1
+Callithrix_jacchus,1
+Cebuella_pygmaea,0
+Cebus_capucinus,1
+Chlorocebus_sabaeus,0
+Daubentonia_madagascariensis,1
+Eulemur_fulvus,1
+Eulemur_fulvus_albocollaris,1
+Eulemur_fulvus_collaris,1
+Gorilla_gorilla_gorilla,0
+Hylobates_lar,-1
+Lemur_catta,1
+Macaca_fuscata,0
+Macaca_mulatta,1
+Macaca_nemestrina,0
+Macaca_nigra,0
+Mandrillus_sphinx,1
+Miopithecus_talapoin,0
+Nomascus_leucogenys,1
+Pan_paniscus,0
+Pan_troglodytes_ellioti,0
+Pan_troglodytes_verus,1
+Papio_anubis,1
+Papio_hamadryas,1
+Papio_papio,-1
+Plecturocebus_cupreus,1
+Saguinus_oedipus,0
+Sapajus_cay,1
+Sapajus_libidinosus,1
+Sapajus_nigritus,1

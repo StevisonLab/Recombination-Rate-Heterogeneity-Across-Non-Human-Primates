@@ -1,0 +1,279 @@
+PRIMATE cM/Mb BASELINE AVERAGE
+Context for the commonly-used "~1 cM/Mb" default assumption
+Computed from Master_Comparison_Table.xlsx
+
+PURPOSE
+
+Many papers (including, in the companion Gibbon-Recombination-Rate repository,
+Okhovat et al. 2020's choice of "a standard rate of 1x10-8 per site per
+generation" = 1 cM/Mb) use a flat ~1 cM/Mb default for primate species that
+lack their own recombination map. This note checks that default against the
+actual spread of empirically estimated cM/Mb values assembled across this
+review, and reports how much variation to expect around it. It is a
+standalone analytical note for the discussion/text of the chapter, not a new
+synthesis figure -- the scope, methods, markers, and physical scales behind
+these numbers are too heterogeneous to justify a cross-species figure beyond
+what Figure 1 already does with the method column retained.
+
+METHOD
+
+One value per species (not per study): where a species has multiple
+published/recomputed cM/Mb estimates, they are averaged into a single
+per-species figure first, so that species with more studies (baboon, titi
+monkey, vervet, pygmy marmoset, cotton-top tamarin, aye-aye) don't get extra
+weight in the cross-species average relative to single-estimate species.
+
+Macaca mulatta is the one species in this review measured across two
+genuinely distinct populations with different demographic histories
+(Indian-origin captive colonies vs. wild Chinese-origin animals), rather than
+one population measured by multiple methods -- so it is represented as TWO
+entries below (Indian-origin / Chinese-origin), the same treatment used for
+Nigerian vs. western chimp (two populations of one species, each its own
+row), not folded into one averaged figure and not excluded (see Finding 3).
+
+Species/populations included: 23. Seven species with a known-unreliable
+cM/Mb value are excluded entirely from this average (see "Excluded species"
+below), even though they remain fully documented in
+Master_Comparison_Table.xlsx and are still shown in Figure 2A's
+crossover-assurance panel and Figure 1's tree (via the crossover-assurance
+ring), both of which are unaffected by the issue that excludes them here.
+
+CIRCULARITY CHECK -- WHY MOST "CALIBRATED" VALUES ARE STILL USABLE HERE
+
+Several LD-based studies calibrate their own cM/Mb by forcing the total
+genetic map length to match an assumed-equal-to-human map (the McVean et al.
+2004 approach) -- a legitimate concern for a "does this match the ~1 cM/Mb
+human-based default" comparison, since including a value that was calibrated
+TO roughly match human recombination rate would bias the answer by
+construction.
+
+Stevison et al. (2016)'s three great apes (bonobo, Nigerian chimp, western
+gorilla) were originally like this -- their own published figure is a flat
+~1.193 cM/Mb for all three species, forced by construction. This review
+replaces that circular figure with a genuinely independent recalculation
+using a species-specific point estimate of Ne from a dedicated demographic
+study, rather than the Prado-Martinez et al. (2013) range midpoint (the same
+upgrade pattern used for gibbon, where Veeramah et al. 2015's independent
+point-estimate Ne replaced Carbone et al. 2014's ancestral, non-species-
+specific figure): bonobo Ne=23,230 (Han et al. 2024 Curr Biol, common-
+ancestor estimate), Nigerian chimp Ne=27,795 (de Manuel et al. 2016 Science,
+per-subspecies estimate, sourced via Fontsere et al. 2022 Cell Genomics's own
+citation of de Manuel et al. 2016), western gorilla Ne=31,777 (McManus et al.
+2015 MBE, ancestral/long-duration epoch of the best-fit 3-epoch demographic
+model). Resulting cM/Mb: bonobo 0.6893, Nigerian chimp 0.7199, western
+gorilla 0.7424.
+
+Auton et al. 2012's western chimp figure originally used the paper's own
+Ne=11,413 (cM/Mb=1.5122) -- a similar but looser calibration than Stevison
+2016's (Ne fit by regression rather than forced to an exact target). The same
+de Manuel et al. 2016 / Fontsere et al. 2022 source used for Nigerian chimp
+above also gives a genuine point estimate for western chimp, Ne=17,378,
+applied to this review's own back-solved raw rho/kb (0.6903) to give
+cM/Mb=0.9931 -- placing western chimp on the same non-circular footing as the
+other three great apes (further averaged here with its own chiasma-count
+estimate; see caveat below).
+
+RESULT -- THE AVERAGE
+
+  n = 23 species/populations
+  mean   = 0.84 cM/Mb
+  median = 0.82 cM/Mb
+  SD     = 0.20 cM/Mb
+  range  = 0.63 - 1.55 cM/Mb
+
+Per-species values feeding this average, highest to lowest (multi-estimate
+species show the averaged figure used in the statistics; individual
+estimates for those species are in Master_Comparison_Table.xlsx):
+
+  1.5498  Nomascus leucogenys (gibbon)
+  1.2100  Macaca mulatta, Chinese-origin (Terbot et al. 2025's own
+          bias-corrected estimate, not their raw pyrho output -- see
+          Finding 3)
+  0.9359  Pan troglodytes verus (western chimp; LD-based 0.9931 + chiasma
+          count 0.8787 averaged -- see caveat below)
+  0.9268  Plecturocebus cupreus (titi monkey, 3 studies averaged)
+  0.9125  Papio hamadryas (baboon, 2 microsatellite studies averaged)
+  0.9100  Callithrix jacchus (marmoset)
+  0.8851  Papio anubis (olive baboon)
+  0.8800  Macaca mulatta, Indian-origin (Versoza et al. 2024 pedigree WGS,
+          direct meiotic CO count -- see Finding 3)
+  0.8579  Lemur catta (ring-tailed lemur)
+  0.8508  Eulemur fulvus (nominate)
+  0.8476  Eulemur fulvus collaris
+  0.8250  Eulemur fulvus albocollaris
+  0.7596  Daubentonia madagascariensis (aye-aye, 2 studies averaged)
+  0.7574  Papio papio (Guinea baboon; Burt, Bell & Harvey 1991 via Mank
+          2009, sex-averaged cytogenetic chiasma count)
+  0.7424  Gorilla gorilla gorilla (western gorilla)
+  0.7264  Chlorocebus sabaeus (vervet, 2 studies averaged)
+  0.7199  Pan troglodytes ellioti (Nigerian chimp)
+  0.7104  Cebuella pygmaea (pygmy marmoset, 2 methods averaged; physical
+          length via a same-family Callithrix jacchus congener assembly)
+  0.6938  Macaca nemestrina (pig-tailed macaque)
+  0.6893  Pan paniscus (bonobo)
+  0.6868  Saguinus oedipus (cotton-top tamarin, 2 methods averaged)
+  0.6765  Macaca nigra (Celebes crested macaque; physical length via a
+          Macaca nemestrina congener assembly)
+  0.6253  Macaca fuscata (Japanese macaque; physical length via a Macaca
+          mulatta congener assembly)
+
+Excluded species (known-unreliable cM/Mb -- documented in
+Master_Comparison_Table.xlsx, still shown in Figure 2A / Figure 1's
+crossover-assurance ring): Cebus paraguayanus, Cebus libidinosus, Cebus
+nigritus, Cebus capucinus, and Alouatta caraya (no chromosome-level assembly
+exists anywhere in genus Cebus/Sapajus or family Atelidae to correct their
+physical-length denominator against an autosome-only chiasma/MLH1 count),
+Mandrillus sphinx (no chromosome-level Mandrillus assembly; the nearest
+chromosome-level relatives, Papio/Theropithecus, are a different genus, not
+used without further review), and Miopithecus talapoin (its own
+chromosome-level assembly exists but has no confirmed X-chromosome label).
+
+CAVEAT ON THE WESTERN CHIMP AVERAGE: Pan troglodytes verus averages two
+estimates of very different character -- a modern LD-based population-genomic
+estimate (Auton et al. 2012, independent Ne) and a classical chiasma count
+whose subspecies attribution is itself a historical-plausibility inference,
+not a confirmed citation. This review's own stated methodology (average all
+available per-species estimates) is applied consistently here as for every
+other multi-estimate species, but flagged explicitly: unlike, say, baboon's
+two microsatellite pedigree maps (comparable vintage and method), these two
+chimp estimates differ enough in kind that a reader may reasonably want to
+weight them differently, or use the LD-based value (0.9931) alone.
+
+FINDING 1 -- THE ~1 cM/Mb DEFAULT READS AS A MODEST OVERESTIMATE, NOT JUST A
+BALLPARK
+
+With this 23-species/population sample, the mean (0.84) sits about 16% below
+the commonly used 1 cM/Mb default, and the median (0.82, more robust to the
+gibbon outlier) runs about 18% below it. The full range (0.63-1.55, a
+2.5-fold spread) still shows any single species could plausibly sit well
+outside +/-20% of the default -- treat 1 cM/Mb as accurate to within roughly
+a factor of 1.5-2x in either direction, not as a precise figure, but with a
+clear central tendency that undershoots the round-number default
+specifically, not just varies around it.
+
+FINDING 2 -- GIBBON IS THE HIGHEST VALUE, WITH MACAQUE'S CHINESE-ORIGIN
+POPULATION A CLOSE SECOND
+
+Nomascus leucogenys (this review's own unpublished LD map, Ne = 57,000 from
+Veeramah et al. 2015) is the single highest value in the entire review at
+1.5498 cM/Mb -- about 1.97x the per-species median. This is a genuine,
+notable finding -- not previously reported in the literature for gibbon
+specifically -- worth stating plainly in the text, though see the
+Ne-sensitivity caveat in the companion Gibbon-Recombination-Rate repository
+(gibbon's rank as "the highest" specifically depends on using Veeramah et
+al. (2015)'s median Ne or tighter; it remains top-5 of individual study
+estimates under every Ne choice tested, but the single-highest claim is
+Ne-choice-dependent).
+
+Macaca mulatta (Chinese-origin)'s bias-corrected 1.21 cM/Mb narrows this
+picture: the gap to second place is just 0.34 cM/Mb (1.5498 vs. 1.21), and
+the bulk of the remaining distribution (positions 3 through 23) spans
+0.63-0.94, a separate, lower cluster that both gibbon and Chinese-origin
+macaque sit above. Gibbon is still the single highest value in this review,
+but it is not a solitary outlier -- it has real company near the top.
+
+FINDING 3 -- MACAQUE: TWO POPULATIONS, NOT ONE INCONSISTENT SPECIES
+
+Macaca mulatta has 8 separate cM/Mb estimates across this review, spanning
+an 8-fold range (0.107-1.21):
+
+  0.107        Indian-origin, captive (LD-based, pyrho) -- Versoza et al.
+               2024 GBE (companion map)
+  0.448 +/- 0.286  Indian-origin (LD-based, LDhat) -- Xue et al. 2020 PLoS ONE
+  0.6474       Indian-origin/unspecified (Cytogenetic, Chiasma) --
+               Pardo-Manuel de Villena & Sapienza 2001 Mamm Genome
+  0.6645       Indian-origin/unspecified (Cytogenetic, MLH1) -- Hassold et
+               al. 2009 Cytogenet Genome Res
+  0.6909       unspecified population, sex-averaged (Cytogenetic, Chiasma,
+               sex-specific source) -- Burt, Bell & Harvey 1991 J Evol Biol,
+               via Mank 2009 Table 1
+  0.6936       wild, Chinese-origin (LD-based, pyrho, this review's raw
+               recomputation) -- Terbot, Calahorra-Oliart, Versoza et al.
+               2025 Am J Primatol (paper's own published figure: 0.79)
+  0.698        unspecified population (pedigree microsatellite) -- Rogers
+               et al. 2006 Genomics
+  0.88         Indian-origin, captive (pedigree WGS) -- Versoza et al. 2024
+               GBE
+
+Reframing this by population resolves most of the apparent disagreement:
+Terbot et al. (2025)'s re-evaluation of Chinese-origin macaque demographic
+history describes a genuinely different population from every other estimate
+in this list (all Indian-origin), with its own distinct demographic
+trajectory including a severe contraction ~3,000 generations ago -- not a
+repeated measurement of the same population by a different method. Once
+reframed this way, the "8-fold disagreement" resolves mostly into two
+clusters along population lines: 5 Indian-origin estimates (0.107-0.88) and
+Chinese-origin's own progression from raw pyrho (0.6936/0.79) to the paper's
+own bias-corrected estimate (1.21, correcting for pyrho's known
+underestimation under population contraction, per the paper's own
+coalescent-simulation validation).
+
+DECISION: Macaca mulatta enters the cross-species average as TWO
+population-specific entries, the same treatment used for Nigerian vs.
+western chimp (two populations of one species, each its own row, not
+averaged together and not excluded):
+
+  Macaca mulatta, Indian-origin:  0.88 cM/Mb (Versoza et al. 2024 pedigree
+    WGS -- the most direct method available for this population, preferred
+    over this same paper's own companion LD estimate (0.107) per this
+    review's precedence rule of direct observation over LD-based estimates
+    where both exist)
+
+  Macaca mulatta, Chinese-origin: 1.21 cM/Mb (Terbot et al. 2025's own
+    bias-corrected estimate -- the best available figure for this
+    population, since no pedigree data exists for Chinese-origin macaques
+    in this review)
+
+The other 5 estimates are not deleted from this review -- they remain fully
+documented in Master_Comparison_Table.xlsx as the full within-population
+method-comparison picture, just no longer the number(s) feeding this
+cross-species average.
+
+Note on Xue et al. 2020 specifically: that paper's own raw/unbinned rho/kb
+(0.4877) remains ~4.3x higher than its own stated rho (0.112) -- an
+unresolved raw-vs-binned discrepancy an Ne swap cannot fix, so the paper's
+own published cM/Mb is used for that row rather than the discrepant
+recomputed value.
+
+CAVEATS THAT APPLY TO ALL NUMBERS ABOVE
+
+- Method heterogeneity: the 23-species/population average mixes LD-based
+  (population-scaled, historical), pedigree-based (direct meiotic count), a
+  bias-corrected LD estimate (Macaca mulatta Chinese-origin -- see Finding
+  3), and cytogenetic (MLH1 foci or classical chiasma counts) methods.
+  Western chimp's own average blends an LD-based and a cytogenetic estimate
+  (see caveat above); every other cytogenetic contribution is a
+  cytogenetic-only species: pygmy marmoset, Japanese macaque, Celebes
+  crested macaque, ring-tailed lemur, and all 3 Eulemur fulvus taxa (5
+  species, 6 rows). These are not strictly the same quantity as the
+  LD/pedigree entries (see the master table's methodological caveat) --
+  averaging across them for a ballpark figure is defensible for a single
+  summary number, but should not be read as though all 23 entries were
+  measured the same way.
+- Macaca mulatta is the one entry in this average representing a
+  population, not a species-level average the way every other multi-
+  estimate entry does (e.g. titi monkey's "3 studies averaged" is 3 studies
+  of the same population) -- its two rows are two different populations of
+  the same species with different demographic histories, intentionally kept
+  separate rather than combined. If a reader wants a single "macaque" number
+  instead of two population-specific ones, averaging the two (0.88 and
+  1.21 -> 1.045) would be defensible but was not done here, matching the
+  same choice made for Nigerian vs. western chimp.
+- Marker density and physical scale differ substantially across studies
+  (SNP arrays vs. whole genomes; different bin sizes and genome builds) --
+  not standardized here beyond each study's own reported/recomputed
+  genome-wide average.
+- Several LD-based values remain calibrated rather than fully independent
+  even after the corrections above (see CIRCULARITY CHECK) -- flagged
+  per-species in Master_Comparison_Table.xlsx. Macaca mulatta Chinese-
+  origin's value is a further variant of this concern: it is the paper's
+  own bias-corrected estimate, not a directly measured or independently
+  calibrated figure -- see Finding 3.
+- Cross-species/genus karyotype or physical-genome-length substitutions
+  underlie several of the cytogenetic cM/Mb values in this average
+  (documented per-row in Master_Comparison_Table.xlsx) -- these affect the
+  physical-length denominator, not the crossover count itself.
+- This average will shift any time a per-species value in this review is
+  revised -- rerun this note's computation against the current
+  Master_Comparison_Table.xlsx before quoting the mean/median in a final
+  draft.
