@@ -76,7 +76,7 @@ CAVEATS
   the overall Gini distribution; it is only the pyrho-based macaque
   estimates elsewhere in this review that read low, and pyrho's own
   block-penalty smoothing is independently known to depress Gini regardless
-  of biology (see Master_Comparison_Table.xlsx's Notes sheet). The original
+  of biology (see Central_Comparison_Table.xlsx's Notes sheet). The original
   macaque observation this hypothesis was built to explain may itself be
   partly an estimator artifact rather than a genuine biological outlier.
 - Only one species among this review's 10 Gini species (Plecturocebus

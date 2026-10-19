@@ -7,15 +7,16 @@ DATASET_PIECHART
 #chimp-subspecies tip split -- see PIE_PICK comment above), ONE representative value
 #was picked (see PIE_PICK in the build script) -- both alternates are in the
 #supplemental table, not silently dropped.
-#No legend block -- deliberately dropped per feedback that the "Gini coefficient" /
+#No legend block -- deliberately dropped since the "Gini coefficient" /
 #"(1 - Gini)" swatch legend didn't add anything a caption wouldn't say better.
 #SIZE NOTE: these are EXTERNAL pie charts (position=-1 in the DATA rows
 #below) -- per iTOL's own DATASET_PIECHART template, MAXIMUM_SIZE only applies to
 #INTERNAL pie charts and is a no-op here; HEIGHT_FACTOR is the setting that actually
 #controls external pie chart size (a multiplier on the default leaf-space-based
-#radius), so HEIGHT_FACTOR is set to 3.6 to keep these visually matched to the binary
-#symbols; MAXIMUM_SIZE left in place but has no effect.
-#MARGIN,100 matches cMMb_boxplot.txt/NCO_rate_boxplot.txt's spacing;
+#radius). This is why the circles were reading smaller than the binary symbols even
+#though MAXIMUM_SIZE was already set well above their default -- HEIGHT_FACTOR
+#raised to 3.6 to fix this; MAXIMUM_SIZE left in place but has no effect.
+#MARGIN,100 -- matches cMMb_boxplot.txt/NCO_rate_boxplot.txt's spacing;
 #this ring loads 4th (after Marker type, Method, cM/Mb), before NCO last.
 
 SEPARATOR COMMA

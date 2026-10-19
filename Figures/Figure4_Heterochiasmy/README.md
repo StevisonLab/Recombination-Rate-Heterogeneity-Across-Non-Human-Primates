@@ -1,0 +1,33 @@
+# Figure 4: Heterochiasmy and X-vs-autosome recombination
+
+![Figure 4](Figure_4_heterochiasmy.png)
+
+## Caption
+
+**Figure 4. Sex-specific patterns in recombination: heterochiasmy and X-vs-autosome ratio.**
+
+Female:male ratio of (A) crossover rate and (B) non-crossover (NCO) rate. Panel B covers the three species in this review with both sexes independently measured by pedigree transmission analysis: Papio anubis (Wall et al. 2022), Plecturocebus cupreus (Versoza et al. 2026), and Daubentonia madagascariensis (Versoza et al. 2025). Panel A adds two further species with sex-specific crossover counts only (no NCO data): Papio papio and Macaca mulatta, cytogenetic autosomal chiasma counts per chromosome from Burt, Bell & Harvey (1991), as compiled in Mank (2009) — this review's only heterochiasmy data point for Macaca mulatta (its own WGS pedigree study measured paternal meioses only) and for Papio papio specifically (a different baboon species than Papio anubis). These two values are a raw per-chromosome crossover-count ratio rather than a cM/Mb ratio, but the female:male ratio itself is unit-invariant, so both are plotted on the same axis. Dashed line marks equal rates between sexes (ratio = 1). Bars colored by major clade (Cercopithecidae, purple; Platyrrhini, teal; Strepsirrhini, gold); marker above each bar indicates method (circle = pedigree, triangle = cytogenetic chiasma count), matching this review's shape convention throughout (diamond is reserved for pyrho in Panel C of this same figure, so chiasma count uses triangle here rather than the diamond used for it in Figure 2 Panel A, where pyrho does not appear). Panel B's marker is circle (pedigree) for all three species — shown explicitly, rather than left implicit, since cytogenetic chiasma/MLH1 counting cannot detect non-crossover events at all, so no species in this panel could ever carry the triangle marker seen in Panel A. Clade color scheme shared across all three panels and Figures 1-3, shown once in the legend above; species in Panel A ordered by clade, matching Panel C's convention.
+
+No other species in this review can contribute to Panel B specifically: the five species with long-read sequencing data (Porsborg et al. 2025) are testis-tissue samples, inherently male-only by what tissue was sequenced, and the Macaca mulatta WGS pedigree study (Versoza et al. 2024) examined paternal meioses exclusively by its own stated design.
+
+Papio anubis and Daubentonia madagascariensis are both female-biased for crossover rate, consistent with heterochiasmy patterns commonly reported across mammals; Plecturocebus cupreus and Macaca mulatta are close to parity, both slightly male-biased; Papio papio is more clearly male-biased. For non-crossover rate, Papio anubis and Plecturocebus cupreus are female-biased, while Daubentonia madagascariensis is male-biased — notably the opposite direction from its own crossover-rate bias, an apparent decoupling of sex-specific crossover and non-crossover regulation worth highlighting given the small sample size.
+
+**(C)** X-chromosome-to-autosome (X/A) recombination-rate ratio, for the five species in this review with any X-chromosome recombination data: Pan paniscus, Pan troglodytes ellioti, and Gorilla gorilla gorilla (Stevison, Woerner et al., unpublished chrX maps built alongside Stevison et al. 2016's published autosomal maps), Callithrix jacchus (Soni, Versoza, Shah, Pfeifer & Jensen 2026), and Daubentonia madagascariensis (Terbot et al. 2025). Species ordered by clade (Apes, Cercopithecidae, Platyrrhini, Strepsirrhini), not by ratio value, since the point of shape-coding by method is to flag that these six estimates are not directly cross-comparable — ranking them by magnitude would visually imply otherwise. Point shape indicates the underlying estimator: square = LDhat, diamond = pyrho, circle = direct pedigree (sex-averaged, the only estimate derived without any LD-based estimator at all) — matching this review's convention throughout (circle reserved for Pedigree everywhere; square for LDhat, this review's predominant LD-based estimator, the same shape used for generic "LD-based" in Figure 1 and Figure 2 Panel A; diamond for pyrho, as in Figure 2 Panel B). Shape reflects the estimator rather than whether a value was Ne-converted to cM/Mb, since Ne-conversion status has no bearing on the ratio itself — the same Ne applied to both X and autosome cancels out identically, so a raw rho ratio and its Ne-converted cM/Mb ratio are numerically the same value regardless of which Ne (or whether any Ne) was used. Callithrix jacchus shows two points at the same estimator distinction that matters here: LDhat (square) and pyrho (diamond) disagree substantially (0.36 vs. 0.51). Dotted line marks the human X/A recombination-rate ratio (0.81), reported by Kong et al. (2002) and cited for comparison in Soni, Versoza, Shah, Pfeifer & Jensen (2026). This is a raw population-scaled ratio, not corrected for breeding sex ratio; a demographically-corrected version (NeX/NeA) exists only for the three great apes (Woerner 2016 dissertation, Appendix B) and is reported in the text rather than plotted here, since no equivalent correction exists for aye-aye or marmoset and plotting both kinds of ratio together would itself conflate two different quantities.
+
+Full values and references for all three panels are provided in Supplemental Tables S7 (A/B) and S8 (C).
+
+## Files
+
+| File | Contents |
+|---|---|
+| `Figure_4_heterochiasmy.png / .pdf` | Final figure |
+| `supplemental_heterochiasmy_table.csv` | Panels A and B values |
+| `supplemental_XvA_table.csv` | Panel C values |
+
+## Regenerate
+
+Run from the repository root:
+
+```bash
+Rscript Scripts/figure4_heterochiasmy/build_heterochiasmy.R
+```

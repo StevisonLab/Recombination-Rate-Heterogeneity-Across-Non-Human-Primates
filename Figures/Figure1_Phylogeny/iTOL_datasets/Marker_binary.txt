@@ -1,5 +1,5 @@
 DATASET_BINARY
-#Underlying MARKER TYPE per species (the master table's 'Marker Type' column, pulled
+#Underlying MARKER TYPE per species (the central table's 'Marker Type' column, pulled
 #from "Rate Estimates Summary.xlsx" > Species Survey sheet's 'Markers' column, plus
 #the 9 species added via Dumont et al. 2017's cross-check) -- distinct from
 #Method_binary.txt. Method describes the analytical approach (LD-based/pedigree/
@@ -8,7 +8,7 @@ DATASET_BINARY
 #WGS, or long-read haplotypes) -- e.g. both LD-based AND pedigree-based-WGS studies
 #share the same Short-read WGS marker, decoupled here from which analytical method
 #was applied to it. Ordered oldest-to-newest technology (see MARKERS comment above).
-#Pulled from EVERY row in the master table (cM/Mb, Gini, and raw NCO/CO count rows
+#Pulled from EVERY row in the central table (cM/Mb, Gini, and raw NCO/CO count rows
 #alike), not just cM/Mb-relevant ones -- so this ring is deliberately NOT tied to
 #Method_binary.txt's cM/Mb-scoped species coverage. All 30 current tree tips have >=1
 #Marker Type value (confirmed by the build script) -- no species needs to be dropped.
@@ -59,7 +59,7 @@ Pan_troglodytes_ellioti,-1,-1,-1,1,-1
 Pan_troglodytes_verus,1,-1,-1,1,1
 Papio_anubis,-1,-1,-1,1,-1
 Papio_hamadryas,-1,-1,1,-1,-1
-Papio_papio,-1,-1,-1,-1,1
+Papio_papio,1,-1,-1,-1,1
 Plecturocebus_cupreus,-1,-1,-1,1,-1
 Saguinus_oedipus,1,1,-1,-1,-1
 Sapajus_cay,-1,1,-1,-1,-1

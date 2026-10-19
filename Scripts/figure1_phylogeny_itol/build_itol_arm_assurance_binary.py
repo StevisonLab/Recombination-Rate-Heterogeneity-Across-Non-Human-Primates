@@ -1,3 +1,7 @@
+import os
+# Paths resolve relative to this script, so it can be run from any directory.
+REPO = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..'))
+ITOL_DIR = os.path.join(REPO, 'Figures', 'Figure1_Phylogeny', 'iTOL_datasets')
 ALL_TAXA = ['Alouatta_caraya','Callithrix_jacchus','Cebuella_pygmaea','Cebus_capucinus',
     'Chlorocebus_sabaeus','Daubentonia_madagascariensis','Eulemur_fulvus',
     'Eulemur_fulvus_albocollaris','Eulemur_fulvus_collaris','Gorilla_gorilla_gorilla',
@@ -276,7 +280,7 @@ LEGEND_LABELS,nXO > aFN/2
 DATA
 """ + '\n'.join(binary_lines) + '\n'
 
-with open('/Users/lss0021/Documents/Primate_Maps/Figure_1/iTOL_datasets/ArmAssurance_binary.txt', 'w') as f:
+with open(os.path.join(ITOL_DIR, 'ArmAssurance_binary.txt'), 'w') as f:
     f.write(out)
 
 print("Wrote ArmAssurance_binary.txt:", len(binary_lines), "species rows")

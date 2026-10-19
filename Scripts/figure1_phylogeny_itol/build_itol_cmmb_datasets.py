@@ -1,9 +1,13 @@
 import csv
 import openpyxl
 from statistics import median
+import os
+# Paths resolve relative to this script, so it can be run from any directory.
+REPO = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..'))
+ITOL_DIR = os.path.join(REPO, 'Figures', 'Figure1_Phylogeny', 'iTOL_datasets')
 
-wb = openpyxl.load_workbook('/Users/lss0021/Documents/Primate_Maps/Master_Comparison_Table.xlsx', data_only=True)
-ws = wb['Master Comparison Table']
+wb = openpyxl.load_workbook(os.path.join(REPO, 'Central_Comparison_Table.xlsx'), data_only=True)
+ws = wb['Central Comparison Table']
 rows = list(ws.iter_rows(values_only=True))
 data_rows = rows[1:]
 
@@ -64,7 +68,7 @@ def bucket_for(method):
     return None
 
 # Excluded from the boxplot ring specifically --
-# still present as its own row in Master_Comparison_Table.xlsx and the
+# still present as its own row in Central_Comparison_Table.xlsx and the
 # supplemental table, just dropped from this ring's min/max/median so it
 # doesn't visually dominate the Macaca_mulatta box. Versoza et al. 2024's
 # companion pyrho/LD estimate (0.107 cM/Mb) was never stated as a headline
@@ -88,7 +92,7 @@ def bucket_for(method):
 # without explicit sign-off). Excluded from this tree-ring visualization
 # specifically because it would otherwise sit directly alongside corrected,
 # apples-to-apples values from every other species; still fully retained in
-# Master_Comparison_Table.xlsx and in Figure 2A's crossover-assurance panel,
+# Central_Comparison_Table.xlsx and in Figure 2A's crossover-assurance panel,
 # which uses arm-count/aFN data only and has no physical-length denominator
 # to get wrong in the first place.
 BOXPLOT_EXCLUDE = {
@@ -226,7 +230,7 @@ BORDER_WIDTH,2
 DATA
 """ + '\n'.join(box_lines) + '\n'
 
-with open('/Users/lss0021/Documents/Primate_Maps/Figure_1/iTOL_datasets/cMMb_boxplot.txt', 'w') as f:
+with open(os.path.join(ITOL_DIR, 'cMMb_boxplot.txt'), 'w') as f:
     f.write(boxplot_out)
 print("Wrote cMMb_boxplot.txt:", len(box_lines), "species rows")
 
@@ -255,7 +259,7 @@ field_labels = ','.join(METHOD_LABEL[b] for b in METHOD_ORDER)
 field_shapes = ','.join(METHOD_SHAPE[b] for b in METHOD_ORDER)
 
 binary_out = f"""DATASET_BINARY
-#Method presence/absence per species, pulled from EVERY row in the master table (not
+#Method presence/absence per species, pulled from EVERY row in the central table (not
 #just cM/Mb-bearing rows) -- decoupled from the pooled cM/Mb boxplot (cMMb_boxplot.txt)
 #so the boxplot doesn't need to color-code by method. 4 fields, ordered oldest-to-newest
 #technology: Cytogenetic, Pedigree-based, LD-based, Testis (long-read haplotype
@@ -292,7 +296,7 @@ LEGEND_LABELS,{field_labels}
 DATA
 """ + '\n'.join(binary_lines) + '\n'
 
-with open('/Users/lss0021/Documents/Primate_Maps/Figure_1/iTOL_datasets/Method_binary.txt', 'w') as f:
+with open(os.path.join(ITOL_DIR, 'Method_binary.txt'), 'w') as f:
     f.write(binary_out)
 print("Wrote Method_binary.txt:", len(binary_lines), "species rows")
 print("Species with no method data at all:", [t for t in ALL_TAXA if t not in all_method_by_taxon])
@@ -304,7 +308,7 @@ for taxon in ALL_TAXA:
     for bucket, val, method, marker, ref in by_taxon.get(taxon, []):
         supp_rows.append([taxon.replace('_', ' '), 'cM/Mb', BUCKET_TITLE[bucket], method, marker, round(val, 4), ref])
 
-with open('/Users/lss0021/Documents/Primate_Maps/Figure_1/iTOL_datasets/supplemental_cmmb_table.csv', 'w', newline='') as f:
+with open(os.path.join(ITOL_DIR, 'supplemental_cmmb_table.csv'), 'w', newline='') as f:
     writer = csv.writer(f)
     writer.writerow(['Species', 'Metric', 'Method category', 'Method (full)', 'Marker Type', 'Value', 'Reference'])
     writer.writerows(supp_rows)

@@ -35,7 +35,7 @@ GitHub Repository/
 │   ├── figure3_nco_deepdive/         Figure 3: NCO tract length / CO:NCO ratio
 │   ├── figure4_heterochiasmy/        Figure 4: sex-specific (heterochiasmy) rates
 │   └── figure5_prdm9_bubbleplot/     Figure 5: PRDM9 zinc-finger array size
-├── Figures/                          Final rendered figures (PNG/PDF/EPS), captions, and per-figure supplementary CSVs
+├── Figures/                          Final rendered figures (PNG/PDF), a README with each figure's caption, and per-figure supplementary CSVs
 │   ├── Figure1_Phylogeny/
 │   ├── Figure2_CO_Control/
 │   ├── Figure3_NCO_Deepdive/
@@ -53,7 +53,7 @@ The central data product, used to generate Figure 1 and referenced throughout th
 
 | Column | Description |
 |---|---|
-| Group | One of the 4 major clades used throughout this review (Apes, Old World Monkeys, New World Monkeys, Lemurs) |
+| Group | One of the 4 major clades used throughout this review (Apes, Cercopithecidae, Platyrrhini, Strepsirrhini) |
 | Species | Full binomial, with common name |
 | Method | LD-based / Pedigree-based / Cytogenetic (MLH1 or chiasma) / Testis long-read |
 | Marker Type | Underlying raw data type (short-read WGS, long-read WGS, microsatellite, chiasma count, MLH1 foci) |
@@ -83,7 +83,7 @@ Regenerate this file with `Scripts/central_table/build_public_central_table.py` 
 The vast majority of datasets underlying this review remain available at
 their original public source (lab website, Dryad, Zenodo, NCBI, or a
 journal's supplementary materials) — see the Reference column in
-`Central_Comparison_Table.xlsx` or the citation list in Section 8 below for
+`Central_Comparison_Table.xlsx` or the citation list in Section 9 below for
 exactly where. Three datasets are the exception: their original host is no
 longer online, or the data was obtained directly and never had a public
 host to begin with. Those are rehosted in `Data/`, alongside the scripts
@@ -97,7 +97,7 @@ of each.
 A TimeTree-derived phylogeny of all 30 species, annotated in [iTOL](https://itol.embl.de/) with clade coloring, method/marker-type binary rings, and cM/Mb/Gini/NCO data rings (boxplot, pie chart, and boxplot respectively). `Scripts/figure1_phylogeny_itol/` contains the newick tree, the manual branch-length graft log (documenting where TimeTree's automated output needed literature-sourced correction), and the Python scripts that generate each iTOL annotation dataset from the Central table. `Figures/Figure1_Phylogeny/iTOL_datasets/` holds the generated annotation files ready for upload to iTOL, plus the supplementary CSVs behind each ring. Final figure assembly (tree layout, legend placement) was done interactively in iTOL and finished in Adobe Illustrator; the scripts here produce every input to that process, not the final layout itself.
 
 ### Figure 2 — Two Panel Crossover Control dot plot
-Pnael A supplements Table S1 of Dumont et al 2017 with several additional species to compare CO assurance per chromosome arm. Panel B shows all 13 available Gini estimates across the 10 species with any Gini value, point shape encoding the rate estimator (LDhat/LDhelmet/pyrho) and color encoding clade. Built with `Scripts/figure2_gini_dotplot/build_gini_dotplot.R` (R/ggplot2). Raw datasets for both panels in `Figures/Figure2_Gini_Dotplot/`.
+Panel A supplements Table S1 of Dumont et al 2017 with several additional species to compare CO assurance per chromosome arm. Panel B shows all 13 available Gini estimates across the 10 species with any Gini value, point shape encoding the rate estimator (LDhat/LDhelmet/pyrho) and color encoding clade. Built with `Scripts/figure2_co_control/build_gini_dotplot.R` (R/ggplot2). Raw datasets for both panels in `Figures/Figure2_Gini_Dotplot/`.
 
 ### Figure 3 — Non-crossover deep dive
 Mean NCO tract length and the CO:NCO ratio (crossover homeostasis) across the 9 species with NCO data, split by detection method (pedigree transmission vs. Porsborg et al. 2025 long-read testis sequencing). Built with `Scripts/figure3_nco_deepdive/build_nco_deepdive.R`. 
@@ -108,7 +108,7 @@ Male-vs-female recombination rate ratios and X-vs-autosome recombination ratios,
 ### Figure 5 — PRDM9 zinc-finger array size
 A modernized version of Schwartz et al. (2014)'s Figure 3: PRDM9 zinc-finger array size across every primate genus with sequenced alleles (25 species/genera), grouped by clade, combining Schwartz et al. (2014)'s own raw allele data, unpublished sequences from Ségurel & Przeworski, new annotation work from this review (including a corrected mislabeled allele in *Papio anubis*), and Heerschop et al. (2016)'s tarsier allele survey. Species with characterized PRDM9 but no fine-scale recombination map anywhere in the literature are shown as open (hollow) points rather than omitted, to make that gap visible rather than silently absent. Built with `Scripts/figure5_prdm9_bubbleplot/build_zf_bubbleplot.R`.
 
-All figures were exported as PNG (1200 dpi), PDF, and EPS (vector).
+Figures 2-5 were exported as PNG (1200 dpi) and PDF (vector); Figure 1 as JPG and SVG (vector). Each figure directory's `README.md` holds the full figure caption. R scripts are run from the repository root (e.g. `Rscript Scripts/figure3_nco_deepdive/build_nco_deepdive.R`); Python scripts can be run from any directory.
 
 ## 6. Tables — Standalone Analytical Notes
 
@@ -123,7 +123,7 @@ Three cross-species summary notes, each derived directly from `Central_Compariso
 
 ## 7. Use in This Project
 
-`Central_Comparison_Table.xlsx` consolidates every cM/Mb, NCO, and Gini value cited in the chapter. Any correction or addition to a per-species value is made in `Scripts/Central_table/build_public_Central_table.py` and propagated by re-running that script and every downstream figure script — the figures and the two baseline-average notes are all derived views of this one table, not independently maintained.
+`Central_Comparison_Table.xlsx` consolidates every cM/Mb, NCO, and Gini value cited in the chapter. Any correction or addition to a per-species value is made in `Scripts/central_table/build_public_central_table.py` and propagated by re-running that script and every downstream figure script — the figures and the two baseline-average notes are all derived views of this one table, not independently maintained.
 
 ## 8. AI Disclosure Statement
 
@@ -158,7 +158,7 @@ Auton et al. 2012 *Science* 336:193–198 (chimpanzee) · Pfeifer 2020 *MBE* 37:
 Cox et al. 2006 *Genomics* 88:274–281 and Rogers et al. 2000 *Genomics* 67:237–247 (baboon microsatellite maps) · Rogers et al. 2006 *Genomics* 87:30–38 (rhesus macaque microsatellite map) · Jasinska et al. 2007 *Mamm. Genome* 18:347–360 (vervet microsatellite map) · Wall, Robinson & Cox 2022 *GBE* 14:evac040 (baboon WGS) · Versoza et al. 2024 *GBE* 16:evad223 (rhesus macaque WGS) · Versoza et al. 2025 *GBE* 17:evaf072 (aye-aye WGS) · Versoza et al. 2026 *GBE* 18:evag186 (titi monkey WGS)
 
 **Cytogenetic (MLH1 foci / chiasma count):**
-Burt & Bell 1987 *Nature* 326:803–805 · Burt, Bell & Harvey 1991 *J. Evol. Biol.* 4:259–277 (via Mank 2009 *Genet. Res.* 91:355–363) · Pardo-Manuel de Villena & Sapienza 2001 *Mamm. Genome* 12:318–322 · Hassold et al. 2009 *Cytogenet. Genome Res.* 124:132–138 · Garcia-Cruz et al. 2009 *BMC Genet.* 10:25 and Garcia-Cruz et al. 2011 *Chromosoma* 120:521–530 (New World monkeys) · Segura et al. 2013 *Proc. R. Soc. B* 280:20131945 · Dumont 2017 *Genetics* 205:155–168 (cross-species chiasma/MLH1 compilation)
+Burt & Bell 1987 *Nature* 326:803–805 · Burt, Bell & Harvey 1991 *J. Evol. Biol.* 4:259–277 (via Mank 2009 *Genet. Res.* 91:355–363) · Pardo-Manuel de Villena & Sapienza 2001 *Mamm. Genome* 12:318–322 · Hassold et al. 2009 *Cytogenet. Genome Res.* 124:132–138 · Garcia-Cruz et al. 2009 *BMC Genet.* 10:25 and Garcia-Cruz et al. 2011 *Chromosoma* 120:521–530 (Platyrrhini) · Segura et al. 2013 *Proc. R. Soc. B* 280:20131945 · Dumont 2017 *Genetics* 205:155–168 (cross-species chiasma/MLH1 compilation)
 
 **Long-read testis/sperm sequencing:**
 Porsborg et al. 2025 *Nat. Commun.* 16:10337
@@ -169,6 +169,6 @@ Han et al. 2024 *Curr. Biol.* 34:5341-5348.e3 (bonobo) · de Manuel et al. 2016 
 **Figure 5 (PRDM9) sources:**
 Schwartz et al. 2014 *Nat. Commun.* 5:4370 · Ségurel & Przeworski, unpublished sequences · Heerschop et al. 2016 *Sci. Rep.* 6:34618 (tarsiers)
 
-## 9. License
+## 10. License
 
 Code in this repository (`Scripts/`) is released under the MIT License. Data and figures (`Central_Comparison_Table.xlsx`, `Figures/`, `Tables/`) are released under CC BY 4.0 — please cite both this repository and the original source studies listed above when reusing.

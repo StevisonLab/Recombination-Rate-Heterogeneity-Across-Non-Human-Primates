@@ -5,7 +5,7 @@ Daubentonia madagascariensis,Gini,pyrho,0.4509,"Soni, Versoza et al. 2025 Ecolog
 Gorilla gorilla gorilla,Gini,LDhat,0.8119,Stevison et al. 2016 MBE,
 Macaca mulatta,Gini,pyrho,0.6144,Versoza et al. 2024 GBE (companion map),used in Gini_piechart.txt
 Macaca mulatta,Gini,pyrho,0.2813,"Terbot, Calahorra-Oliart, Versoza et al. 2025 Am J Primatol","alt. value, not in piechart"
-Nomascus leucogenys,Gini,LDhat,0.8441,"Stevison, unpublished",
+Nomascus leucogenys,Gini,LDhat,0.8441,"Stevison, unpublished; now available in its own GitHub repo",
 Pan paniscus,Gini,LDhat,0.8128,Stevison et al. 2016 MBE,
 Pan troglodytes ellioti,Gini,LDhat,0.821,Stevison et al. 2016 MBE,
 Pan troglodytes verus,Gini,LDhat,0.7766,Auton et al. 2012 Science,

@@ -1,0 +1,28 @@
+# Figure 5: PRDM9 zinc-finger array size
+
+![Figure 5](PRDM9_ZF_bubbleplot.png)
+
+## Caption
+
+**Figure 5. PRDM9 zinc-finger array size heterogeneity across non-human primates.**
+
+A modernized version of Schwartz et al. (2014)'s own Figure 3 — same underlying idea (bubble size encodes how many independently sequenced alleles land at a given array size), but combining four sources rather than one, and grouped by clade (Apes, orange; Cercopithecidae, purple; Platyrrhini, teal; Tarsiiformes, pink; Strepsirrhini, gold — the same color scheme as Figures 1-4 for the first four, plus a 5th color for the one clade outside this review's usual four-clade scheme, shown once in the legend above) rather than Schwartz's own ad hoc per-species/pooled-genus categories. Clades are ordered Apes/Cercopithecidae/Platyrrhini/Tarsiiformes/Strepsirrhini to match phylogenetic placement; species are ordered by clade, then by descending mean array size within each clade block. Point shape indicates whether the species has any fine-scale recombination-rate (RR) data in this review at all: filled circle = fine-scale RR data exists (the species also appears in this review's Gini survey, Figure 2 Panel B); open triangle = PRDM9 has been characterized but no fine-scale recombination map exists for the species anywhere in this review or, as far as this review's literature search found, in the published field. Bubble size is the number of independently sequenced alleles observed at that exact array size (legend lower right); species with only one or two sequenced alleles are necessarily small, single dots and should be read with that uncertainty in mind, not as a settled species average the way Pan troglodytes' 34-allele distribution can be.
+
+Twenty-five species/genera are shown, spanning four data sources: (1) Schwartz et al. (2014)'s own raw per-allele sequences (Supplementary Data 1, not their summary figure, which pools New World and Old World monkey genera into unresolved categories) — providing this figure's entire chimpanzee (n=34 alleles), bonobo (n=4), marmoset (n=1), and a second independent gorilla sample, plus three species listed under taxonomic synonyms not obviously searchable from their current names: Nomascus leucogenys and Nomascus gabriellae appear as "Hylobates leucogenys" and "Hylobates gabriellae" (the crested gibbons were later split into their own genus), and Lagothrix lagotricha appears as "Simia lagotricha"; (2) an unpublished allele set generously sequenced by L. Ségurel and M. Przeworski (real PCR-cloned, Sanger-sequenced alleles from named gorilla, orangutan, siamang, and rhesus macaque individuals, using the same wet-lab methodology as Schwartz et al. — available via the Przeworski lab website but, as far as this review found, not previously plotted alongside the published primate PRDM9 literature); (3) new tBLASTn/GeneWise/Princeton-ZF-tool annotation work done directly against each species' own genome assembly for three species entirely absent from both published sources — Chlorocebus sabaeus (vervet), Papio anubis (olive baboon; recovered from a locus mislabeled as the PRDM7 paralog in the reference annotation), and Daubentonia madagascariensis (aye-aye); and (4) Heerschop et al. (2016)'s own Table 1, a direct per-individual allele survey (28 alleles, 23 individuals, 15 heterozygous) spanning five named Tarsius species (T. syrichta, T. bancanus, T. dentatus, T. lariang, T. fuscus) plus several unclassified individuals affiliated with the T. tarsier population complex, contributing the entire Tarsiiformes block.
+
+Three findings stand out. First, this review's zero-recombination-data species are not a minor footnote: orangutan (both Pongo abelii and Pongo pygmaeus) and siamang (Symphalangus syndactylus) — each with real, substantial PRDM9 array-size data (up to 6 sequenced alleles per species) — have no fine-scale recombination map, no cM/Mb estimate, and no Gini value anywhere in this review or, as far as this review's search found, in the literature at all; the same is true for every non-Nomascus gibbon species, Macaca nemestrina, Nasalis larvatus, Papio cynocephalus, and Lagothrix lagotricha shown here — and now for every tarsier taxon as well, an entire clade with real PRDM9 data and zero fine-scale recombination data anywhere in the field. Second, Plecturocebus cupreus (titi monkey) — despite having a published fine-scale recombination map elsewhere in this review — is the one species in this review where PRDM9 itself could not be characterized at all (no genome annotation, no recoverable GeneWise gene model, no allele-level sequencing in any source checked), shown as an empty labeled gap between Callithrix jacchus and the Tarsiiformes block rather than omitted from the axis, to make the absence visible rather than silent. Third, Tarsius syrichta's single sequenced allele (3 zinc fingers) is the shortest PRDM9 array anywhere in this figure — shorter than any other species, including the two species already flagged elsewhere in this review as unusually short-armed (Chlorocebus sabaeus and Daubentonia madagascariensis, both 7) — though this rests on a single sequenced allele from a single individual and should be read as suggestive, not definitive, pending a larger tarsier sample. Full per-allele data and source attribution in supplemental_zf_alleles_table.csv.
+
+## Files
+
+| File | Contents |
+|---|---|
+| `PRDM9_ZF_bubbleplot.png / .pdf` | Final figure |
+| `supplemental_zf_alleles_table.csv` | Per-allele data and source attribution |
+
+## Regenerate
+
+Run from the repository root:
+
+```bash
+Rscript Scripts/figure5_prdm9_bubbleplot/build_zf_bubbleplot.R
+```

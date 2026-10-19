@@ -22,14 +22,14 @@ regression against the human HapMap map at 5Mb scale, under the assumption
 that human and chimp total genetic map lengths are approximately equal, the
 same McVean et al. 2004 calibration approach later adopted by Stevison et al.
 2016). SOM also reports Ne=10,463 (1Mb scale) to Ne=11,671 (10Mb scale) as a
-robustness range. Note: Master_Comparison_Table.xlsx's own cM/Mb for this
+robustness range. Note: Central_Comparison_Table.xlsx's own cM/Mb for this
 species uses a different, independently-sourced Ne (de Manuel et al. 2016)
 rather than this paper's own regression-based Ne -- see the table's Notes
 column for that rationale. The values below reproduce the paper's own
 calibration for reference/validation, not the value used in the final table.
 
 Gini computed raw/unbinned, this review's standard for cross-study
-consistency (see Master_Comparison_Table.xlsx's Notes sheet).
+consistency (see Central_Comparison_Table.xlsx's Notes sheet).
 """
 import glob
 import os

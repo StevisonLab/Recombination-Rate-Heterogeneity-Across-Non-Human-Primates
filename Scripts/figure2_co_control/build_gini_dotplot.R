@@ -1,13 +1,17 @@
+# Run from the repository root, e.g.  Rscript Scripts/figure2_co_control/build_gini_dotplot.R
+OUT_DIR <- "Figures/Figure2_CO_Control"
+if (!dir.exists(OUT_DIR)) stop("Run this script from the repository root.")
+
 library(ggplot2)
 library(dplyr)
 library(patchwork)
 
-CLADE_LEVELS <- c("Apes", "Old World Monkeys", "New World Monkeys", "Lemurs")
+CLADE_LEVELS <- c("Apes", "Cercopithecidae", "Platyrrhini", "Strepsirrhini")
 CLADE_COLORS <- c(
   "Apes"               = "#d95f02",
-  "Old World Monkeys"  = "#7570b3",
-  "New World Monkeys"  = "#1b9e77",
-  "Lemurs"             = "#e6ab02"
+  "Cercopithecidae"  = "#7570b3",
+  "Platyrrhini"  = "#1b9e77",
+  "Strepsirrhini"             = "#e6ab02"
 )
 
 # ============================================================================
@@ -134,36 +138,36 @@ assurance_data <- tribble(
   # citing Chiarelli 1972, converted to aFN via the female-XX-complement
   # convention -- see Figure_1/build_itol_arm_assurance_binary.py).
   "Nomascus leucogenys", "Nomascus leucogenys", "Apes", 1.5498 * 2650.18, 25, 90, "Harding 2013 Mammalian Species 44(890):1-15, citing Chiarelli 1972 (FN=94, converted to aFN=90)", "LD-based", "Stevison, unpublished",
-  # Old World Monkeys -- pedigree preferred where available
+  # Cercopithecidae -- pedigree preferred where available
   # aFN=80 (reused Papio hamadryas's own Dumont-sourced aFN
   # via same-genus conservation -- see Figure_1/build_itol_arm_assurance_binary.py).
-  "Papio anubis", "Papio anubis", "Old World Monkeys", 2293.5, 20, 80, "Moore et al. 1999 Am J Phys Anthropol 110:119-127 (Papio hamadryas karyotype, Dumont et al. 2017 Table S1 source, reused via same-genus conservation)", "Pedigree", "Wall, Robinson & Cox 2022 GBE",
-  "Papio hamadryas", "Papio hamadryas (Rogers 2000)", "Old World Monkeys", 2375, 20, 80, "Moore et al. 1999 Am J Phys Anthropol 110:119-127 (Dumont et al. 2017 Table S1 karyotype source)", "Pedigree", "Rogers et al. 2000 Genomics",
-  "Papio hamadryas", "Papio hamadryas (Cox 2006)", "Old World Monkeys", 2354, 20, 80, "Moore et al. 1999 Am J Phys Anthropol 110:119-127 (Dumont et al. 2017 Table S1 karyotype source)", "Pedigree", "Cox et al. 2006 Genomics",
-  "Macaca mulatta", "Macaca mulatta (Indian, captive)", "Old World Monkeys", 2357, 20, 80, "Small et al. 1985 Am J Primatol 9:63-67 (Dumont et al. 2017 Table S1 karyotype source)", "Pedigree (paternal-only)", "Versoza et al. 2024 GBE",
-  "Macaca mulatta", "Macaca mulatta (Rogers 2006)", "Old World Monkeys", 2048, 20, 80, "Small et al. 1985 Am J Primatol 9:63-67 (Dumont et al. 2017 Table S1 karyotype source)", "Pedigree", "Rogers et al. 2006 Genomics",
+  "Papio anubis", "Papio anubis", "Cercopithecidae", 2293.5, 20, 80, "Moore et al. 1999 Am J Phys Anthropol 110:119-127 (Papio hamadryas karyotype, Dumont et al. 2017 Table S1 source, reused via same-genus conservation)", "Pedigree", "Wall, Robinson & Cox 2022 GBE",
+  "Papio hamadryas", "Papio hamadryas (Rogers 2000)", "Cercopithecidae", 2375, 20, 80, "Moore et al. 1999 Am J Phys Anthropol 110:119-127 (Dumont et al. 2017 Table S1 karyotype source)", "Pedigree", "Rogers et al. 2000 Genomics",
+  "Papio hamadryas", "Papio hamadryas (Cox 2006)", "Cercopithecidae", 2354, 20, 80, "Moore et al. 1999 Am J Phys Anthropol 110:119-127 (Dumont et al. 2017 Table S1 karyotype source)", "Pedigree", "Cox et al. 2006 Genomics",
+  "Macaca mulatta", "Macaca mulatta (Indian, captive)", "Cercopithecidae", 2357, 20, 80, "Small et al. 1985 Am J Primatol 9:63-67 (Dumont et al. 2017 Table S1 karyotype source)", "Pedigree (paternal-only)", "Versoza et al. 2024 GBE",
+  "Macaca mulatta", "Macaca mulatta (Rogers 2006)", "Cercopithecidae", 2048, 20, 80, "Small et al. 1985 Am J Primatol 9:63-67 (Dumont et al. 2017 Table S1 karyotype source)", "Pedigree", "Rogers et al. 2006 Genomics",
   # aFN=116 (Stock & Hsu 1973, Cercopithecus aethiops species
   # group total FN=120 minus X/Y -- flagged BORDERLINE, +/-2-4 arm uncertainty --
   # see Figure_1/build_itol_arm_assurance_binary.py for the full reasoning).
-  "Chlorocebus sabaeus", "Chlorocebus sabaeus", "Old World Monkeys", 2726, 29, 116, "Stock & Hsu 1973 Chromosoma 43:211-224 (Cercopithecus aethiops species group; BORDERLINE, +/-2-4 arm uncertainty per 7 disputed 'short second arm' pairs)", "Pedigree", "Jasinska et al. 2007 Mamm Genome",
-  # Old World Monkeys -- from Dumont et al. 2017 Table S1, all
+  "Chlorocebus sabaeus", "Chlorocebus sabaeus", "Cercopithecidae", 2726, 29, 116, "Stock & Hsu 1973 Chromosoma 43:211-224 (Cercopithecus aethiops species group; BORDERLINE, +/-2-4 arm uncertainty per 7 disputed 'short second arm' pairs)", "Pedigree", "Jasinska et al. 2007 Mamm Genome",
+  # Cercopithecidae -- from Dumont et al. 2017 Table S1, all
   # Cytogenetic; cite the original measurement, not the Dumont compilation, per this
   # project's standing citation policy. The two
   # Macaca mulatta rows (and Macaca nemestrina below) were, like chimp above, silently
   # skipped in the original cross-check pass since these species already had other
   # data -- found via the same re-audit.
-  "Macaca mulatta", "Macaca mulatta (MLH1)", "Old World Monkeys", 39.0 * 50, 20, 80, "Small et al. 1985 Am J Primatol 9:63-67 (Dumont et al. 2017 Table S1 karyotype source)", "Cytogenetic (MLH1)", "Hassold et al. 2009 Cytogenet Genome Res",
-  "Macaca mulatta", "Macaca mulatta (Chiasma)", "Old World Monkeys", 38.0 * 50, 20, 80, "Small et al. 1985 Am J Primatol 9:63-67 (Dumont et al. 2017 Table S1 karyotype source)", "Cytogenetic (Chiasma)", "Pardo-Manuel de Villena & Sapienza 2001 Mamm Genome",
-  "Macaca nemestrina", "Macaca nemestrina", "Old World Monkeys", 40.0 * 50, 20, 80, "Brown et al. 1986 Folia Primatol 46:164-172 (Dumont et al. 2017 Table S1 karyotype source)", "Cytogenetic (Chiasma)", "Pardo-Manuel de Villena & Sapienza 2001 Mamm Genome",
-  "Macaca fuscata", "Macaca fuscata", "Old World Monkeys", 36.7 * 50, 20, 80, "Wienberg et al. 1992 Chromosoma 101:265-270 (Dumont et al. 2017 Table S1 karyotype source)", "Cytogenetic (Chiasma)", "Pardo-Manuel de Villena & Sapienza 2001 Mamm Genome",
-  "Macaca nigra", "Macaca nigra", "Old World Monkeys", 39.0 * 50, 20, 80, "Brown et al. 1986 Folia Primatol 46:164-172 (Dumont et al. 2017 Table S1 karyotype source)", "Cytogenetic (Chiasma)", "Burt & Bell 1987 Nature",
-  "Mandrillus sphinx", "Mandrillus sphinx", "Old World Monkeys", 45.0 * 50, 20, 80, "Ruiz-Herrera et al. 2005 Cytogenet Genome Res 108:234-247 (Dumont et al. 2017 Table S1 karyotype source)", "Cytogenetic (Chiasma)", "Pardo-Manuel de Villena & Sapienza 2001 Mamm Genome",
-  "Miopithecus talapoin", "Miopithecus talapoin", "Old World Monkeys", 39.7 * 50, 27, 92, "Dutrillaux et al. 1978 Hum Genet 45:283-296 (Dumont et al. 2017 Table S1 karyotype source)", "Cytogenetic (MLH1)", "Segura et al. 2013 Proc R Soc B",
-  # New World Monkeys -- cytogenetic (direct per-cell count) or pedigree preferred
-  "Cebus paraguayanus", "Cebus paraguayanus", "New World Monkeys", 43.22 * 50, 26, 72, "Amaral et al. 2008 BMC Evol Biol 8:169 (Dumont et al. 2017 Table S1 karyotype source, listed there as Cebus libidinosus paraguayanus)", "Cytogenetic (MLH1)", "Garcia-Cruz et al. 2009 BMC Genetics",
-  "Cebus libidinosus", "Cebus libidinosus", "New World Monkeys", 41.3 * 50, 26, 72, "Amaral et al. 2008 BMC Evol Biol 8:169 (Dumont et al. 2017 Table S1 karyotype source)", "Cytogenetic (MLH1)", "Garcia-Cruz et al. 2011 Chromosoma",
-  "Cebus nigritus", "Cebus nigritus", "New World Monkeys", 39.2 * 50, 26, 72, "Amaral et al. 2008 BMC Evol Biol 8:169 (Dumont et al. 2017 Table S1 karyotype source)", "Cytogenetic (MLH1)", "Garcia-Cruz et al. 2011 Chromosoma",
-  "Alouatta caraya", "Alouatta caraya", "New World Monkeys", 40.6 * 50, 25, 66, "Mudry et al. 1998 Hereditas 128:9-16 (Dumont et al. 2017 Table S1 karyotype source)", "Cytogenetic (MLH1)", "Garcia-Cruz et al. 2011 Chromosoma",
+  "Macaca mulatta", "Macaca mulatta (MLH1)", "Cercopithecidae", 39.0 * 50, 20, 80, "Small et al. 1985 Am J Primatol 9:63-67 (Dumont et al. 2017 Table S1 karyotype source)", "Cytogenetic (MLH1)", "Hassold et al. 2009 Cytogenet Genome Res",
+  "Macaca mulatta", "Macaca mulatta (Chiasma)", "Cercopithecidae", 38.0 * 50, 20, 80, "Small et al. 1985 Am J Primatol 9:63-67 (Dumont et al. 2017 Table S1 karyotype source)", "Cytogenetic (Chiasma)", "Pardo-Manuel de Villena & Sapienza 2001 Mamm Genome",
+  "Macaca nemestrina", "Macaca nemestrina", "Cercopithecidae", 40.0 * 50, 20, 80, "Brown et al. 1986 Folia Primatol 46:164-172 (Dumont et al. 2017 Table S1 karyotype source)", "Cytogenetic (Chiasma)", "Pardo-Manuel de Villena & Sapienza 2001 Mamm Genome",
+  "Macaca fuscata", "Macaca fuscata", "Cercopithecidae", 36.7 * 50, 20, 80, "Wienberg et al. 1992 Chromosoma 101:265-270 (Dumont et al. 2017 Table S1 karyotype source)", "Cytogenetic (Chiasma)", "Pardo-Manuel de Villena & Sapienza 2001 Mamm Genome",
+  "Macaca nigra", "Macaca nigra", "Cercopithecidae", 39.0 * 50, 20, 80, "Brown et al. 1986 Folia Primatol 46:164-172 (Dumont et al. 2017 Table S1 karyotype source)", "Cytogenetic (Chiasma)", "Burt & Bell 1987 Nature",
+  "Mandrillus sphinx", "Mandrillus sphinx", "Cercopithecidae", 45.0 * 50, 20, 80, "Ruiz-Herrera et al. 2005 Cytogenet Genome Res 108:234-247 (Dumont et al. 2017 Table S1 karyotype source)", "Cytogenetic (Chiasma)", "Pardo-Manuel de Villena & Sapienza 2001 Mamm Genome",
+  "Miopithecus talapoin", "Miopithecus talapoin", "Cercopithecidae", 39.7 * 50, 27, 92, "Dutrillaux et al. 1978 Hum Genet 45:283-296 (Dumont et al. 2017 Table S1 karyotype source)", "Cytogenetic (MLH1)", "Segura et al. 2013 Proc R Soc B",
+  # Platyrrhini -- cytogenetic (direct per-cell count) or pedigree preferred
+  "Cebus paraguayanus", "Cebus paraguayanus", "Platyrrhini", 43.22 * 50, 26, 72, "Amaral et al. 2008 BMC Evol Biol 8:169 (Dumont et al. 2017 Table S1 karyotype source, listed there as Cebus libidinosus paraguayanus)", "Cytogenetic (MLH1)", "Garcia-Cruz et al. 2009 BMC Genetics",
+  "Cebus libidinosus", "Cebus libidinosus", "Platyrrhini", 41.3 * 50, 26, 72, "Amaral et al. 2008 BMC Evol Biol 8:169 (Dumont et al. 2017 Table S1 karyotype source)", "Cytogenetic (MLH1)", "Garcia-Cruz et al. 2011 Chromosoma",
+  "Cebus nigritus", "Cebus nigritus", "Platyrrhini", 39.2 * 50, 26, 72, "Amaral et al. 2008 BMC Evol Biol 8:169 (Dumont et al. 2017 Table S1 karyotype source)", "Cytogenetic (MLH1)", "Garcia-Cruz et al. 2011 Chromosoma",
+  "Alouatta caraya", "Alouatta caraya", "Platyrrhini", 40.6 * 50, 25, 66, "Mudry et al. 1998 Hereditas 128:9-16 (Dumont et al. 2017 Table S1 karyotype source)", "Cytogenetic (MLH1)", "Garcia-Cruz et al. 2011 Chromosoma",
   # n_bivalents corrected 20 -> 22: a karyotype source for
   # this species (Comparative chromosomal study of five taxa of genus Callithrix,
   # group Jacchus, Am J Primatol 41(1)) states 2n=46, 14 uniarmed + 30 biarmed
@@ -173,26 +177,26 @@ assurance_data <- tribble(
   # source disagreement; cos_per_bivalent for marmoset in Figure_2 Panel A drops
   # from 2.4128 to 2.1934 (still clearing the obligate-minimum line comfortably, no
   # pass/fail change at the chromosome level).
-  "Callithrix jacchus", "Callithrix jacchus", "New World Monkeys", 0.91 * 2651.4, 22, 74, "\"Comparative chromosomal study of five taxa of genus Callithrix, group Jacchus (Platyrrhini, primates),\" Am J Primatol 41(1) -- not in Dumont's table; author names not independently verified beyond this citation form", "LD-based", "Soni, Versoza et al. 2025/26 bioRxiv (preprint)",
+  "Callithrix jacchus", "Callithrix jacchus", "Platyrrhini", 0.91 * 2651.4, 22, 74, "\"Comparative chromosomal study of five taxa of genus Callithrix, group Jacchus (Platyrrhini, primates),\" Am J Primatol 41(1) -- not in Dumont's table; author names not independently verified beyond this citation form", "LD-based", "Soni, Versoza et al. 2025/26 bioRxiv (preprint)",
   # aFN=58 (Plecturocebus caquetensis source, explicitly
   # stated in the literature as "very similar to P. cupreus" -- see
   # Figure_1/build_itol_arm_assurance_binary.py for the full reasoning).
-  "Plecturocebus cupreus", "Plecturocebus cupreus", "New World Monkeys", 2450, 22, 58, "Bueno & Defler 2010 (Plecturocebus caquetensis karyotype), citing Defler et al. 2010 for explicit cross-species similarity to P. cupreus -- not in Dumont's table; full bibliographic detail beyond author/year not independently verified", "Pedigree", "Versoza et al. 2026 GBE",
-  # New World Monkeys -- from Dumont et al. 2017 Table S1
-  "Cebuella pygmaea", "Cebuella pygmaea (MLH1)", "New World Monkeys", 36.9 * 50, 21, 74, "Nagamachi et al. 1992 Genetica 85:249-257 (Dumont et al. 2017 Table S1 karyotype source)", "Cytogenetic (MLH1)", "Segura et al. 2013 Proc R Soc B",
-  "Cebuella pygmaea", "Cebuella pygmaea (Chiasma)", "New World Monkeys", 41.7 * 50, 21, 74, "Nagamachi et al. 1992 Genetica 85:249-257 (Dumont et al. 2017 Table S1 karyotype source)", "Cytogenetic (Chiasma)", "Pardo-Manuel de Villena & Sapienza 2001 Mamm Genome",
-  "Cebus capucinus", "Cebus capucinus", "New World Monkeys", 40.5 * 50, 26, 68, "Richard et al. 1996 Genomics 36:417-423 (Dumont et al. 2017 Table S1 karyotype source)", "Cytogenetic (Chiasma)", "Pardo-Manuel de Villena & Sapienza 2001 Mamm Genome",
-  "Saguinus oedipus", "Saguinus oedipus (MLH1)", "New World Monkeys", 38.9 * 50, 22, 86, "Segura et al. 2013 Proc R Soc B 280:20131945 (Dumont et al. 2017 Table S1 karyotype source; same paper as this row's own crossover-count reference)", "Cytogenetic (MLH1)", "Segura et al. 2013 Proc R Soc B",
-  "Saguinus oedipus", "Saguinus oedipus (Chiasma)", "New World Monkeys", 39.6 * 50, 22, 86, "Segura et al. 2013 Proc R Soc B 280:20131945 (Dumont et al. 2017 Table S1 karyotype source)", "Cytogenetic (Chiasma)", "Pardo-Manuel de Villena & Sapienza 2001 Mamm Genome",
-  # Lemurs
+  "Plecturocebus cupreus", "Plecturocebus cupreus", "Platyrrhini", 2450, 22, 58, "Bueno & Defler 2010 (Plecturocebus caquetensis karyotype), citing Defler et al. 2010 for explicit cross-species similarity to P. cupreus -- not in Dumont's table; full bibliographic detail beyond author/year not independently verified", "Pedigree", "Versoza et al. 2026 GBE",
+  # Platyrrhini -- from Dumont et al. 2017 Table S1
+  "Cebuella pygmaea", "Cebuella pygmaea (MLH1)", "Platyrrhini", 36.9 * 50, 21, 74, "Nagamachi et al. 1992 Genetica 85:249-257 (Dumont et al. 2017 Table S1 karyotype source)", "Cytogenetic (MLH1)", "Segura et al. 2013 Proc R Soc B",
+  "Cebuella pygmaea", "Cebuella pygmaea (Chiasma)", "Platyrrhini", 41.7 * 50, 21, 74, "Nagamachi et al. 1992 Genetica 85:249-257 (Dumont et al. 2017 Table S1 karyotype source)", "Cytogenetic (Chiasma)", "Pardo-Manuel de Villena & Sapienza 2001 Mamm Genome",
+  "Cebus capucinus", "Cebus capucinus", "Platyrrhini", 40.5 * 50, 26, 68, "Richard et al. 1996 Genomics 36:417-423 (Dumont et al. 2017 Table S1 karyotype source)", "Cytogenetic (Chiasma)", "Pardo-Manuel de Villena & Sapienza 2001 Mamm Genome",
+  "Saguinus oedipus", "Saguinus oedipus (MLH1)", "Platyrrhini", 38.9 * 50, 22, 86, "Segura et al. 2013 Proc R Soc B 280:20131945 (Dumont et al. 2017 Table S1 karyotype source; same paper as this row's own crossover-count reference)", "Cytogenetic (MLH1)", "Segura et al. 2013 Proc R Soc B",
+  "Saguinus oedipus", "Saguinus oedipus (Chiasma)", "Platyrrhini", 39.6 * 50, 22, 86, "Segura et al. 2013 Proc R Soc B 280:20131945 (Dumont et al. 2017 Table S1 karyotype source)", "Cytogenetic (Chiasma)", "Pardo-Manuel de Villena & Sapienza 2001 Mamm Genome",
+  # Strepsirrhini
   # aFN=52 (direct species match, no substitution needed -- see
   # Figure_1/build_itol_arm_assurance_binary.py for the full reasoning).
-  "Daubentonia madagascariensis", "Daubentonia madagascariensis", "Lemurs", 1525, 14, 52, "Poorman-Allen & Izard 1990; Rumpler et al. 1988 (direct species match) -- not in Dumont's table; full bibliographic detail beyond author/year not independently verified", "Pedigree", "Versoza et al. 2025 GBE",
-  # Lemurs -- from Dumont et al. 2017 Table S1
-  "Lemur catta", "Lemur catta", "Lemurs", 35.9 * 50, 27, 62, "Cardone et al. 2002 Chromosoma 111:348-356 (Dumont et al. 2017 Table S1 karyotype source)", "Cytogenetic (MLH1)", "Segura et al. 2013 Proc R Soc B",
-  "Eulemur fulvus", "Eulemur fulvus (nominate)", "Lemurs", 36.3 * 50, 29, 62, "Hamilton et al. 1979 Int J Primatol 1:81-93 (Dumont et al. 2017 Table S1 karyotype source, listed there as Lemur fulvus)", "Cytogenetic (Chiasma)", "Pardo-Manuel de Villena & Sapienza 2001 Mamm Genome",
-  "Eulemur fulvus albocollaris", "Eulemur fulvus albocollaris", "Lemurs", 35.2 * 50, 23, 62, "Hamilton et al. 1979 Int J Primatol 1:81-93 (Dumont et al. 2017 Table S1 karyotype source, listed there as Lemur fulvus albocollaris)", "Cytogenetic (Chiasma)", "Pardo-Manuel de Villena & Sapienza 2001 Mamm Genome",
-  "Eulemur fulvus collaris", "Eulemur fulvus collaris", "Lemurs", 36.0 * 50, 24, 62, "Hamilton et al. 1979 Int J Primatol 1:81-93 (Dumont et al. 2017 Table S1 karyotype source, listed there as Lemur fulvus collaris)", "Cytogenetic (Chiasma)", "Pardo-Manuel de Villena & Sapienza 2001 Mamm Genome"
+  "Daubentonia madagascariensis", "Daubentonia madagascariensis", "Strepsirrhini", 1525, 14, 52, "Poorman-Allen & Izard 1990; Rumpler et al. 1988 (direct species match) -- not in Dumont's table; full bibliographic detail beyond author/year not independently verified", "Pedigree", "Versoza et al. 2025 GBE",
+  # Strepsirrhini -- from Dumont et al. 2017 Table S1
+  "Lemur catta", "Lemur catta", "Strepsirrhini", 35.9 * 50, 27, 62, "Cardone et al. 2002 Chromosoma 111:348-356 (Dumont et al. 2017 Table S1 karyotype source)", "Cytogenetic (MLH1)", "Segura et al. 2013 Proc R Soc B",
+  "Eulemur fulvus", "Eulemur fulvus (nominate)", "Strepsirrhini", 36.3 * 50, 29, 62, "Hamilton et al. 1979 Int J Primatol 1:81-93 (Dumont et al. 2017 Table S1 karyotype source, listed there as Lemur fulvus)", "Cytogenetic (Chiasma)", "Pardo-Manuel de Villena & Sapienza 2001 Mamm Genome",
+  "Eulemur fulvus albocollaris", "Eulemur fulvus albocollaris", "Strepsirrhini", 35.2 * 50, 23, 62, "Hamilton et al. 1979 Int J Primatol 1:81-93 (Dumont et al. 2017 Table S1 karyotype source, listed there as Lemur fulvus albocollaris)", "Cytogenetic (Chiasma)", "Pardo-Manuel de Villena & Sapienza 2001 Mamm Genome",
+  "Eulemur fulvus collaris", "Eulemur fulvus collaris", "Strepsirrhini", 36.0 * 50, 24, 62, "Hamilton et al. 1979 Int J Primatol 1:81-93 (Dumont et al. 2017 Table S1 karyotype source, listed there as Lemur fulvus collaris)", "Cytogenetic (Chiasma)", "Pardo-Manuel de Villena & Sapienza 2001 Mamm Genome"
 ) %>%
   mutate(cos_per_bivalent = total_cM / 50 / n_bivalents,
          # aFN is a DIPLOID-scale count (same convention as 2N), matching Dumont
@@ -304,7 +308,7 @@ write.csv(assurance_data %>%
                    aFN_reference, cos_per_bivalent, cos_per_arm, reference) %>%
             rename(crossover_count_reference = reference) %>%
             arrange(match(species, assurance_order)),
-          "/Users/lss0021/Documents/Primate_Maps/Figure_2/supplemental_crossover_assurance_table.csv",
+          file.path(OUT_DIR, "supplemental_crossover_assurance_table.csv"),
           row.names = FALSE)
 cat("Saved supplemental_crossover_assurance_table.csv\n")
 
@@ -340,20 +344,20 @@ ESTIMATOR_SHAPES <- c("LDhat" = 15, "LDhelmet" = 17, "pyrho" = 18)  # filled squ
 # of macaque's own pyrho values (0.6144, 0.2813).
 gini_data <- tribble(
   ~species, ~gini, ~clade, ~estimator, ~reference,
-  "Macaca mulatta", 0.7944, "Old World Monkeys", "LDhat", "Xue et al. 2020 PLoS ONE",
-  "Chlorocebus sabaeus", 0.9523, "Old World Monkeys", "LDhat", "Pfeifer 2020 MBE",
-  "Plecturocebus cupreus", 0.8968, "New World Monkeys", "LDhelmet", "Soni, Versoza et al. 2026 Heredity",
-  "Plecturocebus cupreus", 0.6025, "New World Monkeys", "LDhat", "Soni, Versoza et al. 2026 Heredity",
+  "Macaca mulatta", 0.7944, "Cercopithecidae", "LDhat", "Xue et al. 2020 PLoS ONE",
+  "Chlorocebus sabaeus", 0.9523, "Cercopithecidae", "LDhat", "Pfeifer 2020 MBE",
+  "Plecturocebus cupreus", 0.8968, "Platyrrhini", "LDhelmet", "Soni, Versoza et al. 2026 Heredity",
+  "Plecturocebus cupreus", 0.6025, "Platyrrhini", "LDhat", "Soni, Versoza et al. 2026 Heredity",
   "Nomascus leucogenys", 0.8441, "Apes", "LDhat", "Stevison, unpublished",
   "Pan troglodytes", 0.8210, "Apes", "LDhat", "Stevison et al. 2016 MBE",
   "Pan troglodytes", 0.7766, "Apes", "LDhat", "Auton et al. 2012 Science",
   "Pan paniscus", 0.8128, "Apes", "LDhat", "Stevison et al. 2016 MBE",
   "Gorilla gorilla gorilla", 0.8119, "Apes", "LDhat", "Stevison et al. 2016 MBE",
-  "Callithrix jacchus", 0.8068, "New World Monkeys", "LDhat", "Soni, Versoza et al. 2025/26 bioRxiv (preprint)",
-  "Papio anubis", 0.7511, "Old World Monkeys", "pyrho", "Wall, Robinson & Cox 2022 GBE",
-  "Macaca mulatta", 0.6144, "Old World Monkeys", "pyrho", "Versoza et al. 2024 GBE (companion map)",
-  "Macaca mulatta", 0.2813, "Old World Monkeys", "pyrho", "Terbot, Calahorra-Oliart, Versoza et al. 2025 Am J Primatol",
-  "Daubentonia madagascariensis", 0.4509, "Lemurs", "pyrho", "Soni, Versoza et al. 2025 Ecology and Evolution"
+  "Callithrix jacchus", 0.8068, "Platyrrhini", "LDhat", "Soni, Versoza et al. 2025/26 bioRxiv (preprint)",
+  "Papio anubis", 0.7511, "Cercopithecidae", "pyrho", "Wall, Robinson & Cox 2022 GBE",
+  "Macaca mulatta", 0.6144, "Cercopithecidae", "pyrho", "Versoza et al. 2024 GBE (companion map)",
+  "Macaca mulatta", 0.2813, "Cercopithecidae", "pyrho", "Terbot, Calahorra-Oliart, Versoza et al. 2025 Am J Primatol",
+  "Daubentonia madagascariensis", 0.4509, "Strepsirrhini", "pyrho", "Soni, Versoza et al. 2025 Ecology and Evolution"
 ) %>%
   mutate(clade = factor(clade, levels = CLADE_LEVELS),
          estimator = factor(estimator, levels = ESTIMATOR_LEVELS))
@@ -405,7 +409,7 @@ clade_legend_data <- tibble(clade = factor(CLADE_LEVELS, levels = CLADE_LEVELS),
 clade_legend_plot <- ggplot(clade_legend_data, aes(x = x, y = y, color = clade)) +
   # All 4 points sit at the same (x,y), so with theme_void() (which hides axes/
   # background but NOT the actual data points) they stack and the last-drawn one
-  # (Lemurs, gold -- last in CLADE_LEVELS) would visibly bleed through as a stray
+  # (Strepsirrhini, gold -- last in CLADE_LEVELS) would visibly bleed through as a stray
   # circle above Panel A. alpha=0 hides the real plotted points; override.aes below
   # keeps the legend swatches themselves fully opaque.
   geom_point(size = 4.5, alpha = 0) +
@@ -424,19 +428,15 @@ combined <- clade_legend_plot / panelA / panelB +
 # Figure height set to 9in -- the axis-floor/label-font changes above
 # reclaimed enough room that a shorter height felt slightly tight in Panel B
 # specifically.
-ggsave("/Users/lss0021/Documents/Primate_Maps/Figure_2/Figure_2_Gini_dotplot.png",
+ggsave(file.path(OUT_DIR, "Figure_2_Gini_dotplot.png"),
        combined, width = 10, height = 9, dpi = 1200, bg = "white")
-ggsave("/Users/lss0021/Documents/Primate_Maps/Figure_2/Figure_2_Gini_dotplot.pdf",
+ggsave(file.path(OUT_DIR, "Figure_2_Gini_dotplot.pdf"),
        combined, width = 10, height = 9, bg = "white")
-# EPS format for Elsevier ELSA submission (accepts JPG/TIFF/PNG/EPS/CDX,
-# not PDF) -- vector, so it sidesteps the DPI requirement the same way the PDF does.
-ggsave("/Users/lss0021/Documents/Primate_Maps/Figure_2/Figure_2_Gini_dotplot.eps",
-       combined, device = "eps", width = 10, height = 9, bg = "white")
 
 cat("Saved Figure_2_Gini_dotplot.png/.pdf (2 panels: crossover assurance + Gini)\n")
 
 write.csv(gini_data %>% select(species, clade, gini, estimator, reference) %>%
             arrange(match(species, species_order)),
-          "/Users/lss0021/Documents/Primate_Maps/Figure_2/supplemental_gini_dotplot_table.csv",
+          file.path(OUT_DIR, "supplemental_gini_dotplot_table.csv"),
           row.names = FALSE)
 cat("Saved supplemental_gini_dotplot_table.csv\n")

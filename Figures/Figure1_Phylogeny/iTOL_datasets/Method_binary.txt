@@ -1,5 +1,5 @@
 DATASET_BINARY
-#Method presence/absence per species, pulled from EVERY row in the master table (not
+#Method presence/absence per species, pulled from EVERY row in the central table (not
 #just cM/Mb-bearing rows) -- decoupled from the pooled cM/Mb boxplot (cMMb_boxplot.txt)
 #so the boxplot doesn't need to color-code by method. 4 fields, ordered oldest-to-newest
 #technology: Cytogenetic, Pedigree-based, LD-based, Testis (long-read haplotype

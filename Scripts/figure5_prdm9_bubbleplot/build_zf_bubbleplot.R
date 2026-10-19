@@ -1,3 +1,7 @@
+# Run from the repository root, e.g.  Rscript Scripts/figure5_prdm9_bubbleplot/build_zf_bubbleplot.R
+OUT_DIR <- "Figures/Figure5_PRDM9_Bubbleplot"
+if (!dir.exists(OUT_DIR)) stop("Run this script from the repository root.")
+
 library(ggplot2)
 library(dplyr)
 library(patchwork)
@@ -7,10 +11,10 @@ library(tidyr)
 # PRDM9 zinc-finger array size across primates -- a modernized version of
 # Schwartz et al. (2014)'s Figure 3 bubble plot. Same underlying idea (bubble
 # size = number of sequenced alleles at a given array size), but:
-#  - grouped by this review's own 4 clades (Apes/Old World Monkeys/New World
-#    Monkeys/Lemurs) instead of Schwartz's own ad hoc categories, with the
+#  - grouped by this review's own 4 clades (Apes/Cercopithecidae/Platyrrhini/
+#    Strepsirrhini) instead of Schwartz's own ad hoc categories, with the
 #    same clade color scheme used throughout Figures 1-4, PLUS a 5th
-#    "Tarsiers" category -- tarsiers aren't part
+#    "Tarsiiformes" category -- tarsiers aren't part
 #    of any of the other 4 clades (their own infraorder, Tarsiiformes, not a
 #    monkey or a lemur), so folding them into an existing color would repeat
 #    the same taxonomic mistake already caught and fixed elsewhere in this
@@ -34,16 +38,16 @@ library(tidyr)
 #    with a complete data picture elsewhere in this review
 # ============================================================================
 
-CLADE_LEVELS <- c("Apes", "Old World Monkeys", "New World Monkeys", "Tarsiers", "Lemurs")
+CLADE_LEVELS <- c("Apes", "Cercopithecidae", "Platyrrhini", "Tarsiiformes", "Strepsirrhini")
 CLADE_COLORS <- c(
   "Apes"               = "#d95f02",
-  "Old World Monkeys"  = "#7570b3",
-  "New World Monkeys"  = "#1b9e77",
-  "Tarsiers"           = "#e7298a",
-  "Lemurs"             = "#e6ab02"
+  "Cercopithecidae"  = "#7570b3",
+  "Platyrrhini"  = "#1b9e77",
+  "Tarsiiformes"           = "#e7298a",
+  "Strepsirrhini"             = "#e6ab02"
 )
 
-alleles <- read.csv("/Users/lss0021/Documents/Primate_Maps/Primate_PRDM9/prdm9_zf_alleles.csv",
+alleles <- read.csv(file.path("Scripts", "figure5_prdm9_bubbleplot", "prdm9_zf_alleles.csv"),
                      stringsAsFactors = FALSE) %>%
   mutate(clade = factor(clade, levels = CLADE_LEVELS))
 
@@ -131,19 +135,13 @@ clade_legend_plot <- ggplot(clade_legend_data, aes(x = x, y = y, color = clade))
 
 combined <- clade_legend_plot / p_main + plot_layout(heights = c(0.1, 1))
 
-ggsave("/Users/lss0021/Documents/Primate_Maps/PRDM9_Synthesis_Figure/PRDM9_ZF_bubbleplot.png",
+ggsave(file.path(OUT_DIR, "PRDM9_ZF_bubbleplot.png"),
        combined, width = 14, height = 8, dpi = 1200, bg = "white")
-ggsave("/Users/lss0021/Documents/Primate_Maps/PRDM9_Synthesis_Figure/PRDM9_ZF_bubbleplot.pdf",
+ggsave(file.path(OUT_DIR, "PRDM9_ZF_bubbleplot.pdf"),
        combined, width = 14, height = 8, bg = "white")
-# EPS format for Elsevier ELSA submission -- their upload page accepts
-# JPG/TIFF/PNG/EPS/CDX specifically (not PDF), so this is the vector option that
-# actually satisfies their format list while sidestepping the DPI question the
-# same way the PDF above already does.
-ggsave("/Users/lss0021/Documents/Primate_Maps/PRDM9_Synthesis_Figure/PRDM9_ZF_bubbleplot.eps",
-       combined, device = "eps", width = 14, height = 8, bg = "white")
 
 write.csv(alleles %>% select(species, clade, zf, source, in_review_gini) %>% arrange(clade, species, zf),
-          "/Users/lss0021/Documents/Primate_Maps/PRDM9_Synthesis_Figure/supplemental_zf_alleles_table.csv",
+          file.path(OUT_DIR, "supplemental_zf_alleles_table.csv"),
           row.names = FALSE)
 
 cat("Saved PRDM9_ZF_bubbleplot.png/.pdf and supplemental_zf_alleles_table.csv\n")

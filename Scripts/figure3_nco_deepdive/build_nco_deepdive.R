@@ -1,21 +1,25 @@
+# Run from the repository root, e.g.  Rscript Scripts/figure3_nco_deepdive/build_nco_deepdive.R
+OUT_DIR <- "Figures/Figure3_NCO_Deepdive"
+if (!dir.exists(OUT_DIR)) stop("Run this script from the repository root.")
+
 library(ggplot2)
 library(patchwork)
 library(dplyr)
 
-CLADE_LEVELS <- c("Apes", "Old World Monkeys", "New World Monkeys", "Lemurs")
+CLADE_LEVELS <- c("Apes", "Cercopithecidae", "Platyrrhini", "Strepsirrhini")
 CLADE_COLORS <- c(
   "Apes"        = "#d95f02",
-  "Old World Monkeys"  = "#7570b3",
-  "New World Monkeys" = "#1b9e77",
-  "Lemurs"= "#e6ab02"
+  "Cercopithecidae"  = "#7570b3",
+  "Platyrrhini" = "#1b9e77",
+  "Strepsirrhini"= "#e6ab02"
 )
 
 SPECIES_CLADE <- c(
   "Pan troglodytes" = "Apes", "Gorilla gorilla gorilla" = "Apes", "Hylobates lar" = "Apes",
-  "Papio anubis" = "Old World Monkeys", "Papio papio" = "Old World Monkeys",
-  "Macaca mulatta" = "Old World Monkeys", "Macaca nemestrina" = "Old World Monkeys",
-  "Plecturocebus cupreus" = "New World Monkeys",
-  "Daubentonia madagascariensis" = "Lemurs"
+  "Papio anubis" = "Cercopithecidae", "Papio papio" = "Cercopithecidae",
+  "Macaca mulatta" = "Cercopithecidae", "Macaca nemestrina" = "Cercopithecidae",
+  "Plecturocebus cupreus" = "Platyrrhini",
+  "Daubentonia madagascariensis" = "Strepsirrhini"
 )
 
 # Detection method per species -- same split both panels share: direct
@@ -142,14 +146,10 @@ combined <- panel_homeostasis + panel_tract +
   plot_layout(guides = "collect") &
   theme(legend.position = "bottom")
 
-ggsave("/Users/lss0021/Documents/Primate_Maps/Figure_3/Figure_3_NCO_deepdive.png",
+ggsave(file.path(OUT_DIR, "Figure_3_NCO_deepdive.png"),
        combined, width = 11, height = 5.5, dpi = 1200, bg = "white")
-ggsave("/Users/lss0021/Documents/Primate_Maps/Figure_3/Figure_3_NCO_deepdive.pdf",
+ggsave(file.path(OUT_DIR, "Figure_3_NCO_deepdive.pdf"),
        combined, width = 11, height = 5.5, bg = "white")
-# EPS format for Elsevier ELSA submission (accepts JPG/TIFF/PNG/EPS/CDX,
-# not PDF) -- vector, so it sidesteps the DPI requirement the same way the PDF does.
-ggsave("/Users/lss0021/Documents/Primate_Maps/Figure_3/Figure_3_NCO_deepdive.eps",
-       combined, device = "eps", width = 11, height = 5.5, bg = "white")
 
 cat("Saved Figure_3_NCO_deepdive.png/.pdf\n")
 
@@ -166,6 +166,6 @@ supp <- ratio_data %>%
   full_join(tract_summary, by = "species") %>%
   arrange(desc(nco_fraction))
 
-write.csv(supp, "/Users/lss0021/Documents/Primate_Maps/Figure_3/supplemental_nco_deepdive_table.csv",
+write.csv(supp, file.path(OUT_DIR, "supplemental_nco_deepdive_table.csv"),
           row.names = FALSE)
 cat("Saved supplemental_nco_deepdive_table.csv\n")

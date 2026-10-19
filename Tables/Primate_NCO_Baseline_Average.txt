@@ -1,6 +1,6 @@
 PRIMATE NON-CROSSOVER (NCO) RATE BASELINE AVERAGE
 Companion note to Primate_cMMb_Baseline_Average.txt
-Computed from Master_Comparison_Table.xlsx
+Computed from Central_Comparison_Table.xlsx
 
 PURPOSE
 

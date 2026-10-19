@@ -1,5 +1,9 @@
 import csv
 from statistics import median
+import os
+# Paths resolve relative to this script, so it can be run from any directory.
+REPO = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..'))
+ITOL_DIR = os.path.join(REPO, 'Figures', 'Figure1_Phylogeny', 'iTOL_datasets')
 
 SPECIES_MAP = {
     'Pan paniscus (bonobo)': 'Pan_paniscus',
@@ -143,7 +147,7 @@ BORDER_WIDTH,2
 DATA
 """ + '\n'.join(box_lines) + '\n'
 
-with open('/Users/lss0021/Documents/Primate_Maps/Figure_1/iTOL_datasets/NCO_rate_boxplot.txt', 'w') as f:
+with open(os.path.join(ITOL_DIR, 'NCO_rate_boxplot.txt'), 'w') as f:
     f.write(boxplot_out)
 print("Wrote NCO_rate_boxplot.txt:", len(box_lines), "species rows")
 
@@ -158,7 +162,7 @@ for species, points, method, derivation, ref in NCO_DATA:
         for v in points:
             supp_rows.append([taxon.replace('_', ' '), '', v, method, derivation, ref])
 
-with open('/Users/lss0021/Documents/Primate_Maps/Figure_1/iTOL_datasets/supplemental_nco_table.csv', 'w', newline='') as f:
+with open(os.path.join(ITOL_DIR, 'supplemental_nco_table.csv'), 'w', newline='') as f:
     writer = csv.writer(f)
     writer.writerow(header)
     writer.writerows(supp_rows)

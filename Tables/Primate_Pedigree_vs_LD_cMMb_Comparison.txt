@@ -1,11 +1,11 @@
 PRIMATE PEDIGREE-VS-LD cM/Mb COMPARISON
 Does pedigree-based cM/Mb read systematically higher than LD-based cM/Mb?
 Companion note to Primate_cMMb_Baseline_Average.txt and Primate_NCO_Baseline_Average.txt
-Computed from Master_Comparison_Table.xlsx
+Computed from Central_Comparison_Table.xlsx
 
 PURPOSE
 
-Noticed while writing up Old World Monkeys' within-species disagreement
+Noticed while writing up Cercopithecidae' within-species disagreement
 (rhesus macaque, whose 7 cM/Mb estimates span 0.107-0.88): the single
 highest estimate is the pedigree-based one, and every LD-based estimate for
 the same species reads lower, regardless of population (Indian captive vs.
@@ -136,7 +136,7 @@ CAVEATS
 - "LD-based" also spans 3 different estimators (LDhat, LDhelmet, pyrho) with
   their own known behavioral differences (e.g. pyrho's block-penalty
   smoothing, which also produces mechanically different Gini values -- see
-  Master_Comparison_Table.xlsx's Notes sheet) -- some of the within-species
+  Central_Comparison_Table.xlsx's Notes sheet) -- some of the within-species
   LD spread (e.g. macaque's 0.107 vs. 0.694) is very likely
   estimator/population choice, not just "LD vs. pedigree."
 - Directionality only, not effect size: the 3 rescaled comparisons cannot be

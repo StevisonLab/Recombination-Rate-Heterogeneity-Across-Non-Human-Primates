@@ -1,6 +1,6 @@
 PRIMATE cM/Mb BASELINE AVERAGE
 Context for the commonly-used "~1 cM/Mb" default assumption
-Computed from Master_Comparison_Table.xlsx
+Computed from Central_Comparison_Table.xlsx
 
 PURPOSE
 
@@ -34,7 +34,7 @@ row), not folded into one averaged figure and not excluded (see Finding 3).
 Species/populations included: 23. Seven species with a known-unreliable
 cM/Mb value are excluded entirely from this average (see "Excluded species"
 below), even though they remain fully documented in
-Master_Comparison_Table.xlsx and are still shown in Figure 2A's
+Central_Comparison_Table.xlsx and are still shown in Figure 2A's
 crossover-assurance panel and Figure 1's tree (via the crossover-assurance
 ring), both of which are unaffected by the issue that excludes them here.
 
@@ -83,7 +83,7 @@ RESULT -- THE AVERAGE
 
 Per-species values feeding this average, highest to lowest (multi-estimate
 species show the averaged figure used in the statistics; individual
-estimates for those species are in Master_Comparison_Table.xlsx):
+estimates for those species are in Central_Comparison_Table.xlsx):
 
   1.5498  Nomascus leucogenys (gibbon)
   1.2100  Macaca mulatta, Chinese-origin (Terbot et al. 2025's own
@@ -118,7 +118,7 @@ estimates for those species are in Master_Comparison_Table.xlsx):
           mulatta congener assembly)
 
 Excluded species (known-unreliable cM/Mb -- documented in
-Master_Comparison_Table.xlsx, still shown in Figure 2A / Figure 1's
+Central_Comparison_Table.xlsx, still shown in Figure 2A / Figure 1's
 crossover-assurance ring): Cebus paraguayanus, Cebus libidinosus, Cebus
 nigritus, Cebus capucinus, and Alouatta caraya (no chromosome-level assembly
 exists anywhere in genus Cebus/Sapajus or family Atelidae to correct their
@@ -225,7 +225,7 @@ averaged together and not excluded):
     in this review)
 
 The other 5 estimates are not deleted from this review -- they remain fully
-documented in Master_Comparison_Table.xlsx as the full within-population
+documented in Central_Comparison_Table.xlsx as the full within-population
 method-comparison picture, just no longer the number(s) feeding this
 cross-species average.
 
@@ -246,7 +246,7 @@ CAVEATS THAT APPLY TO ALL NUMBERS ABOVE
   cytogenetic-only species: pygmy marmoset, Japanese macaque, Celebes
   crested macaque, ring-tailed lemur, and all 3 Eulemur fulvus taxa (5
   species, 6 rows). These are not strictly the same quantity as the
-  LD/pedigree entries (see the master table's methodological caveat) --
+  LD/pedigree entries (see the central table's methodological caveat) --
   averaging across them for a ballpark figure is defensible for a single
   summary number, but should not be read as though all 23 entries were
   measured the same way.
@@ -265,15 +265,15 @@ CAVEATS THAT APPLY TO ALL NUMBERS ABOVE
   genome-wide average.
 - Several LD-based values remain calibrated rather than fully independent
   even after the corrections above (see CIRCULARITY CHECK) -- flagged
-  per-species in Master_Comparison_Table.xlsx. Macaca mulatta Chinese-
+  per-species in Central_Comparison_Table.xlsx. Macaca mulatta Chinese-
   origin's value is a further variant of this concern: it is the paper's
   own bias-corrected estimate, not a directly measured or independently
   calibrated figure -- see Finding 3.
 - Cross-species/genus karyotype or physical-genome-length substitutions
   underlie several of the cytogenetic cM/Mb values in this average
-  (documented per-row in Master_Comparison_Table.xlsx) -- these affect the
+  (documented per-row in Central_Comparison_Table.xlsx) -- these affect the
   physical-length denominator, not the crossover count itself.
 - This average will shift any time a per-species value in this review is
   revised -- rerun this note's computation against the current
-  Master_Comparison_Table.xlsx before quoting the mean/median in a final
+  Central_Comparison_Table.xlsx before quoting the mean/median in a final
   draft.

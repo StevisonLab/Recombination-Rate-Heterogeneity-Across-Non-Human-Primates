@@ -1,8 +1,12 @@
 import csv
 import openpyxl
+import os
+# Paths resolve relative to this script, so it can be run from any directory.
+REPO = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..'))
+ITOL_DIR = os.path.join(REPO, 'Figures', 'Figure1_Phylogeny', 'iTOL_datasets')
 
-wb = openpyxl.load_workbook('/Users/lss0021/Documents/Primate_Maps/Master_Comparison_Table.xlsx', data_only=True)
-ws = wb['Master Comparison Table']
+wb = openpyxl.load_workbook(os.path.join(REPO, 'Central_Comparison_Table.xlsx'), data_only=True)
+ws = wb['Central Comparison Table']
 rows = list(ws.iter_rows(values_only=True))
 data_rows = rows[1:]
 
@@ -47,7 +51,7 @@ ESTIMATOR = {
     ('Pan troglodytes ellioti (Nigerian chimp)', 'Stevison et al. 2016 MBE'): 'ldhat',
     ('Gorilla gorilla gorilla (western gorilla)', 'Stevison et al. 2016 MBE'): 'ldhat',
     ('Pan troglodytes verus (western chimp)', 'Auton et al. 2012 Science'): 'ldhat',
-    ('Nomascus leucogenys (northern white-cheeked gibbon)', 'Stevison, unpublished'): 'ldhat',
+    ('Nomascus leucogenys (northern white-cheeked gibbon)', 'Stevison, unpublished; now available in its own GitHub repo'): 'ldhat',
     ('Papio anubis (olive baboon)', 'Wall, Robinson & Cox 2022 GBE'): 'pyrho',
     ('Macaca mulatta (Indian-origin, captive)', 'Versoza et al. 2024 GBE (companion map)'): 'pyrho',
     ('Macaca mulatta (wild, Chinese-origin)', 'Terbot, Calahorra-Oliart, Versoza et al. 2025 Am J Primatol'): 'pyrho',
@@ -153,7 +157,7 @@ MARGIN,100
 DATA
 """ + '\n'.join(pie_lines) + '\n'
 
-with open('/Users/lss0021/Documents/Primate_Maps/Figure_1/iTOL_datasets/Gini_piechart.txt', 'w') as f:
+with open(os.path.join(ITOL_DIR, 'Gini_piechart.txt'), 'w') as f:
     f.write(pie_out)
 print("Wrote Gini_piechart.txt:", len(pie_lines), "species rows")
 print("Species with no Gini value:", [t for t in ALL_TAXA if t not in by_taxon])
@@ -167,7 +171,7 @@ for taxon in ALL_TAXA:
         note = 'used in Gini_piechart.txt' if picked else ('alt. value, not in piechart' if taxon in PIE_PICK else '')
         supp_rows.append([taxon.replace('_', ' '), 'Gini', EST_TITLE[est], round(val, 4), ref, note])
 
-with open('/Users/lss0021/Documents/Primate_Maps/Figure_1/iTOL_datasets/supplemental_gini_table.csv', 'w', newline='') as f:
+with open(os.path.join(ITOL_DIR, 'supplemental_gini_table.csv'), 'w', newline='') as f:
     writer = csv.writer(f)
     writer.writerow(['Species', 'Metric', 'Estimator', 'Value', 'Reference', 'Note'])
     writer.writerows(supp_rows)

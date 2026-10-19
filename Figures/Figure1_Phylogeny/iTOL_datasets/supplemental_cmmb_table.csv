@@ -27,7 +27,7 @@ Macaca nemestrina,cM/Mb,Cytogenetic,Cytogenetic (Chiasma count),Chiasma count,0.
 Macaca nigra,cM/Mb,Cytogenetic,Cytogenetic (Chiasma count),Chiasma count,0.6765,Burt & Bell 1987 Nature
 Mandrillus sphinx,cM/Mb,Cytogenetic,Cytogenetic (Chiasma count),Chiasma count,0.7866,Pardo-Manuel de Villena & Sapienza 2001 Mamm Genome
 Miopithecus talapoin,cM/Mb,Cytogenetic,Cytogenetic (MLH1 foci),MLH1 foci,0.6685,Segura et al. 2013 Proc R Soc B
-Nomascus leucogenys,cM/Mb,LD-based,LD-based,Short-read WGS,1.5498,"Stevison, unpublished"
+Nomascus leucogenys,cM/Mb,LD-based,LD-based,Short-read WGS,1.5498,"Stevison, unpublished; now available in its own GitHub repo"
 Pan paniscus,cM/Mb,LD-based,LD-based,Short-read WGS,0.6893,Stevison et al. 2016 MBE
 Pan troglodytes ellioti,cM/Mb,LD-based,LD-based,Short-read WGS,0.7199,Stevison et al. 2016 MBE
 Pan troglodytes verus,cM/Mb,LD-based,LD-based,Short-read WGS,0.9931,Auton et al. 2012 Science

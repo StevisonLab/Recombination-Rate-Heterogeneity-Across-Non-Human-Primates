@@ -1,7 +1,11 @@
 import openpyxl
+import os
+# Paths resolve relative to this script, so it can be run from any directory.
+REPO = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..'))
+ITOL_DIR = os.path.join(REPO, 'Figures', 'Figure1_Phylogeny', 'iTOL_datasets')
 
-wb = openpyxl.load_workbook('/Users/lss0021/Documents/Primate_Maps/Master_Comparison_Table.xlsx', data_only=True)
-ws = wb['Master Comparison Table']
+wb = openpyxl.load_workbook(os.path.join(REPO, 'Central_Comparison_Table.xlsx'), data_only=True)
+ws = wb['Central Comparison Table']
 rows = list(ws.iter_rows(values_only=True))
 data_rows = rows[1:]
 
@@ -54,12 +58,12 @@ ALL_TAXA = ['Alouatta_caraya','Callithrix_jacchus','Cebuella_pygmaea','Cebus_cap
 # Chiasma count (classical cytology, pre-1990s) -> MLH1 foci
 # (immunofluorescence cytology, late 1990s on) -> Microsatellite (linkage mapping,
 # 1990s-2000s) -> Short-read WGS (Illumina-era pedigree/LD studies) -> Long-read WGS
-# (PacBio/ONT haplotype-switching studies, most recent). Renamed from the master
+# (PacBio/ONT haplotype-switching studies, most recent). Renamed from the central
 # table's own 'WGS' / 'Haplotype switching' to make this chronology
 # explicit in the label text itself.
 MARKERS = ['Chiasma count', 'MLH1 foci', 'Microsatellite', 'Short-read WGS', 'Long-read WGS']
 
-# Pulled from EVERY row in the master table regardless of metric, same "not tied to
+# Pulled from EVERY row in the central table regardless of metric, same "not tied to
 # cM/Mb" approach used throughout this figure's datasets -- so e.g. Hylobates_lar/
 # Macaca_nemestrina/Papio_papio (Porsborg long-read only, no cM/Mb or Gini) still get
 # a marker here.
@@ -93,7 +97,7 @@ for taxon in ALL_TAXA:
     binary_lines.append(f"{taxon}," + ','.join(vals))
 
 out = f"""DATASET_BINARY
-#Underlying MARKER TYPE per species (the master table's 'Marker Type' column, pulled
+#Underlying MARKER TYPE per species (the central table's 'Marker Type' column, pulled
 #from "Rate Estimates Summary.xlsx" > Species Survey sheet's 'Markers' column, plus
 #the 9 species added via Dumont et al. 2017's cross-check) -- distinct from
 #Method_binary.txt. Method describes the analytical approach (LD-based/pedigree/
@@ -102,7 +106,7 @@ out = f"""DATASET_BINARY
 #WGS, or long-read haplotypes) -- e.g. both LD-based AND pedigree-based-WGS studies
 #share the same Short-read WGS marker, decoupled here from which analytical method
 #was applied to it. Ordered oldest-to-newest technology (see MARKERS comment above).
-#Pulled from EVERY row in the master table (cM/Mb, Gini, and raw NCO/CO count rows
+#Pulled from EVERY row in the central table (cM/Mb, Gini, and raw NCO/CO count rows
 #alike), not just cM/Mb-relevant ones -- so this ring is deliberately NOT tied to
 #Method_binary.txt's cM/Mb-scoped species coverage. All 30 current tree tips have >=1
 #Marker Type value (confirmed by the build script) -- no species needs to be dropped.
@@ -131,7 +135,7 @@ LEGEND_LABELS,{','.join(MARKERS)}
 DATA
 """ + '\n'.join(binary_lines) + '\n'
 
-with open('/Users/lss0021/Documents/Primate_Maps/Figure_1/iTOL_datasets/Marker_binary.txt', 'w') as f:
+with open(os.path.join(ITOL_DIR, 'Marker_binary.txt'), 'w') as f:
     f.write(out)
 
 print("Wrote Marker_binary.txt:", len(binary_lines), "species rows")

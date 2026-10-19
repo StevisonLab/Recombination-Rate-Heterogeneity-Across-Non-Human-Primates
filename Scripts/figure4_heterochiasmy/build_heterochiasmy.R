@@ -1,24 +1,28 @@
+# Run from the repository root, e.g.  Rscript Scripts/figure4_heterochiasmy/build_heterochiasmy.R
+OUT_DIR <- "Figures/Figure4_Heterochiasmy"
+if (!dir.exists(OUT_DIR)) stop("Run this script from the repository root.")
+
 library(ggplot2)
 library(patchwork)
 library(dplyr)
 
-CLADE_LEVELS <- c("Apes", "Old World Monkeys", "New World Monkeys", "Lemurs")
+CLADE_LEVELS <- c("Apes", "Cercopithecidae", "Platyrrhini", "Strepsirrhini")
 CLADE_COLORS <- c(
   "Apes"        = "#d95f02",
-  "Old World Monkeys"  = "#7570b3",
-  "New World Monkeys" = "#1b9e77",
-  "Lemurs"= "#e6ab02"
+  "Cercopithecidae"  = "#7570b3",
+  "Platyrrhini" = "#1b9e77",
+  "Strepsirrhini"= "#e6ab02"
 )
 SPECIES_CLADE <- c(
-  "Papio anubis" = "Old World Monkeys",
-  "Plecturocebus cupreus" = "New World Monkeys",
-  "Daubentonia madagascariensis" = "Lemurs",
+  "Papio anubis" = "Cercopithecidae",
+  "Plecturocebus cupreus" = "Platyrrhini",
+  "Daubentonia madagascariensis" = "Strepsirrhini",
   "Pan paniscus" = "Apes",
   "Pan troglodytes ellioti" = "Apes",
   "Gorilla gorilla gorilla" = "Apes",
-  "Callithrix jacchus" = "New World Monkeys",
-  "Papio papio" = "Old World Monkeys",
-  "Macaca mulatta" = "Old World Monkeys"
+  "Callithrix jacchus" = "Platyrrhini",
+  "Papio papio" = "Cercopithecidae",
+  "Macaca mulatta" = "Cercopithecidae"
 )
 # Panel B stays the original 3 species -- the only 3 pedigree studies in this review
 # with BOTH sexes measured for BOTH crossovers and non-crossovers. Macaca mulatta's
@@ -71,8 +75,8 @@ co_data <- tribble(
          clade = factor(SPECIES_CLADE[as.character(species)], levels = CLADE_LEVELS))
 
 # Ordered by clade (matching Panel C's convention) --
-# Old World Monkeys (all 3: Papio anubis, Papio papio, Macaca mulatta), then New World
-# Monkeys, then Lemurs.
+# Cercopithecidae (all 3: Papio anubis, Papio papio, Macaca mulatta), then Platyrrhini
+# , then Strepsirrhini.
 PANEL_A_ORDER <- c("Papio anubis", "Papio papio", "Macaca mulatta",
                     "Plecturocebus cupreus", "Daubentonia madagascariensis")
 co_data <- co_data %>% mutate(species = factor(species, levels = PANEL_A_ORDER))
@@ -152,8 +156,8 @@ panelB <- ggplot(nco_data, aes(x = species, y = ratio)) +
 # Great apes: chrX and autosomal rho/kb (Stevison, Woerner et al., unpublished
 # maps) converted to cM/Mb using this project's own already-validated,
 # independently-sourced Ne per species (same values used for each species'
-# autosomal cM/Mb in Master_Comparison_Table.xlsx) -- the autosomal cM/Mb
-# recovered this way reproduces the master table to 4 decimal places, and
+# autosomal cM/Mb in Central_Comparison_Table.xlsx) -- the autosomal cM/Mb
+# recovered this way reproduces the central table to 4 decimal places, and
 # since the same Ne is applied to both X and A, the ratio is numerically
 # identical to the raw rho ratio either way.
 # Aye-aye: direct pedigree cM/Mb, sex-averaged, no Ne needed at all -- the
@@ -167,17 +171,17 @@ xva_data <- tribble(
   "Pan paniscus", 0.5237, "LD-based, Ne-converted", "LDhat", 0.3610, 0.6893, "23230",
   "Han et al. 2024 Curr Biol", 0.85, 2.06, "Woerner 2016 dissertation (Appendix B)",
   "Stevison, Woerner et al. (unpublished chrX map)",
-  "A cM/Mb reproduces master-table autosomal value to 4 decimals -- validated conversion. Raw ratio conflates demographic signal with male X-hemizygosity; NeX/NeA is the demography-isolated figure.",
+  "A cM/Mb reproduces central-table autosomal value to 4 decimals -- validated conversion. Raw ratio conflates demographic signal with male X-hemizygosity; NeX/NeA is the demography-isolated figure.",
 
   "Pan troglodytes ellioti", 0.6191, "LD-based, Ne-converted", "LDhat", 0.4457, 0.7199, "27795",
   "de Manuel et al. 2016 Science (via Fontsere et al. 2022)", 1.00, 7.19,
   "Woerner 2016 dissertation (Appendix B)", "Stevison, Woerner et al. (unpublished chrX map)",
-  "A cM/Mb reproduces master-table autosomal value to 4 decimals -- validated conversion. Highest Nf:Nm skew of the three apes.",
+  "A cM/Mb reproduces central-table autosomal value to 4 decimals -- validated conversion. Highest Nf:Nm skew of the three apes.",
 
   "Gorilla gorilla gorilla", 0.5069, "LD-based, Ne-converted", "LDhat", 0.3764, 0.7424, "31777",
   "McManus et al. 2015 MBE", 0.82, 1.70, "Woerner 2016 dissertation (Appendix B)",
   "Stevison, Woerner et al. (unpublished chrX map)",
-  "A cM/Mb reproduces master-table autosomal value to 4 decimals -- validated conversion.",
+  "A cM/Mb reproduces central-table autosomal value to 4 decimals -- validated conversion.",
 
   "Daubentonia madagascariensis", 0.7180, "Pedigree (direct)", "n/a", 0.61, 0.85,
   "n/a (direct pedigree cM/Mb, no Ne needed)", "n/a", NA, NA,
@@ -209,7 +213,7 @@ xva_data <- tribble(
            TRUE ~ "Pedigree (direct)"
          ))
 
-# Ordered by clade (Apes -> Old World Monkeys -> New World Monkeys -> Lemurs),
+# Ordered by clade (Apes -> Cercopithecidae -> Platyrrhini -> Strepsirrhini),
 # not by ratio value -- rank-ordering by value would visually
 # imply these 6 estimates are directly cross-comparable, which cuts against
 # the whole point of shape-coding by method (they're method-heterogeneous,
@@ -286,14 +290,10 @@ clade_legend_plot <- ggplot(clade_legend_data, aes(x = x, y = y, color = clade))
 combined <- clade_legend_plot / (panelA + panelB + panelC + plot_layout(widths = c(5, 3, 5))) +
   plot_layout(heights = c(0.1, 1))
 
-ggsave("/Users/lss0021/Documents/Primate_Maps/Figure_4/Figure_4_heterochiasmy.png",
+ggsave(file.path(OUT_DIR, "Figure_4_heterochiasmy.png"),
        combined, width = 16, height = 6.5, dpi = 1200, bg = "white")
-ggsave("/Users/lss0021/Documents/Primate_Maps/Figure_4/Figure_4_heterochiasmy.pdf",
+ggsave(file.path(OUT_DIR, "Figure_4_heterochiasmy.pdf"),
        combined, width = 16, height = 6.5, bg = "white")
-# EPS format for Elsevier ELSA submission (accepts JPG/TIFF/PNG/EPS/CDX,
-# not PDF) -- vector, so it sidesteps the DPI requirement the same way the PDF does.
-ggsave("/Users/lss0021/Documents/Primate_Maps/Figure_4/Figure_4_heterochiasmy.eps",
-       combined, device = "eps", width = 16, height = 6.5, bg = "white")
 
 cat("Saved Figure_4_heterochiasmy.png/.pdf\n")
 
@@ -303,7 +303,7 @@ supp <- co_data %>%
             by = "species") %>%
   arrange(match(species, PANEL_A_ORDER))
 
-write.csv(supp, "/Users/lss0021/Documents/Primate_Maps/Figure_4/supplemental_heterochiasmy_table.csv",
+write.csv(supp, file.path(OUT_DIR, "supplemental_heterochiasmy_table.csv"),
           row.names = FALSE)
 cat("Saved supplemental_heterochiasmy_table.csv\n")
 
@@ -312,6 +312,6 @@ write.csv(xva_data %>%
                    Ne_used, Ne_source, NeX_NeA_corrected, Nf_Nm_corrected,
                    corrected_value_source, reference, notes) %>%
             arrange(match(species, xva_order)),
-          "/Users/lss0021/Documents/Primate_Maps/Figure_4/supplemental_XvA_table.csv",
+          file.path(OUT_DIR, "supplemental_XvA_table.csv"),
           row.names = FALSE)
 cat("Saved supplemental_XvA_table.csv\n")

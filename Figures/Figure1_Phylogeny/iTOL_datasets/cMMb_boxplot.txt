@@ -10,8 +10,8 @@ DATASET_BOXPLOT
 #red; Gini_piechart.txt stays its existing darker blue.
 #Line = median; each individual study value also plotted as an extreme point.
 #Single-estimate species show as a flat point.
-#MARGIN,100 and DATASET_SCALE width 2 / label size factor 1.6.
-#BORDER_WIDTH is included as a best-effort try -- it is a documented,
+#MARGIN,100 and DATASET_SCALE width 2 / label size factor 1.6 chosen to match the
+#other rings. BORDER_WIDTH is included as a best-effort try -- it is a documented,
 #working option for DATASET_SIMPLEBAR/MULTIBAR/PIECHART/COLOR_STRIP, but is NOT listed
 #anywhere in iTOL's own DATASET_BOXPLOT template, so it may simply be ignored by iTOL's
 #boxplot renderer; check after upload and drop the line if it has no visible effect.

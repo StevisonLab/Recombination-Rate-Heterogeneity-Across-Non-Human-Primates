@@ -1,8 +1,10 @@
 DATASET_BOXPLOT
 #Genome-wide non-crossover (NCO) rate, per site per generation, values in units of
 #x10^-6 for readable labels/scale (e.g. 7.52 = 7.52x10^-6). All 9 species in this
-#review with ANY NCO data now have a genuine, directly comparable rate, since
-#supplementary materials for each provided usable denominators.
+#review with ANY NCO data now have a genuine, directly comparable rate (previous
+#version of this file split these into a 2-species "real rate" ring and a 7-species
+#"raw count ratio" ring -- both retired, superseded by this single ring, after fetching
+#supplementary materials that revealed usable denominators for all of them).
 #Box spans min-max of individual measurements per species -- for the 5 Porsborg
 #long-read species this means individual SEQUENCED INDIVIDUALS (real biological
 #variation, e.g. chimp: 4 individuals, 1.26-2.36); for the 4 pedigree species this is a
@@ -13,8 +15,8 @@ DATASET_BOXPLOT
 #  (a) Pedigree rate = raw event count / (phase-informative sites x meioses), a direct
 #      empirical count (Papio_anubis, Daubentonia_madagascariensis: published this way
 #      by the authors; Macaca_mulatta, Plecturocebus_cupreus: same arithmetic, computed
-#      here from a denominator stated in the paper's own text/supplement, not the
-#      paper's own headline figure -- flagged 'derived (computed here)' in
+#      here from a denominator stated in the paper's own text/supplement,
+#      not the paper's own headline figure -- flagged 'derived (computed here)' in
 #      supplemental_nco_table.csv).
 #  (b) Porsborg long-read rate = a MODEL-BASED estimate (detectability x mean GC-tract
 #      length x postmeiotic-cell-fraction correction, fit per sequenced individual from
@@ -27,10 +29,10 @@ DATASET_BOXPLOT
 #Method_binary.txt (Pedigree-based vs Testis fields) to see which is which.
 #21 of 30 species have no NCO data at all (LD-based/cytogenetic methods cannot detect
 #NCO events) -- see supplemental_nco_table.csv.
-#MARGIN,100 and DATASET_SCALE width 2 / label size factor 1.6, matching
-#cMMb_boxplot.txt. BORDER_WIDTH is a best-effort try -- not a documented
-#DATASET_BOXPLOT option -- check after upload and drop the line if it has no
-#visible effect.
+#MARGIN,100 and DATASET_SCALE width 2 / label size factor 1.6 chosen to match
+#cMMb_boxplot.txt. BORDER_WIDTH is a best-effort try -- not a
+#documented DATASET_BOXPLOT option (see cMMb_boxplot.txt's build script for the same
+#caveat) -- check after upload and drop the line if it has no visible effect.
 
 SEPARATOR COMMA
 

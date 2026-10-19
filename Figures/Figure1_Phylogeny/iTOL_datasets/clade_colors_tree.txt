@@ -1,6 +1,6 @@
 TREE_COLORS
-#Colors both tree branches AND leaf labels by major clade (Apes/Old World Monkeys/New World Monkeys/
-#Lemurs), matching Master_Comparison_Table.xlsx 'Group' column and the project-wide
+#Colors both tree branches AND leaf labels by major clade (Apes/Cercopithecidae/Platyrrhini/
+#Strepsirrhini), matching Central_Comparison_Table.xlsx 'Group' column and the project-wide
 #4-clade color scheme. TREE_COLORS is a first-class tree annotation (not a
 #DATASET_* ring), so branch color and label color live in one file -- supersedes the
 #earlier DATASET_STYLE branch-only file. No colored strip and no bracket (bracket
