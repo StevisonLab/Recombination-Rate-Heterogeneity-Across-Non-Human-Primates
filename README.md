@@ -5,7 +5,7 @@
 This repository contains the compiled comparison table, the figure-generation code, and the supplementary analytical notes underlying the chapter. 
 
 Citation to Book Chapter:
-> Stevison, L.S. 2026. Chapter 5: Recombination Rate Heterogeneity Across Non-Human Primates. In _Evolutionary Genomics of Non-Human Primates_ Ed. S. P. Pfiefer and J. D. Jensen. Elsevier.
+> Stevison, L.S. 2026. Chapter 5: Heterogeneity in Crossover and Non-crossover Rates Across Non-Human Primates. In _Evolutionary Genomics of Non-Human Primates_ Ed. S. P. Pfiefer and J. D. Jensen. Elsevier.
 
 ---
 
