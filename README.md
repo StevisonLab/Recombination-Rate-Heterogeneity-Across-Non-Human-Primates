@@ -7,6 +7,8 @@ This repository contains the compiled comparison table, the figure-generation co
 Citation to Book Chapter:
 > Stevison, L.S. 2026. Chapter 5: Heterogeneity in Crossover and Non-crossover Rates Across Non-Human Primates. In _Evolutionary Genomics of Non-Human Primates_ Ed. S. P. Pfiefer and J. D. Jensen. Elsevier.
 
+[![DOI](https://zenodo.org/badge/1348723275.svg)](https://doi.org/10.5281/zenodo.23485068)
+
 ---
 
 ## 1. Overview
