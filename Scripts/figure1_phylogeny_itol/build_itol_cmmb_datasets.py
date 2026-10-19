@@ -120,7 +120,7 @@ BOXPLOT_EXCLUDE = {
 # below).
 records = []
 for r in data_rows:
-    species, method, marker, reference, cmmb = r[1], r[2], r[3], r[5], r[6]
+    species, method, marker, reference, cmmb = r[1], r[2], r[3], r[5], r[7]
     if species not in SPECIES_MAP:
         continue
     taxon = SPECIES_MAP[species]

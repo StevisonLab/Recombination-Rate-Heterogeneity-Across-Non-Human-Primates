@@ -59,6 +59,7 @@ The central data product, used to generate Figure 1 and referenced throughout th
 | Marker Type | Underlying raw data type (short-read WGS, long-read WGS, microsatellite, chiasma count, MLH1 foci) |
 | Scale | Population / Individual / Transmission, as applicable |
 | Reference | Source study |
+| Sample size | Number of individuals (plus meioses for WGS pedigrees, or cells for MLH1 counts) as stated in the source; "not stated" where the source is a compilation that does not report it |
 | cM/Mb | Genome-wide recombination rate |
 | cM/Mb status | How the value was derived (recomputed from raw/deposited data vs. extracted from the paper's own text/tables), and any Ne or calibration choice made |
 | Gini (raw/unbinned) | Fine-scale rate heterogeneity, always computed raw/unbinned (see caveats below) |

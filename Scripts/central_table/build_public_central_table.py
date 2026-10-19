@@ -20,10 +20,70 @@ from openpyxl.utils import get_column_letter
 
 COLUMNS = [
     "Group", "Species", "Method", "Marker Type", "Scale", "Reference",
-    "cM/Mb", "cM/Mb status", "Gini (raw/unbinned)", "Gini status",
+    "Sample size", "cM/Mb", "cM/Mb status", "Gini (raw/unbinned)", "Gini status",
     "NCO rate (bp-1 gen-1) / count", "CO count or genetic map length",
     "Notes / caveats",
 ]
+
+
+# Sample size per row, as stated in each source (see "Sample size" notes in the
+# chat log of 2026-10-19). Units follow the method: individuals for LD/long-read,
+# individuals + meioses for WGS pedigrees, genotyped animals for microsatellite
+# pedigrees, individuals + cells for MLH1 counts. Older chiasma-count values come
+# from compilations (Pardo-Manuel de Villena & Sapienza 2001; Burt & Bell 1987;
+# Burt, Bell & Harvey 1991 via Mank 2009) that do not report sample sizes.
+NOT_STATED = "not stated (compilation source; Dumont 2017 Table S1 also lists NA)"
+SAMPLE_SIZE = {
+    ("Pan paniscus (bonobo)", "Stevison et al. 2016 MBE"): "13 individuals",
+    ("Pan troglodytes ellioti (Nigerian chimp)", "Stevison et al. 2016 MBE"): "10 individuals",
+    ("Gorilla gorilla gorilla (western gorilla)", "Stevison et al. 2016 MBE"): "15 individuals",
+    ("Gorilla gorilla gorilla (western gorilla)", "Porsborg et al. 2025 Nat Commun"): "3 individuals (testis samples)",
+    ("Pan troglodytes verus (western chimp)", "Auton et al. 2012 Science"): "10 individuals",
+    ("Pan troglodytes verus (western chimp)", "Porsborg et al. 2025 Nat Commun"): "4 individuals (testis samples)",
+    ("Nomascus leucogenys (northern white-cheeked gibbon)", "Stevison, unpublished; now available in its own GitHub repo"): "8 individuals",
+    ("Hylobates lar (lar gibbon, different genus)", "Porsborg et al. 2025 Nat Commun"): "1 individual (testis sample)",
+    ("Pan troglodytes verus (western chimp)", "Pardo-Manuel de Villena & Sapienza 2001 Mamm Genome"): NOT_STATED,
+    ("Papio anubis (olive baboon)", "Wall, Robinson & Cox 2022 GBE"): "66 sequenced: 2 pedigrees (37 meioses: 20 paternal, 17 maternal) + 36 unrelated (LD map)",
+    ("Papio hamadryas (baboon)", "Rogers et al. 2000 Genomics"): "694 genotyped animals (12 pedigrees)",
+    ("Papio hamadryas (baboon)", "Cox et al. 2006 Genomics"): "984 genotyped animals (11 pedigrees)",
+    ("Papio papio (Guinea baboon)", "Porsborg et al. 2025 Nat Commun"): "1 individual (testis sample)",
+    ("Papio papio (Guinea baboon)", "Burt, Bell & Harvey 1991 J Evol Biol (via Mank 2009)"): "not stated (compilation source)",
+    ("Macaca mulatta (Indian-origin, captive)", "Versoza et al. 2024 GBE"): "32 individuals (4 pedigrees), 7 paternal meioses",
+    ("Macaca mulatta (Indian-origin, captive)", "Versoza et al. 2024 GBE (companion map)"): "11 individuals (pedigree parental generation)",
+    ("Macaca mulatta (wild, Chinese-origin)", "Terbot, Calahorra-Oliart, Versoza et al. 2025 Am J Primatol"): "79 individuals",
+    ("Macaca mulatta (wild, Chinese-origin)", "Terbot, Calahorra-Oliart, Versoza et al. 2025 Am J Primatol (bias-corrected estimate)"): "79 individuals",
+    ("Macaca mulatta (Indian-origin)", "Xue et al. 2020 PLoS ONE"): "123 individuals",
+    ("Macaca mulatta", "Rogers et al. 2006 Genomics"): "865 genotyped animals (5 pedigrees)",
+    ("Macaca mulatta", "Hassold et al. 2009 Cytogenet Genome Res"): "11 individuals, 438 cells (via Dumont 2017 Table S1)",
+    ("Macaca mulatta", "Pardo-Manuel de Villena & Sapienza 2001 Mamm Genome"): NOT_STATED,
+    ("Macaca mulatta", "Burt, Bell & Harvey 1991 J Evol Biol (via Mank 2009)"): "not stated (compilation source)",
+    ("Macaca nemestrina (pig-tailed macaque)", "Pardo-Manuel de Villena & Sapienza 2001 Mamm Genome"): NOT_STATED,
+    ("Macaca nemestrina (pig-tailed macaque)", "Porsborg et al. 2025 Nat Commun"): "1 individual (testis sample)",
+    ("Chlorocebus aethiops sabaeus (vervet)", "Pfeifer 2020 MBE"): "10 individuals",
+    ("Chlorocebus aethiops sabaeus (vervet)", "Jasinska et al. 2007 Mamm Genome"): "434 genotyped animals (77 sub-pedigrees)",
+    ("Cebus paraguayanus (= Sapajus cay, current taxonomy)", "Garcia-Cruz et al. 2009 BMC Genetics"): "1 individual, 75 cells (via Dumont 2017 Table S1)",
+    ("Cebus libidinosus", "Garcia-Cruz et al. 2011 Chromosoma"): "1 individual, 85 cells",
+    ("Cebus nigritus", "Garcia-Cruz et al. 2011 Chromosoma"): "1 individual, 116 cells",
+    ("Alouatta caraya", "Garcia-Cruz et al. 2011 Chromosoma"): "1 individual, 165 cells",
+    ("Callithrix jacchus (common marmoset)", "Soni, Versoza et al. 2025/26 bioRxiv (PREPRINT, not peer-reviewed)"): "15 individuals",
+    ("Plecturocebus cupreus (coppery titi monkey)", "Soni, Versoza et al. 2026 Heredity"): "6 individuals",
+    ("Plecturocebus cupreus (coppery titi monkey)", "Versoza et al. 2026 GBE"): "17 individuals (3 families), 22 meioses (11 maternal, 11 paternal)",
+    ("Daubentonia madagascariensis (aye-aye)", "Soni, Versoza et al. 2025 Ecology and Evolution"): "5 individuals",
+    ("Daubentonia madagascariensis (aye-aye)", "Versoza et al. 2025 GBE"): "14 individuals, 20 meioses (10 maternal, 10 paternal)",
+    ("Cebuella pygmaea (pygmy marmoset)", "Segura et al. 2013 Proc R Soc B"): "1 individual, 49 cells (via Dumont 2017 Table S1)",
+    ("Cebuella pygmaea (pygmy marmoset)", "Pardo-Manuel de Villena & Sapienza 2001 Mamm Genome"): NOT_STATED,
+    ("Cebus capucinus (white-headed capuchin)", "Pardo-Manuel de Villena & Sapienza 2001 Mamm Genome"): NOT_STATED,
+    ("Macaca fuscata (Japanese macaque)", "Pardo-Manuel de Villena & Sapienza 2001 Mamm Genome"): NOT_STATED,
+    ("Macaca nigra (Celebes crested macaque)", "Burt & Bell 1987 Nature"): NOT_STATED,
+    ("Mandrillus sphinx (mandrill)", "Pardo-Manuel de Villena & Sapienza 2001 Mamm Genome"): NOT_STATED,
+    ("Miopithecus talapoin (Angolan talapoin)", "Segura et al. 2013 Proc R Soc B"): "1 individual, 60 cells (via Dumont 2017 Table S1)",
+    ("Lemur catta (ring-tailed lemur)", "Segura et al. 2013 Proc R Soc B"): "1 individual, 76 cells (via Dumont 2017 Table S1)",
+    ("Lemur fulvus (= Eulemur fulvus, nominate)", "Pardo-Manuel de Villena & Sapienza 2001 Mamm Genome"): NOT_STATED,
+    ("Lemur fulvus albocollaris (= Eulemur fulvus albocollaris)", "Pardo-Manuel de Villena & Sapienza 2001 Mamm Genome"): NOT_STATED,
+    ("Lemur fulvus collaris (= Eulemur fulvus collaris)", "Pardo-Manuel de Villena & Sapienza 2001 Mamm Genome"): NOT_STATED,
+    ("Saguinus oedipus (cotton-top tamarin)", "Segura et al. 2013 Proc R Soc B"): "1 individual, 105 cells (via Dumont 2017 Table S1)",
+    ("Saguinus oedipus (cotton-top tamarin)", "Pardo-Manuel de Villena & Sapienza 2001 Mamm Genome"): NOT_STATED,
+}
 
 PUBLIC_ROWS = [
     ('Apes', 'Pan paniscus (bonobo)', 'LD-based', 'Short-read WGS', 'Population', 'Stevison et al. 2016 MBE', 0.6893, "Computed using an independent Ne=23,230 (Han et al. 2024 Curr Biol, common-ancestor point estimate from a 3-population bonobo demographic model, cross-validated against Kuhlwilm et al. and the prior literature range 5,000-29,129) rather than the paper's own ~1.193 cM/Mb, which is circular (back-solved to force equality across all 3 species). A genuine point estimate from a dedicated demographic study was preferred over the midpoint of the wider Prado-Martinez et al. 2013 range (17,850).", 0.8128, 'independent (raw/unbinned)', 'n/a (method)', 'ρ/kb = 0.6405', "ρ/kb independently validated against the published value (<0.1% difference). cM/Mb uses an independently-sourced Ne (Han et al. 2024) rather than the paper's own calibrated figure."),
@@ -98,7 +158,7 @@ def main():
     ws.freeze_panes = "A2"
     ws.row_dimensions[1].height = 32
 
-    widths = [12, 34, 26, 18, 20, 30, 10, 42, 12, 30, 30, 26, 46]
+    widths = [12, 34, 26, 18, 20, 30, 28, 10, 42, 12, 30, 30, 26, 46]
     for c, w in enumerate(widths, start=1):
         ws.column_dimensions[get_column_letter(c)].width = w
 
@@ -106,7 +166,8 @@ def main():
     for r, row in enumerate(PUBLIC_ROWS, start=2):
         is_new_group = row[0] != prev_group
         prev_group = row[0]
-        for c, val in enumerate(row, start=1):
+        out = list(row[:6]) + [SAMPLE_SIZE[(row[1], row[5])]] + list(row[6:])
+        for c, val in enumerate(out, start=1):
             cell = ws.cell(row=r, column=c, value=val)
             cell.alignment = Alignment(wrap_text=True, vertical="top")
             cell.border = border

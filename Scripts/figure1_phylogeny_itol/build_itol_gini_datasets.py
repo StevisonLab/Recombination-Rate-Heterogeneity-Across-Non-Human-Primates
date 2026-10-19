@@ -63,7 +63,7 @@ ESTIMATOR = {
 records = []
 titi_ld_seen = 0
 for r in data_rows:
-    species, method, reference, gini = r[1], r[2], r[5], r[8]
+    species, method, reference, gini = r[1], r[2], r[5], r[9]
     if species not in SPECIES_MAP:
         continue
     if not isinstance(gini, (int, float)):
