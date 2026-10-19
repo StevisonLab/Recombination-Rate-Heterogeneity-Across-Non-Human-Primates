@@ -1,19 +1,8 @@
 # Rehosted Datasets
 
-This folder contains raw/deposited recombination-map data for exactly three
-studies used in this review — and only these three. Every other dataset this
-review draws on remains available at its original public source (lab
-website, Dryad, Zenodo, NCBI, or a journal's own supplementary materials);
-see `Master_Comparison_Table.xlsx`'s "Reference" column and the citation
-list in the main `README.md` for exactly where each of those lives. This
-folder exists specifically because these three could not be pointed to that
-way: either the original host is no longer online, or the data was obtained
-directly and was never hosted publicly to begin with.
+This folder contains raw/deposited recombination-map data for exactly three studies used in this review — and only these three. A fourth unpublished dataset in Gibbons has it's [own repository](https://github.com/lstevison/Gibbon-Recombination-Rate). Every other dataset this review draws on remains available at its original public source (lab website, Dryad, Zenodo, NCBI, or a journal's own supplementary materials); see `Master_Comparison_Table.xlsx`'s "Reference" column and the citation list in the main `README.md` for exactly where each of those lives. This folder exists specifically because these three could not be pointed to that way: either the original host is no longer online, or the data was obtained directly and was never hosted publicly to begin with.
 
-Each dataset includes the compute script used to derive the cM/Mb and Gini
-values that feed `Master_Comparison_Table.xlsx` and Figure 4, so the
-published numbers in this review can be reproduced directly from the raw
-data included here.
+Each dataset includes the compute script used to derive the cM/Mb and Gini values that feed `Master_Comparison_Table.xlsx` and Figure 4, so the published numbers in this review can be reproduced directly from the raw data included here.
 
 ## Auton2012_chimp_LDmap/
 
