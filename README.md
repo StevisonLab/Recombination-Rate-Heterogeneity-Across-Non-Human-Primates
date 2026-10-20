@@ -150,7 +150,7 @@ than silently resolved.
 
 If referencing this compiled dataset or its figures, please cite the book chapter:
 
-> Stevison, L.S. 2026. Chapter 5: Recombination Rate Heterogeneity Across Non-Human Primates. In _Evolutionary Genomics of Non-Human Primates_ Ed. S. P. Pfiefer and J. D. Jensen. Elsevier.
+> Stevison, L.S. 2026. Chapter 5: Heterogeneity in Crossover and Non-crossover Rates Across Non-Human Primates. In _Evolutionary Genomics of Non-Human Primates_ Ed. S. P. Pfiefer and J. D. Jensen. Elsevier.
 
 The table itself compiles data from the following primary sources. Full citations for every data source, plus the complete literature review this chapter is drawn from, are in the chapter's own reference list.
 
